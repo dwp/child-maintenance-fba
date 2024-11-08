@@ -6,6 +6,10 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+// Find an address plugin
+const findAddressPlugin = require("find-an-address-plugin");
+
+findAddressPlugin(router);
 
 // Logging session data  
 // This code shows in the terminal what session data has been saved.
