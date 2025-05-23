@@ -1,4 +1,3 @@
-TEST
 
 Use this template to create new prototypes in DWP. This template is updated with every major version release of the GOVUK prototype kit. 
 
