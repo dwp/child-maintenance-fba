@@ -1,6 +1,18 @@
 
 Use this template to create new prototypes in DWP. This template is updated with every major version release of the GOVUK prototype kit. 
 
+Best practice:
+
+Run npm audit regularly
+Keep package-lock.json under version control
+Do not blindly update packages without review
+Never connect to internal APIs or production systems
+Never store or process real user data
+Remove old or unused prototypes promptly
+Document the purpose and owner of each prototype clearly
+Avoid turning prototypes into live services
+Do not allow open write access to external collaborators
+
 Support
 
 If you've got a question, idea or suggestion about the GOVUK protoype kit, get in touch with the GOV.UK Prototype team.
