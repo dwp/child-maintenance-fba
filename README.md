@@ -3,7 +3,8 @@ Use this template to create new prototypes in DWP. This template is updated with
 
 Best practice:<br>
 <br>
-Run npm audit regularly<br>
+Before making any changes to your code, open your prototype folder in terminal and Run: <br>npm audit <br>
+Use ther information provided in terminal to fix any vulnerabilities before pushing your changes<br>
 Keep package-lock.json under version control<br>
 Do not blindly update packages without review<br>
 Never connect to internal APIs or production systems<br>
