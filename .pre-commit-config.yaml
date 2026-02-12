@@ -24,7 +24,7 @@ repos:
           - manual
 
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v9.6.0
+    rev: v9.0.1
     hooks:
       - id: cspell
         args:
@@ -34,7 +34,7 @@ repos:
           - --no-progress
           - --no-summary
         additional_dependencies:
-          - "@cspell/dict-en-gb@5.0.21"
+          - "@cspell/dict-en-gb@5.0.5"
         stages:
           - pre-commit
           - commit-msg
@@ -71,15 +71,15 @@ repos:
       - id: markdownlint-cli2
         additional_dependencies:
           - markdownlint-rule-titlecase@0.1.0
-          - markdownlint-cli2-formatter-codequality@0.0.7
+          - markdownlint-cli2-formatter-codequality@0.0.5
 
   - repo: https://github.com/rbubley/mirrors-prettier
     rev: v3.5.3
     hooks:
       - id: prettier
         additional_dependencies:
-          - prettier@3.8.1
-          - prettier-plugin-sh@0.18.0
+          - prettier@3.5.3
+          - prettier-plugin-sh@0.17.4
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.31.2
@@ -88,13 +88,13 @@ repos:
       - id: check-renovate
 
   - repo: https://gitlab.com/dwp/secure-development/dwp-cli
-    rev: v3.27.0
+    rev: v3.15.3
     hooks:
       - id: check-catalog-info
       - id: check-pre-commit-config
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
         stages:
