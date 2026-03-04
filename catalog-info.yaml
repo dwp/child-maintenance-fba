@@ -9,11 +9,11 @@ metadata:
   annotations:
     gitlab.com/project-slug: dwp/user-centred-design/child-maiontenance-fba
   labels:
-    dwp.gov.uk/version: 1.0.0
+    dwp.gov.uk/version: 1.0.1
     dwp.gov.uk/license: unknown
 
-    dwp.gov.uk/last-verified.by: Ben Raine
-    dwp.gov.uk/last-verified.on: 2026-02-27
+    dwp.gov.uk/last-verified.by: James Seabright
+    dwp.gov.uk/last-verified.on: 2026-03-04
 
     dwp.gov.uk/open-source.approved: "true"
     dwp.gov.uk/open-source.location: none
