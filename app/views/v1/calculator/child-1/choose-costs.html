@@ -1,0 +1,115 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Which costs do you want to include for {{ data['child1Name'] }}? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+      <div class="govuk-form-group">
+
+        {% set otherHtml %}
+        {{ govukInput({
+          id: "child1-other",
+          name: "child1-other",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Please specify"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukCheckboxes({
+          name: "child1-costs",
+          fieldset: {
+            legend: {
+              text: "Which costs do you want to include for " + child1 + "?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all options that are relevant to " + child1 + "."
+          },
+          items: [
+            {
+              value: "baby",
+              text: "Baby care",
+              hint: {
+                text: "for example, nappies and formula"
+              }
+            },
+            {
+              value: "clothes",
+              text: "Clothing and shoes"
+            },
+            {
+              value: "school",
+              text: "School",
+              hint: {
+                text: "for example, uniforms and meals"
+              }
+            }, 
+            {
+              value: "hobbies",
+              text: "Hobbies and activities"
+            },
+            {
+              value: "childcare",
+              text: "Childcare",
+              hint: {
+                text: "for example, childminders and holiday clubs"
+              }
+            },
+            {
+              value: "daycare",
+              text: "Day-to-day care",
+              hint: {
+                text: "for example, food and phone plan"
+              }
+            },
+            {
+              value: "transport",
+              text: "Transportation",
+              hint: {
+                text: "for example, bus pass or driving lessons"
+              }
+            },
+            {
+              value: "onetime",
+              text: "One-time costs",
+              hint: {
+                text: "for example, phone or computer"
+              }
+            },
+            {
+              value: "other",
+              text: "Other",
+              conditional: {
+                html: otherHtml
+              }
+            }
+          ]
+        }) }}
+
+      </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

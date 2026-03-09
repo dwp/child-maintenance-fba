@@ -1,0 +1,35 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Calculate the cost of raising a child – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Calculate the cost of raising your child</h1>
+
+    <p class="govuk-body">
+      To help you organise and compare the costs of raising your child, we will ask about their age group and the amount you spend on everyday items and one-time costs for them.
+    </p>
+
+    <p class="govuk-body">
+      You will be able to download the finished worksheet.
+    </p>
+
+    <p class="govuk-body">
+      We will not ask for any personal information and your answers will not be saved. You only need to tell us information that applies to your circumstances.
+    </p>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "child-amount",
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

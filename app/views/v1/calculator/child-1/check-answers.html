@@ -1,0 +1,134 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers for {{ child1 }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% set selectedCosts = data['child1-costs'] or [] %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Check your answers for {{ child1 }}</h1>
+
+      {% if 'baby' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Babycare
+          </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['baby-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Nappies
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['baby-cost-1']}} {{data['baby-freq-1']}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change</a>
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['baby-cost-2'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Formula
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['baby-cost-2']}} {{data['baby-freq-2']}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change</a>
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['baby-cost-other'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {{data['baby-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['baby-cost-other']}} {{data['baby-freq-other']}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change</a>
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if 'clothes' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Clothing
+          </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['clothes-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Clothes
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['clothes-cost-1']}} {{data['clothes-freq-1']}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change</a>
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['clothes-cost-2'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Footwear
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['clothes-cost-2']}} {{data['clothes-freq-2']}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change</a>
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['clothes-cost-other-name'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {{data['clothes-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['clothes-cost-other']}} {{data['clothes-freq-other']}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change</a>
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+  </div>
+
+{% endblock %}

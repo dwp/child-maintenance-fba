@@ -1,9 +1,10 @@
-//
-// For guidance on how to create routes see:
-// https://prototype-kit.service.gov.uk/docs/create-routes
-//
+const govukPrototypeKit = require('govuk-prototype-kit');
+const router = govukPrototypeKit.requests.setupRouter();
 
-const govukPrototypeKit = require('govuk-prototype-kit')
-const router = govukPrototypeKit.requests.setupRouter()
+// To mount a new version:
+// router.use('/name-of-your-version', require('./views/name-of-your-version/routing')());
 
-// Add your routes here
+router.use('/v1', require('./views/v1/routing')());
+
+
+module.exports = router;

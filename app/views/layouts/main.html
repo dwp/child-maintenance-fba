@@ -14,3 +14,29 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     })}}
 
 {% endblock %}
+
+{% block beforeContent %}
+
+    {% if includePhaseBanner != "false" %}
+    {{ govukPhaseBanner({
+        tag: {
+            text: "Alpha"
+        },
+        html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.'
+    }) }}
+    {% endif %}
+
+    {% if includeBackLink != "false" %}
+    {{ govukBackLink({
+        "text": "Back",
+        "href": "javascript:history.back()"
+        }) 
+    }}
+    {% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="/assets/js/dfefrontend.min.js"></script>
+{% endblock %}
