@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Your child cost summary – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% set selectedCosts = data['child1-costs'] or [] %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Your child cost summary</h1>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+      <table class="govuk-table govuk-table--small-text-until-tablet">
+        <caption class="govuk-table__caption govuk-table__caption--m">Total costs</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Child</th>
+            <th scope="col" class="govuk-table__header">Weekly</th>
+            <th scope="col" class="govuk-table__header">Monthly</th>
+            <th scope="col" class="govuk-table__header">Annually</th>
+
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{child1}}</th>
+            <td class="govuk-table__cell">£27.45</td>
+            <td class="govuk-table__cell">£133.90</td>
+            <td class="govuk-table__cell">£1,133.33</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{child2}}</th>
+            <td class="govuk-table__cell">£27.45</td>
+            <td class="govuk-table__cell">£133.90</td>
+            <td class="govuk-table__cell">£1,133.33</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Total</th>
+            <td class="govuk-table__cell">£54.90</td>
+            <td class="govuk-table__cell">£267.80</td>
+            <td class="govuk-table__cell">£2,266.66</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    </div>
+  </div>
+
+{% endblock %}

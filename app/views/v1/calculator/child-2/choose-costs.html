@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Which costs do you want to include for {{ child1 }}? – {{ serviceName }} – GOV.UK Prototype Kit
+  Which costs do you want to include for {{ child2 }}? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
@@ -19,8 +19,8 @@
 
         {% set otherHtml %}
         {{ govukInput({
-          id: "child1-other",
-          name: "child1-other",
+          id: "child2-other",
+          name: "child2-other",
           classes: "govuk-!-width-one-third",
           label: {
             text: "Please specify"
@@ -29,16 +29,16 @@
         {% endset -%}
 
         {{ govukCheckboxes({
-          name: "child1-costs",
+          name: "child2-costs",
           fieldset: {
             legend: {
-              text: "Which costs do you want to include for " + child1 + "?",
+              text: "Which costs do you want to include for " + child2 + "?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "Select all options that are relevant to " + child1 + "."
+            text: "Select all options that are relevant to " + child2 + "."
           },
           items: [
             {

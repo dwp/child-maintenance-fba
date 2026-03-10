@@ -14,8 +14,43 @@ module.exports = () => {
     next();
   });
 
-  // ---- ORDER OF COST PAGES ----
-  // Add/remove/reorder freely
+  // =============================
+  // ==== CALCULATOR ROUTING =====
+  // =============================
+
+  // -------------------------------------
+  // AMOUNT OF CHILDREN (START OF JOURNEY)
+  // -------------------------------------
+  //
+  // User enters how many children they want to add.
+  // Currently this ALWAYS moves straight into the
+  // Child 1 journey.
+  //
+  subRouter.post('/calculator/child-amount', (req, res) => {
+    res.redirect('/calculator/child-name');
+  });
+
+
+  // -------------------------------------
+  // CHILD NAME ENTRY
+  // -------------------------------------
+  //
+  // User provides the name(s) of the children.
+  // After names are entered → begin Child 1 cost selection.
+  //
+  subRouter.post('/calculator/child-name', (req, res) => {
+    res.redirect('./child-1/choose-costs');
+  });
+
+
+  // -------------------------------------
+  // ORDER OF COST PAGES
+  // -------------------------------------
+  //
+  // Defines the sequence of cost categories.
+  // Both Child 1 and Child 2 reuse this single array.
+  // This ensures the flow logic is identical.
+  //
   const costOrder = [
     'baby',
     'clothes',
@@ -28,7 +63,19 @@ module.exports = () => {
     'other'
   ];
 
-  // Route lookup
+
+  // =============================
+  // ======== CHILD 1 FLOW =======
+  // =============================
+
+
+  // -------------------------------------
+  // COST ROUTES FOR CHILD 1
+  // -------------------------------------
+  //
+  // Maps each cost category (baby, clothes, etc) to a URL.
+  // The `nextPage` helper will use this to know where to go.
+  //
   const costRoutes = {
     baby: '/calculator/child-1/costs-babycare',
     clothes: '/calculator/child-1/costs-clothing',
@@ -41,99 +88,222 @@ module.exports = () => {
     other: '/calculator/child-1/costs-other'
   };
 
-  // Helper: get the next selected page after the current one
+
+  // -------------------------------------
+  // HELPER: FIND NEXT SELECTED COST PAGE
+  // -------------------------------------
+  //
+  // Takes:
+  // - the selected cost categories from session
+  // - the current page category
+  //
+  // It looks ahead in costOrder and returns
+  // the URL of the next selected category.
+  //
+  // If the user has no more selected categories,
+  // we move to child-1/check-answers.
+  //
   function nextPage(selected, current) {
     const index = costOrder.indexOf(current);
+
+    // Look ahead from current category
     for (let i = index + 1; i < costOrder.length; i++) {
       if (selected.includes(costOrder[i])) {
         return costRoutes[costOrder[i]];
       }
     }
-    // If nothing left → go to next big step
+
+    // No pages left → go to check answers
     return '/calculator/child-1/check-answers';
   }
 
-  // --------- AMOUNT & NAMES ----------
 
-  subRouter.post('/calculator/child-amount', (req, res) => {
-    res.redirect('/calculator/child-name');
-  });
-
-  subRouter.post('/calculator/child-name', (req, res) => {
-    res.redirect('./child-1/choose-costs');
-  });
-
-  // --------- CHOOSE COSTS ----------
-
+  // -------------------------------------
+  // CHILD 1: CHOOSE COSTS PAGE
+  // -------------------------------------
+  //
+  // Reads selected checkboxes (stored in child1-costs).
+  // Redirects to the *first* selected cost page.
+  //
   subRouter.post('/calculator/child-1/choose-costs', (req, res) => {
     const selected = req.session.data['child1-costs'] || [];
 
-    // Find the first chosen cost page
+    // Find the first selected category in the predefined order
     const first = costOrder.find(key => selected.includes(key));
 
     if (first) {
       return res.redirect(costRoutes[first]);
     }
 
-    // If nothing selected, skip all the pages
+    // If user selected nothing, skip all cost pages
     return res.redirect('/calculator/child-1/check-answers');
   });
 
-  // --------- NEW: COST PAGE STEP HANDLERS ----------
 
-  // Babycare → next selected
+  // -------------------------------------
+  // CHILD 1 COST PAGE HANDLERS
+  // -------------------------------------
+  //
+  // Each cost page simply calls nextPage()
+  // to determine where the user should go next.
+  //
   subRouter.post('/calculator/child-1/costs-babycare', (req, res) => {
-    const selected = req.session.data['child1-costs'] || [];
-    res.redirect(nextPage(selected, 'baby'));
+    res.redirect(nextPage(req.session.data['child1-costs'] || [], 'baby'));
   });
 
-  // Clothing → next selected
   subRouter.post('/calculator/child-1/costs-clothing', (req, res) => {
-    const selected = req.session.data['child1-costs'] || [];
-    res.redirect(nextPage(selected, 'clothes'));
+    res.redirect(nextPage(req.session.data['child1-costs'] || [], 'clothes'));
   });
 
-  // School → next selected
   subRouter.post('/calculator/child-1/costs-school', (req, res) => {
-    const selected = req.session.data['child1-costs'] || [];
-    res.redirect(nextPage(selected, 'school'));
+    res.redirect(nextPage(req.session.data['child1-costs'] || [], 'school'));
   });
 
-  // Hobbies → next selected
   subRouter.post('/calculator/child-1/costs-hobbies', (req, res) => {
-    const selected = req.session.data['child1-costs'] || [];
-    res.redirect(nextPage(selected, 'hobbies'));
+    res.redirect(nextPage(req.session.data['child1-costs'] || [], 'hobbies'));
   });
 
-  // Childcare → next selected
   subRouter.post('/calculator/child-1/costs-childcare', (req, res) => {
-    const selected = req.session.data['child1-costs'] || [];
-    res.redirect(nextPage(selected, 'childcare'));
+    res.redirect(nextPage(req.session.data['child1-costs'] || [], 'childcare'));
   });
 
-  // Day-to-day care → next selected
   subRouter.post('/calculator/child-1/costs-daycare', (req, res) => {
-    const selected = req.session.data['child1-costs'] || [];
-    res.redirect(nextPage(selected, 'daycare'));
+    res.redirect(nextPage(req.session.data['child1-costs'] || [], 'daycare'));
   });
 
-  // Transport → next selected
   subRouter.post('/calculator/child-1/costs-transport', (req, res) => {
-    const selected = req.session.data['child1-costs'] || [];
-    res.redirect(nextPage(selected, 'transport'));
+    res.redirect(nextPage(req.session.data['child1-costs'] || [], 'transport'));
   });
 
-  // One-time → next selected
   subRouter.post('/calculator/child-1/costs-onetime', (req, res) => {
-    const selected = req.session.data['child1-costs'] || [];
-    res.redirect(nextPage(selected, 'onetime'));
+    res.redirect(nextPage(req.session.data['child1-costs'] || [], 'onetime'));
   });
 
-  // Other → next selected
   subRouter.post('/calculator/child-1/costs-other', (req, res) => {
-    const selected = req.session.data['child1-costs'] || [];
-    res.redirect(nextPage(selected, 'other'));
+    res.redirect(nextPage(req.session.data['child1-costs'] || [], 'other'));
   });
 
+
+  // -------------------------------------
+  // MOVING FROM CHILD 1 → CHILD 2
+  // -------------------------------------
+  //
+  // When Child 1 check-answers is submitted,
+  // we move to Child 2 cost selection.
+  //
+  subRouter.post('/calculator/child-1/check-answers', (req, res) => {
+    res.redirect('../child-2/choose-costs');
+  });
+
+
+
+  // =============================
+  // ======== CHILD 2 FLOW =======
+  // =============================
+
+
+  // -------------------------------------
+  // COST ROUTES FOR CHILD 2
+  // -------------------------------------
+  const costRoutesChild2 = {
+    baby: '/calculator/child-2/costs-babycare',
+    clothes: '/calculator/child-2/costs-clothing',
+    school: '/calculator/child-2/costs-school',
+    hobbies: '/calculator/child-2/costs-hobbies',
+    childcare: '/calculator/child-2/costs-childcare',
+    daycare: '/calculator/child-2/costs-daycare',
+    transport: '/calculator/child-2/costs-transport',
+    onetime: '/calculator/child-2/costs-onetime',
+    other: '/calculator/child-2/costs-other'
+  };
+
+
+  // -------------------------------------
+  // HELPER FOR CHILD 2 (same as for child 1)
+  // -------------------------------------
+  function nextPageChild2(selected, current) {
+    const index = costOrder.indexOf(current);
+
+    for (let i = index + 1; i < costOrder.length; i++) {
+      if (selected.includes(costOrder[i])) {
+        return costRoutesChild2[costOrder[i]];
+      }
+    }
+
+    return '/calculator/child-2/check-answers';
+  }
+
+
+  // -------------------------------------
+  // CHILD 2: CHOOSE COSTS PAGE
+  // -------------------------------------
+  subRouter.post('/calculator/child-2/choose-costs', (req, res) => {
+    const selected = req.session.data['child2-costs'] || [];
+    const first = costOrder.find(key => selected.includes(key));
+
+    if (first) {
+      return res.redirect(costRoutesChild2[first]);
+    }
+
+    return res.redirect('/calculator/child-2/check-answers');
+  });
+
+
+  // -------------------------------------
+  // CHILD 2 COST PAGE STEP HANDLERS
+  // -------------------------------------
+  subRouter.post('/calculator/child-2/costs-babycare', (req, res) => {
+    res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'baby'));
+  });
+
+  subRouter.post('/calculator/child-2/costs-clothing', (req, res) => {
+    res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'clothes'));
+  });
+
+  subRouter.post('/calculator/child-2/costs-school', (req, res) => {
+    res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'school'));
+  });
+
+  subRouter.post('/calculator/child-2/costs-hobbies', (req, res) => {
+    res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'hobbies'));
+  });
+
+  subRouter.post('/calculator/child-2/costs-childcare', (req, res) => {
+    res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'childcare'));
+  });
+
+  subRouter.post('/calculator/child-2/costs-daycare', (req, res) => {
+    res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'daycare'));
+  });
+
+  subRouter.post('/calculator/child-2/costs-transport', (req, res) => {
+    res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'transport'));
+  });
+
+  subRouter.post('/calculator/child-2/costs-onetime', (req, res) => {
+    res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'onetime'));
+  });
+
+  subRouter.post('/calculator/child-2/costs-other', (req, res) => {
+    res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'other'));
+  });
+
+
+  // -------------------------------------
+  // END OF CALCULATOR → SUMMARY PAGE
+  // -------------------------------------
+  //
+  // Child 2 check-answers sends the user to
+  // the final summary page.
+  //
+  subRouter.post('/calculator/child-2/check-answers', (req, res) => {
+    res.redirect('../summary');
+  });
+
+
+  // -------------------------------------
+  // END ROUTER
+  // -------------------------------------
+  
   return subRouter;
-};
+  };
