@@ -1,0 +1,44 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Work out what you should pay – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Work out what you should pay</h1>
+
+    <p class="govuk-body">
+      Work out how much you spend on your child gives you an amount to discuss if you’re making arrangements with the other parent.
+    </p>
+
+    <h1 class="govuk-heading-m">Work out the cost of your child</h1>
+
+    <p class="govuk-body">
+      Work out how much you spend on your child using our cost worksheet.
+    </p>
+
+    <p class="govuk-body">
+      <a href="calculator/start" class="govuk-link govuk-link--no-visited-state">Work out the cost of your child</a>
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h1 class="govuk-heading-m">Calculate your child maintenance</h1>
+
+    <p class="govuk-body">
+      This calculator only estimates your child maintenance payments - it cannot tell you exactly what you'll get. If you use the Child Maintenance Service the actual payments could be higher or lower.
+    </p>
+
+    <p class="govuk-body">
+      <a href="https://cmg-apply.herokuapp.com/calculator/start" class="govuk-link govuk-link--no-visited-state">Calculate your child maintenance</a>
+    </p>
+
+
+  </div>
+</div>
+
+{% endblock %}

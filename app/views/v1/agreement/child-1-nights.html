@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  How often will {{child1}} stay with {{otherName}}? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+        
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            How often will {{child1}} stay with {{otherName}}?
+          </h1>
+        </legend>
+
+        <p class="govuk-body">
+          If overnight stays will be different every other week, you can provide a fortnightly total.
+        </p>
+
+        <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--m" for="child1-nights">
+              How many nights does {{child1}} stay with {{otherName}}?
+            </label>
+          <input class="govuk-input govuk-input--width-4" id="child1-nights" name="child1Nights" type="text" spellcheck="false" inputmode="numeric">
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+              <label class="govuk-label govuk-label--m" for="child1-frequency">
+                How often does {{child1}} stay with {{otherName}}?
+              </label>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="child1-frequency" name="child1Frequency" type="radio" value="weekly">
+                <label class="govuk-label govuk-radios__label" for="child1-frequency">
+                  Weekly
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="child1-frequency-2" name="child1Frequency" type="radio" value="fortnightly">
+                <label class="govuk-label govuk-radios__label" for="child1-frequency-2">
+                  Fortnightly
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="child1-frequency-3" name="child1Frequency" type="radio" value="monthly">
+                <label class="govuk-label govuk-radios__label" for="child1-frequency-3">
+                  Monthly
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="child1-frequency-4" name="child1Frequency" type="radio" value="yearly">
+                <label class="govuk-label govuk-radios__label" for="child1-frequency-4">
+                  Yearly
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

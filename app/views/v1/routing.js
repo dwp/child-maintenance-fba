@@ -189,10 +189,19 @@ module.exports = () => {
   // -------------------------------------
   //
   // When Child 1 check-answers is submitted,
-  // we move to Child 2 cost selection.
+  // we move to Child 2 cost selection if there 
+  // is more than 1 child.
   //
   subRouter.post('/calculator/child-1/check-answers', (req, res) => {
-    res.redirect('../child-2/choose-costs');
+    const childAmount = Number(req.session.data['childAmount']);
+
+    if (childAmount > 1) {
+      // User added more than one child → go to Child 2 flow
+      return res.redirect('../child-2/choose-costs');
+    }
+
+    // Only one child → skip Child 2
+    return res.redirect('../summary');
   });
 
 
@@ -301,9 +310,89 @@ module.exports = () => {
   });
 
 
+  // =============================
+  // ==== AGREEMENT ROUTING =====
+  // =============================
+
   // -------------------------------------
-  // END ROUTER
+  // AMOUNT OF CHILDREN AND NAMES
   // -------------------------------------
+  //
+  subRouter.post('/agreement/child-amount', (req, res) => {
+    res.redirect('child-name');
+  });
+
+  subRouter.post('/agreement/child-name', (req, res) => {
+    res.redirect('parent-name');
+  });
   
+  subRouter.post('/agreement/parent-name', (req, res) => {
+    res.redirect('other-parent-name');
+  });
+
+  subRouter.post('/agreement/other-parent-name', (req, res) => {
+      res.redirect('paying-or-receiving');
+  });  
+
+  subRouter.post('/agreement/paying-or-receiving', (req, res) => {
+    res.redirect('include-overnight-stays');
+  });
+
+  // -------------------------------------
+  // INCLUDE OVERNIGHT STAYS CHOICE
+  // -------------------------------------
+  //
+  // If no, skip user to payment section.
+  //
+  subRouter.post('/agreement/overnight-answer', (req, res) => {
+    const includeOvernight = req.session.data['includeOvernight'];
+
+    if (includeOvernight === 'yes') {
+      return res.redirect('/agreement/child-1-nights');
+    }
+
+    return res.redirect('/agreement/paying-for-your-children');
+  });
+
+  subRouter.post('/agreement/child-1-nights', (req, res) => {
+    res.redirect('child-1-extra');
+  });
+
+  subRouter.post('/agreement/child-1-extra', (req, res) => {
+    const childAmount = Number(req.session.data['childAmount']);
+
+    if (childAmount > 1) {
+      // User added more than one child → go to Child 2 flow
+      return res.redirect('child-2-nights');
+    }
+
+    // Only one child → skip Child 2
+    return res.redirect('paying-for-your-children');
+  });
+
+  subRouter.post('/agreement/child-1-extra', (req, res) => {
+    res.redirect('child-2-nights');
+  });
+
+  subRouter.post('/agreement/child-2-nights', (req, res) => {
+    res.redirect('child-2-extra');
+  });
+
+  subRouter.post('/agreement/child-2-extra', (req, res) => {
+    res.redirect('paying-for-your-children');
+  });
+
+  subRouter.post('/agreement/paying-for-your-children', (req, res) => {
+    res.redirect('review-date');
+  });
+
+  subRouter.post('/agreement/review-date', (req, res) => {
+    res.redirect('check-answers');
+  });
+
+  subRouter.post('/agreement/check-answers', (req, res) => {
+    res.redirect('summary');
+  });
+
   return subRouter;
   };

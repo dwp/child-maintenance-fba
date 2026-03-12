@@ -15,20 +15,28 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Your child cost summary</h1>
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+          Your child cost summary
+        </h1>
+        <div class="govuk-panel__body">
+          Total monthly cost<br><strong>£267.80</strong>
+        </div>
+      </div>
 
-    </div>
+      <p class="govuk-body">
+        Paragraph to explain the output of the cost calculator.
+      </p>
 
-    <div class="govuk-grid-column-full">
-
-      <table class="govuk-table govuk-table--small-text-until-tablet">
+      {% if data['childAmount'] > 1 %}
+      <table class="govuk-table">
         <caption class="govuk-table__caption govuk-table__caption--m">Total costs</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Child</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-third">Child</th>
             <th scope="col" class="govuk-table__header">Weekly</th>
             <th scope="col" class="govuk-table__header">Monthly</th>
-            <th scope="col" class="govuk-table__header">Annually</th>
+            <th scope="col" class="govuk-table__header">Yearly</th>
 
           </tr>
         </thead>
@@ -53,8 +61,51 @@
           </tr>
         </tbody>
       </table>
+      {% else %}
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Cost breakdown</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-third">Child</th>
+            <th scope="col" class="govuk-table__header">Weekly</th>
+            <th scope="col" class="govuk-table__header">Monthly</th>
+            <th scope="col" class="govuk-table__header">Yearly</th>
 
-    </div>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{child1}}</th>
+            <td class="govuk-table__cell">£27.45</td>
+            <td class="govuk-table__cell">£133.90</td>
+            <td class="govuk-table__cell">£1,133.33</td>
+          </tr>
+        </tbody>
+      </table>
+      {% endif %}
+
+      <!---->
+
+      <p class="govuk-body"><a href="#" class="govuk-link">Download a copy of your full cost calculation (downloads a PDF)</a> to save or share with the other parent.</p>
+
+      <p class="govuk-body">You can also <a href="#" class="govuk-link">download a CSV file (downloads a CSV)</a> of your cost calculation.</p>
+
+      <h2 class="govuk-heading-m">Next steps</h2>
+      <p class="govuk-body">
+        Paragraph to advise parents on what they can do next following on from the cost calculation. 
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">Start a written agreement</h2>
+      <p class="govuk-body">
+        Using what you have provided so far, you can create a written agreement to show to the other parent.
+      </p>
+
+      {{ govukButton({
+        text: "Continue",
+        href: "../agreement/start"
+      }) }}
 
     </div>
   </div>

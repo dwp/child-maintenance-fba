@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {% if data['childAmount'] > 1 %} What are the names of your children? {% else %} What is the name of your child? {% endif %} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l">
+            {% if data['childAmount'] > 1 %} What are the names of your children? {% else %} What is the name of your child? {% endif %}
+          </label>
+        </h1>
+        
+        <p class="govuk-body">
+          Including names is optional and only used for your own reference. Names will appear on the calculation summary but will not be stored.
+        </p>
+
+        {{ govukInput({
+          label: {
+            text: "Name for Child 1 (optional)"
+          },
+          classes: "govuk-input--width-20",
+          id: "child-1-name",
+          name: "child1Name"
+        }) }}
+
+        {% if data['childAmount'] > 1 %}
+          {{ govukInput({
+            label: {
+              text: "Name for Child 2 (optional)"
+            },
+            classes: "govuk-input--width-20",
+            id: "child-2-name",
+            name: "child2Name"
+          }) }}
+        {% endif %}
+
+        {% if data['childAmount'] > 2 %}
+          {{ govukInput({
+            label: {
+              text: "Name for Child 3 (optional)"
+            },
+            classes: "govuk-input--width-20",
+            id: "child-3-name",
+            name: "child3Name"
+          }) }}
+        {% endif %}
+
+      </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

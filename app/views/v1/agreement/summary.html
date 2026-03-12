@@ -1,0 +1,123 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Your arrangement agreement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% set selectedCosts = data['child1-costs'] or [] %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+          Your arrangement agreement
+        </h1>
+      </div>
+
+      <p class="govuk-body">
+        Paragraph to explain the arrangement agreement output.
+      </p>
+
+      <p class="govuk-body"><a href="#" class="govuk-link">Download a copy of your arrangement agreement (downloads a PDF)</a> to print and sign with the other parent.</p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">Children and parents</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Children’s names</dt>
+          <dd class="govuk-summary-list__value">
+            {{data['child1Name']}}<br>
+            {% if data['childAmount'] > 1 %}
+            {{data['child2Name']}}<br>
+            {% elif data['childAmount'] > 2 %}
+            {{data['child3Name']}}<br>
+            {% endif %}
+          </dd>
+        </div>
+        {% if data['payingOrReceiving'] == "paying" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Paying parent</dt>
+          <dd class="govuk-summary-list__value">{{data['parentName']}}</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Receiving parent</dt>
+          <dd class="govuk-summary-list__value">{{data['otherName']}}</dd>
+        </div>
+        {% else %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Paying parent</dt>
+          <dd class="govuk-summary-list__value">{{data['otherName']}}</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Receiving parent</dt>
+          <dd class="govuk-summary-list__value">{{data['parentName']}}</dd>
+        </div>
+        {% endif %}
+      </dl>
+      {% if data['includeOvernight'] == "yes" %}
+        <h2 class="govuk-heading-m">Overnight stays</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">How often {{child1}} stays overnight with {{otherName}}</dt>
+            <dd class="govuk-summary-list__value">{{data['child1Nights']}} nights {{data['child1Frequency']}}</dd>
+          </div>
+          {% if data['child1Extra'] == "yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Extra nights {{child1}} stays with {{otherName}}</dt>
+            <dd class="govuk-summary-list__value">{{data['child1ExtraAmount']}} nights per year</dd>
+          </div>
+          {% endif %}
+          {% if data['childAmount'] > 1 %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">How often {{child2}} stays overnight with {{otherName}}</dt>
+            <dd class="govuk-summary-list__value">{{data['child2Nights']}} nights {{data['child2Frequency']}}</dd>
+          </div>
+          {% if data['child2Extra'] == "yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Extra nights {{child2}} stays with {{otherName}}</dt>
+            <dd class="govuk-summary-list__value">{{data['child2ExtraAmount']}} nights per year</dd>
+          </div>
+          {% endif %}
+          {% endif %}
+        </dl>
+      {% endif %}
+      <h2 class="govuk-heading-m">Maintenance contribution</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Paying parent's contribution</dt>
+          <dd class="govuk-summary-list__value">£{{data['paymentAmount']}} {{data['paymentFrequency']}}</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">To be reviewed on</dt>
+          <dd class="govuk-summary-list__value">{{data['review-date-day']}}/{{data['review-date-month']}}/{{data['review-date-year']}}</dd>
+        </div>        
+      </dl>
+
+      <h2 class="govuk-heading-m">Next steps</h2>
+      <p class="govuk-body">
+        Paragraph to advise parents on what they can do next, including a link to <a href="https://www.gov.uk/government/publications/planning-your-child-maintenance-conversation" class="govuk-link">Planning your child maintenance conversation</a>. 
+      </p>
+
+      <p class="govuk-body">
+        Browse more resources and guidance on the <a href="../home" class="govuk-link">Separated Families Support Hub</a>.
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--l">
+
+      {{ govukButton({
+        text: "Print this page",
+        classes: "govuk-button--secondary"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
