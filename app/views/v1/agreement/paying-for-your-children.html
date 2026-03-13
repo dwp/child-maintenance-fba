@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Paying for your {% if data['childAmount'] > 1 %}children{% else %}child{% endif %} – {{ serviceName }} – GOV.UK Prototype Kit
+  {% if data['payingOrReceiving'] == "paying" %}What will you pay?{% else %}What will {{otherName}} pay?{% endif %}   – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
@@ -15,7 +15,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Paying for your {% if data['childAmount'] > 1 %}children{% else %}child{% endif %}</h1>
+      <h1 class="govuk-heading-l">
+        {% if data['payingOrReceiving'] == "paying" %}
+          What will you pay?
+        {% else %}
+          What will {{otherName}} pay?
+        {% endif %}        
+      </h1>
 
       <p class="govuk-body">
         This is the total amount that one parent agrees to pay to the other to help raise their children.
@@ -27,11 +33,11 @@
           <h1 class="govuk-label-wrapper">
             {% if data['payingOrReceiving'] == "paying" %}
             <label class="govuk-label govuk-label--m" for="payment-amount">
-              How much will you contribute?
+              How much will you pay?
             </label>
             {% else %}
             <label class="govuk-label govuk-label--m" for="payment-amount">
-              How much will {{otherName}} contribute?
+              How much will {{otherName}} pay?
             </label>
             {% endif %}
           </h1>
@@ -46,11 +52,11 @@
               <h1 class="govuk-label-wrapper">
                 {% if data['payingOrReceiving'] == "paying" %}
                 <label class="govuk-label govuk-label--m" for="payment-frequency">
-                  How often will you contribute?
+                  How often will you pay?
                 </label>
                 {% else %}
                 <label class="govuk-label govuk-label--m" for="payment-frequency">
-                  How often will {{otherName}} contribute?
+                  How often will {{otherName}} pay?
                 </label>
                 {% endif %}
               </h1>

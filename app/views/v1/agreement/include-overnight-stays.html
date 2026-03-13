@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Do you want to include overnight stay arrangements? – {{ serviceName }} – GOV.UK Prototype Kit
+  Number of overnight stays – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
@@ -19,11 +19,11 @@
       <form class="form" action="overnight-answer" method="post">
 
         <h1 class="govuk-heading-l">
-          Overnight stay arrangements
+          Number of overnight stays
         </h1>
 
         <p class="govuk-body">
-          You can add a rough estimate of how often your child stays overnight with each parent.
+          You can add an estimate of how often your child will stay overnight with each parent.
         </p>
 
         <p class="govuk-body">

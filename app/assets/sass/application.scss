@@ -7,3 +7,54 @@
 
 @import 'node_modules/dfe-frontend/packages/dfefrontend';
 
+/* --- FIXED POSITION CONTAINER (DESKTOP) --- */
+.chat-widget {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  width: 40%;
+  max-width: 300px;
+}
+
+// DESKTOP
+.chat-button {
+  background: #1d70b8;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 20px 20px;            /* Inner padding */
+  margin: 0;
+  width: 100%;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+.chat-button:hover,
+.chat-button:focus {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+}
+
+// MOBILE
+@media (max-width: 640px) {
+  .chat-widget {
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    max-width: none;
+  }
+
+  .chat-button {
+    font-size: 16px;
+    padding: 20px 20px;
+    border-radius: 0;
+  }
+}

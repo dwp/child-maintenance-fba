@@ -25,11 +25,11 @@
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">Children’s names</dt>
           <dd class="govuk-summary-list__value">
-            {{data['child1Name']}}<br>
+            {{child1}}<br>
             {% if data['childAmount'] > 1 %}
-            {{data['child2Name']}}<br>
+            {{child2}}<br>
             {% elif data['childAmount'] > 2 %}
-            {{data['child3Name']}}<br>
+            {{child3}}<br>
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -39,14 +39,14 @@
         {% if data['payingOrReceiving'] == "paying" %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">Paying parent</dt>
-          <dd class="govuk-summary-list__value">{{data['parentName']}}</dd>
+          <dd class="govuk-summary-list__value">{{parentName}}</dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--no-visited-state" href="parent-name">Change<span class="govuk-visually-hidden"> your name</span></a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">Receiving parent</dt>
-          <dd class="govuk-summary-list__value">{{data['otherName']}}</dd>
+          <dd class="govuk-summary-list__value">{{otherName}}</dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--no-visited-state" href="other-parent-name">Change<span class="govuk-visually-hidden"> other parent's names</span></a>
           </dd>
@@ -54,14 +54,14 @@
         {% else %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">Paying parent</dt>
-          <dd class="govuk-summary-list__value">{{data['otherName']}}</dd>
+          <dd class="govuk-summary-list__value">{{otherName}}</dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--no-visited-state" href="other-parent-name">Change<span class="govuk-visually-hidden"> other parent's name</span></a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">Receiving parent</dt>
-          <dd class="govuk-summary-list__value">{{data['parentName']}}</dd>
+          <dd class="govuk-summary-list__value">{{parentName}}</dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--no-visited-state" href="parent-name">Change<span class="govuk-visually-hidden"> your name</span></a>
           </dd>
@@ -74,7 +74,7 @@
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">How often {{child1}} stays overnight with {{otherName}}</dt>
+            <dt class="govuk-summary-list__key">{{child1}}'s overnight stays with {{otherName}}</dt>
             <dd class="govuk-summary-list__value">{{data['child1Nights']}} nights {{data['child1Frequency']}}</dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--no-visited-state" href="child-1-nights">Change<span class="govuk-visually-hidden"> {{child1}}'s overnight stays</span></a>
@@ -83,7 +83,7 @@
 
           {% if data['child1Extra'] == "yes" %}
           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Extra nights {{child1}} stays with {{otherName}}</dt>
+            <dt class="govuk-summary-list__key">{{child1}}'s extra nights with {{otherName}}</dt>
             <dd class="govuk-summary-list__value">{{data['child1ExtraAmount']}} nights per year</dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--no-visited-state" href="child-1-extra">Change<span class="govuk-visually-hidden"> {{child1}}'s extra stays</span></a>
@@ -93,7 +93,7 @@
 
           {% if data['childAmount'] > 1 %}
           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">How often {{child2}} stays overnight with {{otherName}}</dt>
+            <dt class="govuk-summary-list__key">{{child2}}'s overnight stays with {{otherName}}</dt>
             <dd class="govuk-summary-list__value">{{data['child2Nights']}} nights {{data['child2Frequency']}}</dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--no-visited-state" href="child-2-nights">Change<span class="govuk-visually-hidden"> {{child2}}'s overnight stays</span></a>
@@ -102,7 +102,7 @@
 
             {% if data['child2Extra'] == "yes" %}
             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">Extra nights {{child2}} stays with {{otherName}}</dt>
+              <dt class="govuk-summary-list__key">{{child2}}'s extra nights with {{otherName}}</dt>
               <dd class="govuk-summary-list__value">{{data['child2ExtraAmount']}} nights per year</dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link govuk-link--no-visited-state" href="child-2-extra">Change<span class="govuk-visually-hidden"> {{child2}}'s extra stays</span></a>
@@ -115,18 +115,18 @@
         </dl>
       {% endif %}
 
-      <h2 class="govuk-heading-m">Maintenance contribution</h2>
+      <h2 class="govuk-heading-m">Payments</h2>
       
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">Paying parent's contribution</dt>
+          <dt class="govuk-summary-list__key">{{otherName}}'s payments</dt>
           <dd class="govuk-summary-list__value">£{{data['paymentAmount']}} {{data['paymentFrequency']}}</dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--no-visited-state" href="paying-for-your-children">Change<span class="govuk-visually-hidden"> maintenance contribution</span></a>
             </dd>
         </div>
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">To be reviewed on</dt>
+          <dt class="govuk-summary-list__key">Review date</dt>
           <dd class="govuk-summary-list__value">{{data['review-date-day']}}/{{data['review-date-month']}}/{{data['review-date-year']}}</dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--no-visited-state" href="review-date">Change<span class="govuk-visually-hidden"> review date</span></a>

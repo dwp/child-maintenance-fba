@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Using the Child Maintenance Service – {{ serviceName }} – GOV.UK Prototype Kit
+  Use the Child Maintenance Service – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -9,26 +9,33 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Using the Child Maintenance Service</h1>
+    <h1 class="govuk-heading-l">Use the Child Maintenance Service</h1>
 
     <p class="govuk-body">
-      Paragraph to explain about how you might use the Child Maintenance service.
+      Use the government's Child Maintenance Service if you and the other parent cannot work out a private arrangement or if you feel it would be a safer option.
     </p>
 
-    <ul class="govuk-list">
+    <p class="govuk-body">
+      With the service, you can:
+    </p>    
+
+    <ul class="govuk-list govuk-list--bullet">
       <li>
         <a class="govuk-link" href="https://child-maintenance.service.gov.uk/apply/get-help-arranging-child-maintenance/">Get help arranging child maintenance</a>
       </li>
       <li>
-        <a class="govuk-link" href="https://childmaintenanceservice.direct.gov.uk/onlinerevive/public/landing-screen">Manage your child maintenance case onlie</a>
+        <a class="govuk-link" href="https://childmaintenanceservice.direct.gov.uk/onlinerevive/public/landing-screen">Manage your child maintenance case online</a>
       </li>
       <li>
         <a class="govuk-link" href="https://www.gov.uk/child-maintenance-service/contact">Contact the Child Maintenance Service</a>
       </li>
     </ul>
 
-
   </div>
+</div>
+
+<div class="chat-widget">
+  <button class="chat-button">Chat with us</button>
 </div>
 
 {% endblock %}

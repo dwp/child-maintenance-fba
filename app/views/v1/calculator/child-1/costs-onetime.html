@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  {{ child1 }}'s costs for one-time costs – {{ serviceName }} – GOV.UK Prototype Kit
+  {{ child1 }}'s one-time costs – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
@@ -16,11 +16,11 @@
       <form method="post" novalidate>
 
         <h1 class="govuk-heading-l">
-          {{ child1 }}'s costs for one-time costs
+          {{ child1 }}'s one-time costs
         </h1>
 
         <p class="govuk-body">
-          Tell us about {{ child1 }}'s costs for one-time costs. If you leave an amount empty it will not be included in the calculation summary.
+          Costs are optional. If you leave an amount empty it will not be included in the cost summary.
         </p>
 
         <div class="govuk-form-group">

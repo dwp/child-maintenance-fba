@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Setting a review date – {{ serviceName }} – GOV.UK Prototype Kit
+  Set a review date – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
@@ -18,18 +18,18 @@
       <form method="post" novalidate>
 
         <h1 class="govuk-heading-l">
-          Setting a review date
+          Set a review date
         </h1>
 
         <p class="govuk-body">
-          Things may change over time, so you might want to agree a date now to talk to each other and review your arrangement together – perhaps every 6 months.
+          Your circumstances may change over time, so it can be helpful to agree a date now to review your agreement together.
         </p>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                When do you want to review this arrangement?
+                When will you review this agreement?
               </h1>
             </legend>
             <div id="review-date-hint" class="govuk-hint">

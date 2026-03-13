@@ -20,7 +20,7 @@
       <h1 class="govuk-heading-l">Check your answers for {{ child2 }}</h1>
 
       <p class="govuk-body">
-        Paragraph explaining that these costs will be totalled up in the next step.
+        We will add up these costs. You will be able to download the cost summary after adding costs for all children.
       </p>      
 
       <!----------BABYCARE---------->
@@ -150,7 +150,7 @@
             {% if data ['child2-school-cost-1'] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key govuk-!-width-one-half">
-                Tuition
+                Uniform
               </dt>
               <dd class="govuk-summary-list__value">
                 £{{data['child2-school-cost-1']}} {{data['child2-school-freq-1']}}
@@ -160,7 +160,7 @@
             {% if data ['child2-school-cost-2'] %}            
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key govuk-!-width-one-half">
-                Uniform
+                School meals
               </dt>
               <dd class="govuk-summary-list__value">
                 £{{data['child2-school-cost-2']}} {{data['child2-school-freq-2']}}
@@ -180,7 +180,7 @@
             {% if data ['child2-school-cost-4'] %}            
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key govuk-!-width-one-half">
-                School meals
+                Tuition
               </dt>
               <dd class="govuk-summary-list__value">
                 £{{data['child2-school-cost-4']}} {{data['child2-school-freq-4']}}
@@ -339,7 +339,7 @@
             {% if data ['child2-daycare-cost-2'] %}            
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key govuk-!-width-one-half">
-                Mobile phone plan
+                Toiletries and personal care
               </dt>
               <dd class="govuk-summary-list__value">
                 £{{data['child2-daycare-cost-2']}} {{data['child2-daycare-freq-2']}}
@@ -349,7 +349,7 @@
             {% if data ['child2-daycare-cost-3'] %}            
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key govuk-!-width-one-half">
-                Toiletries and personal care
+                Mobile phone plan
               </dt>
               <dd class="govuk-summary-list__value">
                 £{{data['child2-daycare-cost-3']}} {{data['child2-daycare-freq-3']}}
@@ -482,7 +482,7 @@
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">
-            Other costs
+            {{data['child2-other']}}
           </h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">

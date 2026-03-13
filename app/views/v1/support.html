@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Additional support – {{ serviceName }} – GOV.UK Prototype Kit
+  Get additional support – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -9,44 +9,46 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Additional support</h1>
+    <h1 class="govuk-heading-l">Get additional support</h1>
+
+    <p class="govuk-body">
+      These additional resources from the government and recommended organisations can help you connect with other separated parents and access mental health support.
+    </p>
 
     <h1 class="govuk-heading-m">Getting support as a single parent</h1>
 
     <p class="govuk-body">
-      Follow these links to GOV.UK partner oganisations to seek help and advice from people in similar positions to your own.
+      <a href="#" class="govuk-link">Our recommended organisations</a> can help advise you and connect you to others in similar circumstances.
     </p>
-
-    <ul class="govuk-list">
-      <li>
-        <a class="govuk-link" href="#">Support as a single parent</a>
-      </li>
-    </ul>
 
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
     <h1 class="govuk-heading-m">Getting mental health support</h1>
 
     <p class="govuk-body">
-      Follow these links to GOV.UK partner oganisations to seek support with your mental health.
+      For mental health support, we also recommend:
     </p>
     
-    <ul class="govuk-list">
+    <ul class="govuk-list govuk-list--bullet">
       <li>
-        <a class="govuk-link" href="#">Call a helpline</a>
+        <a class="govuk-link" href="#">Calling a helpline</a>
       </li>
       <li>
-        <a class="govuk-link" href="#">Join a support group </a>
+        <a class="govuk-link" href="#">Joining a support group</a>
       </li>
       <li>
-        <a class="govuk-link" href="#">Mental Health - NHS </a>
+        <a class="govuk-link" href="#">Speaking with the NHS</a>
       </li>
       <li>
-        <a class="govuk-link" href="#">Get counselling for you or your child </a>
+        <a class="govuk-link" href="#">Getting counselling for you or your child</a>
       </li>            
     </ul>
 
   </div>
+</div>
+
+<div class="chat-widget">
+  <button class="chat-button">Chat with us</button>
 </div>
 
 {% endblock %}
