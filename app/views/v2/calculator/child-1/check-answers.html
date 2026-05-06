@@ -1,0 +1,523 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers for {{ child1 }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% set selectedCosts = data['child1-costs'] or [] %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+      <h1 class="govuk-heading-l">Check your answers for {{ child1 }}</h1>
+
+      <p class="govuk-body">
+        We will add up these costs. You will be able to download the cost summary after adding costs for all children.
+      </p>      
+
+      <!----------BABYCARE---------->
+      {% if 'baby' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Babycare
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="costs-babycare">Change</a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['child1-baby-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Nappies
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-baby-cost-1']}} {{data['child1-baby-freq-1']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-baby-cost-2'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Formula
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-baby-cost-2']}} {{data['child1-baby-freq-2']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-baby-cost-other'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                {{data['child1-baby-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-baby-cost-other']}} {{data['child1-baby-freq-other']}}
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      <!----------CLOTHING---------->
+      {% if 'clothes' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Clothing
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="costs-clothing">Change</a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>
+            </li>
+          </ul>          
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['child1-clothes-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Clothes
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-clothes-cost-1']}} {{data['child1-clothes-freq-1']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-clothes-cost-2'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Footwear
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-clothes-cost-2']}} {{data['child1-clothes-freq-2']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-clothes-cost-other-name'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                {{data['child1-clothes-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-clothes-cost-other']}} {{data['child1-clothes-freq-other']}}
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      <!----------SCHOOL---------->
+      {% if 'school' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            School
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="costs-school">Change</a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>
+            </li>
+          </ul>          
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['child1-school-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Uniform
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-school-cost-1']}} {{data['child1-school-freq-1']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-school-cost-2'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                School meals
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-school-cost-2']}} {{data['child1-school-freq-2']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-school-cost-3'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Supplies
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-school-cost-3']}} {{data['child1-school-freq-3']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-school-cost-4'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Tuition
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-school-cost-4']}} {{data['child1-school-freq-4']}}
+              </dd>
+            </div>
+            {% endif %}            
+            {% if data ['child1-school-cost-other-name'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                {{data['child1-school-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-school-cost-other']}} {{data['child1-school-freq-other']}}
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      <!----------HOBBIES---------->
+      {% if 'hobbies' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Hobbies and activities
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="costs-hobbies">Change</a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>
+            </li>
+          </ul>          
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['child1-hobbies-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Sports clubs
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-hobbies-cost-1']}} {{data['child1-hobbies-freq-1']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-hobbies-cost-2'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                After-school activities
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-hobbies-cost-2']}} {{data['child1-hobbies-freq-2']}}
+              </dd>
+            </div>
+            {% endif %}           
+            {% if data ['child1-hobbies-cost-other-name'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                {{data['child1-hobbies-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-hobbies-cost-other']}} {{data['child1-hobbies-freq-other']}}
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      <!----------CHILDCARE---------->
+      {% if 'childcare' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Childcare
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="costs-childcare">Change</a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>
+            </li>
+          </ul>          
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['child1-childcare-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Childminder or nursery fees
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-childcare-cost-1']}} {{data['child1-childcare-freq-1']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-childcare-cost-2'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Holiday clubs
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-childcare-cost-2']}} {{data['child1-childcare-freq-2']}}
+              </dd>
+            </div>
+            {% endif %}           
+            {% if data ['child1-childcare-cost-other-name'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                {{data['child1-childcare-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-childcare-cost-other']}} {{data['child1-childcare-freq-other']}}
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      <!----------DAY-TO-DAY CARE---------->
+      {% if 'daycare' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Day-to-day care
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="costs-daycare">Change</a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>
+            </li>
+          </ul>          
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['child1-daycare-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Food and groceries
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-daycare-cost-1']}} {{data['child1-daycare-freq-1']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-daycare-cost-2'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Toiletries and personal care 
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-daycare-cost-2']}} {{data['child1-daycare-freq-2']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-daycare-cost-3'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Mobile phone plan
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-daycare-cost-3']}} {{data['child1-daycare-freq-3']}}
+              </dd>
+            </div>
+            {% endif %}            
+            {% if data ['child1-daycare-cost-other-name'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                {{data['child1-daycare-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-daycare-cost-other']}} {{data['child1-daycare-freq-other']}}
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      <!----------TRANSPORT---------->
+      {% if 'transport' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Transport
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="costs-transport">Change</a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>
+            </li>
+          </ul>          
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['child1-transport-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Fuel for journeys
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-transport-cost-1']}} {{data['child1-transport-freq-1']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['transport-cost-2'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Public transport
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-transport-cost-2']}} {{data['child1-transport-freq-2']}}
+              </dd>
+            </div>
+            {% endif %}
+            {% if data ['child1-transport-cost-3'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Driving lessons
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-transport-cost-3']}} {{data['child1-transport-freq-3']}}
+              </dd>
+            </div>
+            {% endif %}            
+            {% if data ['child1-transport-cost-other-name'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                {{data['child1-transport-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-transport-cost-other']}} {{data['child1-transport-freq-other']}}
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      <!----------ONE-TIME COSTS---------->
+      {% if 'onetime' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            One-time costs
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="costs-onetime">Change</a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>
+            </li>
+          </ul>          
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            {% if data ['child1-onetime-cost-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Electronics
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-onetime-cost-1']}} {{data['child1-onetime-freq-1']}}
+              </dd>
+            </div>
+            {% endif %}         
+            {% if data ['child1-onetime-cost-other-name'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                {{data['child1-onetime-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-onetime-cost-other']}} {{data['child1-onetime-freq-other']}}
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      <!----------OTHER---------->
+      {% if 'other' in selectedCosts %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            {{data['child1-other']}}
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="costs-other">Change</a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>
+            </li>
+          </ul>          
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">      
+            {% if data ['child1-other-cost-other-name'] %}            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                {{data['child1-other-cost-other-name']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{data['child1-other-cost-other']}} {{data['child1-other-freq-other']}}
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+      {% endif %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}

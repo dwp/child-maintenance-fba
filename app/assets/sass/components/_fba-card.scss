@@ -1,0 +1,78 @@
+/* Make ONLY card rows flex */
+.govuk-grid-row.fba-card-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Allow columns to stretch */
+.govuk-grid-row.fba-card-row > .govuk-grid-column-one-third {
+  display: flex;
+}
+
+/* Your existing card styles (unchanged) */
+.fba-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+
+  border: 1px solid #b1b4b6;
+  background-color: #ffffff;
+
+  box-sizing: border-box;
+}
+
+.fba-card__content {
+  flex-grow: 1;
+}
+
+.fba-card__heading {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.fba-card__link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.fba-card__link:link,
+.fba-card__link:visited {
+  color: #1d70b8;
+}
+
+.fba-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.fba-card:hover,
+.fba-card:hover .govuk-body {
+  color: #ffffff;
+  border-color: #b1b4b6;
+  background-color: #0f385c;
+}
+
+.fba-card:hover .fba-card__link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.fba-card:focus-within {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+}
+
+.fba-card__link:focus {
+  outline: none;
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  text-decoration: none;
+}
+
+.fba-card-wrapper {
+  margin-bottom: 32px;
+}

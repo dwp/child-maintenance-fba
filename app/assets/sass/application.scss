@@ -6,6 +6,8 @@
 // Add extra styles here
 
 @import 'node_modules/dfe-frontend/packages/dfefrontend';
+@import 'components/fba-card';
+@import 'components/fba-panel';
 
 /* --- FIXED POSITION CONTAINER (DESKTOP) --- */
 .chat-widget {
@@ -57,4 +59,8 @@
     padding: 20px 20px;
     border-radius: 0;
   }
+}
+
+.govuk-accordion__show-all {
+  display: none;
 }

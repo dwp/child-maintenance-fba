@@ -20,7 +20,7 @@
         document.write(date);
         </script>
     </span>
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">{{ serviceName }}</h1>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Family Based Arrangements (FBA) Prototype</h1>
 
     <dl class="govuk-summary-list govuk-summary-list--no-border">
       <div class="govuk-summary-list__row">
@@ -31,7 +31,6 @@
           <ul class="govuk-list">
             <li><a class="govuk-link" href="mailto:james.seabright@engineering.digital.dwp.gov.uk">James Seabright</a> - Interaction Designer</li>
             <li><a class="govuk-link" href="mailto:natalie.rhodes2@dwp.gov.uk">Natalie Rhodes</a> - User Researcher</li>
-            <li><a class="govuk-link" href="mailto:robbie.beautyman@engineering.digital.dwp.gov.uk">Robbie Beautyman</a> - Service Designer</li>
             <li><a class="govuk-link" href="mailto:taryn.s.walls@dwp.gov.uk">Summer Walls</a> - Content Designer</li>
           </ul>
         </dd>
@@ -41,7 +40,18 @@
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
     <h2 class="govuk-heading-m">
-      FBA UR Round 3 Prototype &nbsp;&nbsp; <strong class="govuk-tag">Latest</strong>
+      FBA Alpha Phase | UR Round 1 &nbsp;&nbsp; <strong class="govuk-tag">Latest</strong>
+    </h2>
+
+    <p><strong>Last Update:</strong> March 2026</p>
+
+    {{ govukButton({
+      text: "View prototype",
+      href: "v2/index"
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      FBA Discovery | UR Round 3
     </h2>
 
     <p><strong>Last Update:</strong> March 2026</p>
@@ -50,6 +60,8 @@
       text: "View prototype",
       href: "v1/index"
     }) }}
+
+    
 
   </div>
 </div>

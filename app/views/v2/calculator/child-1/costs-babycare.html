@@ -1,0 +1,128 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ child1 }}'s costs for baby care – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+        <h1 class="govuk-heading-l">
+          {{ child1 }}'s costs for baby care
+        </h1>
+
+        <p class="govuk-body">
+          Costs are optional. If you leave an amount empty it will not be included in the cost summary.
+        </p>
+
+        <div class="govuk-form-group">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Nappies
+          </legend>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-quarter">
+              <label class="govuk-label" for="child1-baby-cost-1">
+                Amount
+              </label>
+              <div class="govuk-input__wrapper">
+                <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                <input class="govuk-input govuk-input--width-5" id="child1-baby-cost-1" name="child1-baby-cost-1" type="text">
+              </div>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+              <label class="govuk-label" for="child1-baby-freq-1">
+                Frequency
+              </label>
+              <select class="govuk-select" id="child1-baby-freq-1" name="child1-baby-freq-1">
+                <option value="weekly" selected>per week</option>
+                <option value="fortnightly">per fortnight</option>
+                <option value="monthly">per month</option>
+                <option value="termly">per term</option>
+                <option value="yearly">per year</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-form-group">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Formula
+          </legend>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-quarter">
+              <label class="govuk-label" for="child1-baby-cost-2">
+                Amount
+              </label>
+              <div class="govuk-input__wrapper">
+                <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                <input class="govuk-input govuk-input--width-5" id="child1-baby-cost-2" name="child1-baby-cost-2" type="text">
+              </div>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+              <label class="govuk-label" for="child1-baby-freq-2">
+                Frequency
+              </label>
+              <select class="govuk-select" id="child1-baby-freq-2" name="child1-baby-freq-2">
+                <option value="weekly" selected>per week</option>
+                <option value="fortnightly">per fortnight</option>
+                <option value="monthly">per month</option>
+                <option value="termly">per term</option>
+                <option value="yearly">per year</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-form-group">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Other
+          </legend>
+          <div class="govuk-form-group govuk-!-margin-bottom-2">
+            <label class="govuk-label" for="child1-baby-cost-other-name">
+              Cost name
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="child1-baby-cost-other-name" name="child1-baby-cost-other-name" type="text">
+          </div>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-quarter">
+              <label class="govuk-label" for="child1-baby-cost-other">
+                Amount
+              </label>
+              <div class="govuk-input__wrapper">
+                <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                <input class="govuk-input govuk-input--width-5" id="child1-baby-cost-other" name="child1-baby-cost-other" type="text">
+              </div>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+              <label class="govuk-label" for="child1-baby-freq-other">
+                Frequency
+              </label>
+              <select class="govuk-select" id="child1-baby-freq-other" name="child1-baby-freq-other">
+                <option value="weekly" selected>per week</option>
+                <option value="fortnightly">per fortnight</option>
+                <option value="monthly">per month</option>
+                <option value="termly">per term</option>
+                <option value="yearly">per year</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

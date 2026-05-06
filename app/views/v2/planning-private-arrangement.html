@@ -1,0 +1,47 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Plan your private arrangement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Plan your private arrangement</h1>
+
+    <p class="govuk-body">
+      A private arrangement is an agreement you make with your child’s other parent about how you’ll manage child maintenance, without involving the Child Maintenance Service.
+    </p>
+
+    <h1 class="govuk-heading-m">Write an agreement</h1>
+
+    <p class="govuk-body">
+      A written agreement sets out how much time your children will spend with each parent, and how much one parent will pay towards the costs of raising your child.
+    </p>
+
+    <p class="govuk-body">
+      <a href="agreement/start" class="govuk-link govuk-link--no-visited-state">Create a written agreement</a>
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h1 class="govuk-heading-m">Plan your conversation</h1>
+
+    <p class="govuk-body">
+      Use this guide to help you plan a conversation about child maintenance with your child's other parent.
+    </p>
+
+    <p class="govuk-body">
+      <a href="https://www.gov.uk/government/publications/planning-your-child-maintenance-conversation" rel="noreferrer noopener" target="_blank" class="govuk-link govuk-link--no-visited-state">Planning your child maintenance conversation (opens in a new tab)</a>
+    </p>
+
+  </div>
+</div>
+
+<div class="chat-widget">
+  <button class="chat-button">Chat with us</button>
+</div>
+
+{% endblock %}

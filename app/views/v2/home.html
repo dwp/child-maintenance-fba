@@ -1,0 +1,173 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Get support as a single parent – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set includeBackLink = "false" %}
+{% set serviceName = "Get support as a single parent" %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Get support as a single parent</h1>
+
+    <p class="govuk-body">
+      Use this hub to find tools and guidance to help you support your child.
+    </p>
+    <p class="govuk-body">This hub is for anyone making decisions about their child’s care, finances or wellbeing, including if:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>you do not live with the other parent</li>
+        <li>you are separating or have recently separated</li>
+        <li>the other parent is not involved or not known</li>
+      </ul>
+
+    <p class="govuk-body">
+      We do not collect personal information or help with private arrangements.
+    </p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="govuk-ticket-panel govuk-!-padding-top-2 govuk-!-padding-bottom-8">
+      <div class="govuk-ticket-panel__content">
+        <h2 class="govuk-heading-m govuk-ticket-panel__title">
+          Not sure what to do?
+        </h2>
+        <p class="govuk-body">
+          Answer questions to understand your options for supporting your child.
+        </p>
+        <a href="choices/start" role="button" draggable="false" class="govuk-button">
+          Start now
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">Support your child financially</h2>
+
+    <p class="govuk-body">
+      Understand how to plan and manage financial support for your child.
+    </p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row fba-card-row">
+  <div class="govuk-grid-column-one-third fba-card-wrapper">
+    <div class="fba-card">
+      <div class="fba-card__content">
+        <h3 class="govuk-heading-s fba-card__heading">
+          <a href="work-out-what-to-pay" class="govuk-link fba-card__link">
+            Work out payments for your child
+          </a>
+        </h3>
+        <p class="govuk-body">
+          Use our tools to work out how much could be paid to support your child.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-third fba-card-wrapper">
+    <div class="fba-card">
+      <div class="fba-card__content">
+        <h3 class="govuk-heading-s fba-card__heading">
+          <a href="planning-private-arrangement" class="govuk-link fba-card__link">
+            Make your own arrangement
+          </a>
+        </h3>
+        <p class="govuk-body">
+          If possible, you can agree how to share costs with the other parent and record your agreement.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-third fba-card-wrapper">
+    <div class="fba-card">
+      <div class="fba-card__content">
+        <h3 class="govuk-heading-s fba-card__heading">
+          <a href="child-maintenance-service" class="govuk-link fba-card__link">
+            Use the Child Maintenance Service
+          </a>
+        </h3>
+        <p class="govuk-body">
+          If you need support managing payments, you can apply to the Child Maintenance Service online instead.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">Find help and support</h2>
+
+    <p class="govuk-body">
+      Get advice and support on separation, money and your wellbeing.
+    </p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row fba-card-row">
+  <div class="govuk-grid-column-one-third fba-card-wrapper">
+    <div class="fba-card">
+      <div class="fba-card__content">
+        <h3 class="govuk-heading-s fba-card__heading">
+          <a href="separation-advice" class="govuk-link fba-card__link">
+            Get advice on separation
+          </a>
+        </h3>
+        <p class="govuk-body">
+          Explore resources from recommended organisations relating to separation, mediation and more.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-third fba-card-wrapper">
+    <div class="fba-card">
+      <div class="fba-card__content">
+        <h3 class="govuk-heading-s fba-card__heading">
+          <a href="financial-advice" class="govuk-link fba-card__link">
+            Get financial advice
+          </a>
+        </h3>
+        <p class="govuk-body">
+          Explore resources that can help you with benefits, budgeting and debt management.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-third fba-card-wrapper">
+    <div class="fba-card">
+      <div class="fba-card__content">
+        <h3 class="govuk-heading-s fba-card__heading">
+          <a href="support" class="govuk-link fba-card__link">
+            Get additional support
+          </a>
+        </h3>
+        <p class="govuk-body">
+          Explore resources relating to single parent support and wellbeing.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

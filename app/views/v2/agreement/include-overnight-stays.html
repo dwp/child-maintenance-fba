@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Number of overnight stays – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="overnight-answer" method="post">
+
+        <h1 class="govuk-heading-l">
+          Number of overnight stays
+        </h1>
+
+        <p class="govuk-body">
+          You can add an estimate of how often your child will stay overnight with each parent.
+        </p>
+
+        <p class="govuk-body">
+          This is optional. You can skip this if it is not relevant or you do not know the details.
+        </p>
+
+        <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Do you want to include overnight stays?
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  
+                  <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="includeOvernight" name="includeOvernight" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="includeOvernight">
+                  Yes, include overnight stays
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="includeOvernight-2" name="includeOvernight" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="includeOvernight-2">
+                  No, do not include this
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

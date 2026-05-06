@@ -1,0 +1,35 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Work out the cost of your child – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Work out the cost of your child</h1>
+
+    <p class="govuk-body">
+      To help you organise and compare the costs of raising your child, we will ask how much you spend on everyday items and one-time costs for them. 
+    </p>
+
+    <p class="govuk-body">
+      You will be able to download the finished worksheet and can use the costs as part of the written agreement template.
+    </p>
+
+    <p class="govuk-body">
+      We will not ask for any personal information and your answers will not be saved. All answers are optional.
+    </p>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "child-amount",
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

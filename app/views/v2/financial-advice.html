@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Get financial advice – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Get financial advice</h1>
+
+    <p class="govuk-body">
+      These resources from the government and recommended organisations can help you prepare your finances.
+    </p>
+
+    <h1 class="govuk-heading-m">Benefits</h1>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/universal-credit/how-to-claim">Apply for or manage Universal Credit (opens in a new tab)</a>
+      </li>
+      <li>
+        <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/benefits-calculators">Use a benefits calculator (opens in a new tab)</a>
+      </li>           
+    </ul>
+    
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    
+    <h1 class="govuk-heading-m">Budgeting</h1>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.moneyhelper.org.uk/en/everyday-money/budgeting/budget-planner">Use the budget planner from MoneyHelper (opens in a new tab)</a>
+      </li>          
+    </ul>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h1 class="govuk-heading-m">Debt management</h1>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/pay-off-debts">Check how you can deal with your debts (opens in a new tab)</a>
+      </li>
+      <li>
+        <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/debt-advice">Get free debt advice (opens in a new tab)</a>
+      </li>            
+    </ul>
+
+  </div>
+</div>
+
+<div class="chat-widget">
+  <button class="chat-button">Chat with us</button>
+</div>
+
+
+{% endblock %}

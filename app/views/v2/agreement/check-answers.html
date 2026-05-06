@@ -1,0 +1,146 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+      <h1 class="govuk-heading-l">Check your answers</h1>
+      
+      <h2 class="govuk-heading-m">Children and parents</h2>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Children’s names</dt>
+          <dd class="govuk-summary-list__value">
+            {{child1}}<br>
+            {% if data['childAmount'] > 1 %}
+            {{child2}}<br>
+            {% elif data['childAmount'] > 2 %}
+            {{child3}}<br>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--no-visited-state" href="child-name">Change<span class="govuk-visually-hidden"> children's names</span></a>
+          </dd>
+        </div>
+        {% if data['payingOrReceiving'] == "paying" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Paying parent</dt>
+          <dd class="govuk-summary-list__value">{{parentName}}</dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--no-visited-state" href="parent-name">Change<span class="govuk-visually-hidden"> your name</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Receiving parent</dt>
+          <dd class="govuk-summary-list__value">{{otherName}}</dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--no-visited-state" href="other-parent-name">Change<span class="govuk-visually-hidden"> other parent's names</span></a>
+          </dd>
+        </div>
+        {% else %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Paying parent</dt>
+          <dd class="govuk-summary-list__value">{{otherName}}</dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--no-visited-state" href="other-parent-name">Change<span class="govuk-visually-hidden"> other parent's name</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Receiving parent</dt>
+          <dd class="govuk-summary-list__value">{{parentName}}</dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--no-visited-state" href="parent-name">Change<span class="govuk-visually-hidden"> your name</span></a>
+          </dd>
+        </div>
+        {% endif %}
+      </dl>
+
+      {% if data['includeOvernight'] == "yes" %}
+        <h2 class="govuk-heading-m">Overnight stays</h2>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">{{child1}}'s overnight stays with {{otherName}}</dt>
+            <dd class="govuk-summary-list__value">{{data['child1Nights']}} nights {{data['child1Frequency']}}</dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--no-visited-state" href="child-1-nights">Change<span class="govuk-visually-hidden"> {{child1}}'s overnight stays</span></a>
+            </dd>
+          </div>
+
+          {% if data['child1Extra'] == "yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">{{child1}}'s extra nights with {{otherName}}</dt>
+            <dd class="govuk-summary-list__value">{{data['child1ExtraAmount']}} nights per year</dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--no-visited-state" href="child-1-extra">Change<span class="govuk-visually-hidden"> {{child1}}'s extra stays</span></a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childAmount'] > 1 %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">{{child2}}'s overnight stays with {{otherName}}</dt>
+            <dd class="govuk-summary-list__value">{{data['child2Nights']}} nights {{data['child2Frequency']}}</dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--no-visited-state" href="child-2-nights">Change<span class="govuk-visually-hidden"> {{child2}}'s overnight stays</span></a>
+            </dd>
+          </div>
+
+            {% if data['child2Extra'] == "yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">{{child2}}'s extra nights with {{otherName}}</dt>
+              <dd class="govuk-summary-list__value">{{data['child2ExtraAmount']}} nights per year</dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-link--no-visited-state" href="child-2-extra">Change<span class="govuk-visually-hidden"> {{child2}}'s extra stays</span></a>
+              </dd>
+            </div>
+            {% endif %}
+
+          {% endif %}
+
+        </dl>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Payments</h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">{{otherName}}'s payments</dt>
+          <dd class="govuk-summary-list__value">£{{data['paymentAmount']}} {{data['paymentFrequency']}}</dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--no-visited-state" href="paying-for-your-children">Change<span class="govuk-visually-hidden"> maintenance contribution</span></a>
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Review date</dt>
+          <dd class="govuk-summary-list__value">{{data['review-date-day']}}/{{data['review-date-month']}}/{{data['review-date-year']}}</dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--no-visited-state" href="review-date">Change<span class="govuk-visually-hidden"> review date</span></a>
+            </dd>
+        </div>        
+      </dl>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

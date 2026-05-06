@@ -20,14 +20,14 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% block beforeContent %}
 
-    {% if includePhaseBanner != "false" %}
+    {# {% if includePhaseBanner != "false" %}
     {{ govukPhaseBanner({
         tag: {
             text: "Alpha"
         },
         html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
     }) }}
-    {% endif %}
+    {% endif %} #}
 
     {% if includeBackLink != "false" %}
     {{ govukBackLink({
