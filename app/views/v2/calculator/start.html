@@ -1,35 +1,52 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  Work out the cost of your child – {{ serviceName }} – GOV.UK Prototype Kit
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Work out the cost of your child" %}
+
 {% block content %}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    <h1 class="govuk-heading-xl">Work out the cost of your child</h1>
-
-    <p class="govuk-body">
-      To help you organise and compare the costs of raising your child, we will ask how much you spend on everyday items and one-time costs for them. 
-    </p>
-
-    <p class="govuk-body">
-      You will be able to download the finished worksheet and can use the costs as part of the written agreement template.
-    </p>
-
-    <p class="govuk-body">
-      We will not ask for any personal information and your answers will not be saved. All answers are optional.
-    </p>
-
-    {{ govukButton({
-      text: "Start now",
-      href: "child-amount",
-      isStartButton: true
+  <div class="govuk-width-container">
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Home",
+          href: version + "/home"
+        },
+        {
+          text: "Work out payments for your child",
+          href: version + "/work-out-what-to-pay"
+        }            
+      ]
     }) }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            To help you organise and compare the costs of raising your child, we will ask how much you spend on everyday items and one-time costs for them. 
+          </p>
+
+          <p class="govuk-body">
+            You will be able to download the finished worksheet and can use the costs as part of the written agreement template.
+          </p>
+
+          <p class="govuk-body">
+            We will not ask for any personal information and your answers will not be saved. All answers are optional.
+          </p>
+
+          {{ govukButton({
+            text: "Start now",
+            href: "child-amount",
+            isStartButton: true
+          }) }}
+
+        </div>
+      </div>
+    </main>
   </div>
-</div>
-
 {% endblock %}

@@ -2,6 +2,12 @@ module.exports = () => {
   const govukPrototypeKit = require('govuk-prototype-kit');
   const subRouter = govukPrototypeKit.requests.setupRouter();
 
+  subRouter.use((req, res, next) => {
+    const match = req.originalUrl.match(/^\/(v\d+)/);
+    res.locals.version = match ? `/${match[1]}` : '';
+    next();
+  });
+
   // Auto-prefix redirects with /v1 or /v2
   subRouter.use((req, res, next) => {
     const originalRedirect = res.redirect;

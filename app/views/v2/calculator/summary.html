@@ -1,7 +1,7 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  Your child cost summary – {{ serviceName }} – GOV.UK Prototype Kit
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
@@ -10,107 +10,112 @@
 
 {% set selectedCosts = data['child1-costs'] or [] %}
 
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Your child cost summary" %}
+
 {% block content %}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              {{pageTitle}}
+            </h1>
+            <div class="govuk-panel__body">
+              Total monthly cost<br><strong>£267.80</strong>
+            </div>
+          </div>
 
-      <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">
-          Your child cost summary
-        </h1>
-        <div class="govuk-panel__body">
-          Total monthly cost<br><strong>£267.80</strong>
+          <p class="govuk-body">
+            We have added up all the costs you told us about. The table explains how much, on average, it costs to raise your children every week, month and year.
+          </p>
+
+          {% if data['childAmount'] > 1 %}
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Total costs</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-third">Child</th>
+                <th scope="col" class="govuk-table__header">Weekly</th>
+                <th scope="col" class="govuk-table__header">Monthly</th>
+                <th scope="col" class="govuk-table__header">Yearly</th>
+
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">{{child1}}</th>
+                <td class="govuk-table__cell">£27.45</td>
+                <td class="govuk-table__cell">£133.90</td>
+                <td class="govuk-table__cell">£1,133.33</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">{{child2}}</th>
+                <td class="govuk-table__cell">£27.45</td>
+                <td class="govuk-table__cell">£133.90</td>
+                <td class="govuk-table__cell">£1,133.33</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Total</th>
+                <td class="govuk-table__cell">£54.90</td>
+                <td class="govuk-table__cell">£267.80</td>
+                <td class="govuk-table__cell">£2,266.66</td>
+              </tr>
+            </tbody>
+          </table>
+          {% else %}
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Cost breakdown</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-third">Child</th>
+                <th scope="col" class="govuk-table__header">Weekly</th>
+                <th scope="col" class="govuk-table__header">Monthly</th>
+                <th scope="col" class="govuk-table__header">Yearly</th>
+
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">{{child1}}</th>
+                <td class="govuk-table__cell">£27.45</td>
+                <td class="govuk-table__cell">£133.90</td>
+                <td class="govuk-table__cell">£1,133.33</td>
+              </tr>
+            </tbody>
+          </table>
+          {% endif %}
+
+          <!---->
+
+          <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Download a copy of your full cost summary (downloads a PDF)</a> to save or share with the other parent.</p>
+
+          <p class="govuk-body">You can also <a href="#" class="govuk-link govuk-link--no-visited-state">download a spreadsheet (downloads a CSV)</a> of your cost summary.</p>
+
+          <h2 class="govuk-heading-m">Next steps</h2>
+          <p class="govuk-body">
+            If both parents fill out the cost worksheet, you can compare the summaries to decide how much both of you should pay.
+          </p>
+          <p class="govuk-body">
+            If you cannot talk to the other parent about finances, you can use the cost summary in mediation or other third-party support.
+          </p>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <h2 class="govuk-heading-m">Start a written agreement</h2>
+          <p class="govuk-body">
+            Using what you told us so far, you can create a written agreement to show the other parent.
+          </p>
+
+          {{ govukButton({
+            text: "Continue",
+            href: "../agreement/start"
+          }) }}
+
         </div>
       </div>
-
-      <p class="govuk-body">
-        We have added up all the costs you told us about. The table explains how much, on average, it costs to raise your children every week, month and year.
-      </p>
-
-      {% if data['childAmount'] > 1 %}
-      <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m">Total costs</caption>
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header govuk-!-width-one-third">Child</th>
-            <th scope="col" class="govuk-table__header">Weekly</th>
-            <th scope="col" class="govuk-table__header">Monthly</th>
-            <th scope="col" class="govuk-table__header">Yearly</th>
-
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">{{child1}}</th>
-            <td class="govuk-table__cell">£27.45</td>
-            <td class="govuk-table__cell">£133.90</td>
-            <td class="govuk-table__cell">£1,133.33</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">{{child2}}</th>
-            <td class="govuk-table__cell">£27.45</td>
-            <td class="govuk-table__cell">£133.90</td>
-            <td class="govuk-table__cell">£1,133.33</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Total</th>
-            <td class="govuk-table__cell">£54.90</td>
-            <td class="govuk-table__cell">£267.80</td>
-            <td class="govuk-table__cell">£2,266.66</td>
-          </tr>
-        </tbody>
-      </table>
-      {% else %}
-      <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m">Cost breakdown</caption>
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header govuk-!-width-one-third">Child</th>
-            <th scope="col" class="govuk-table__header">Weekly</th>
-            <th scope="col" class="govuk-table__header">Monthly</th>
-            <th scope="col" class="govuk-table__header">Yearly</th>
-
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">{{child1}}</th>
-            <td class="govuk-table__cell">£27.45</td>
-            <td class="govuk-table__cell">£133.90</td>
-            <td class="govuk-table__cell">£1,133.33</td>
-          </tr>
-        </tbody>
-      </table>
-      {% endif %}
-
-      <!---->
-
-      <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Download a copy of your full cost summary (downloads a PDF)</a> to save or share with the other parent.</p>
-
-      <p class="govuk-body">You can also <a href="#" class="govuk-link govuk-link--no-visited-state">download a spreadsheet (downloads a CSV)</a> of your cost summary.</p>
-
-      <h2 class="govuk-heading-m">Next steps</h2>
-      <p class="govuk-body">
-        If both parents fill out the cost worksheet, you can compare the summaries to decide how much both of you should pay.
-      </p>
-      <p class="govuk-body">
-        If you cannot talk to the other parent about finances, you can use the cost summary in mediation or other third-party support.
-      </p>
-
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-      <h2 class="govuk-heading-m">Start a written agreement</h2>
-      <p class="govuk-body">
-        Using what you told us so far, you can create a written agreement to show the other parent.
-      </p>
-
-      {{ govukButton({
-        text: "Continue",
-        href: "../agreement/start"
-      }) }}
-
-    </div>
+    </main>
   </div>
-
 {% endblock %}

@@ -1,48 +1,62 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  Work out payments for your child – {{ serviceName }} – GOV.UK Prototype Kit
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Work out payments for your child" %}
+
 {% block content %}
+  <div class="govuk-width-container">
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Home",
+          href: version + "/home"
+        }
+      ]
+    }) }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
 
-    <h1 class="govuk-heading-l">Work out payments for your child</h1>
+          <p class="govuk-body">
+            Working out how much you spend on your child gives you an amount to discuss when making arrangements with the other parent.
+          </p>
 
-    <p class="govuk-body">
-      Working out how much you spend on your child gives you an amount to discuss when making arrangements with the other parent.
-    </p>
+          <h1 class="govuk-heading-m">Work out the cost of your child</h1>
 
-    <h1 class="govuk-heading-m">Work out the cost of your child</h1>
+          <p class="govuk-body">
+            Work out how much you spend on your child using our cost worksheet.
+          </p>
 
-    <p class="govuk-body">
-      Work out how much you spend on your child using our cost worksheet.
-    </p>
+          <p class="govuk-body">
+            <a href="calculator/start" class="govuk-link govuk-link--no-visited-state">Work out the cost of your child</a>
+          </p>
 
-    <p class="govuk-body">
-      <a href="calculator/start" class="govuk-link govuk-link--no-visited-state">Work out the cost of your child</a>
-    </p>
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+          <h1 class="govuk-heading-m">Calculate your child maintenance</h1>
 
-    <h1 class="govuk-heading-m">Calculate your child maintenance</h1>
+          <p class="govuk-body">
+            This calculator only estimates your child maintenance payments - it cannot tell you exactly what you'll get or pay. If you use the Child Maintenance Service the actual payments could be higher or lower.
+          </p>
 
-    <p class="govuk-body">
-      This calculator only estimates your child maintenance payments - it cannot tell you exactly what you'll get or pay. If you use the Child Maintenance Service the actual payments could be higher or lower.
-    </p>
+          <p class="govuk-body">
+            <a href="https://www.gov.uk/calculate-child-maintenance" rel="noreferrer noopener" target="_blank" class="govuk-link govuk-link--no-visited-state">Calculate your child maintenance (opens in a new tab)</a>
+          </p>
 
-    <p class="govuk-body">
-      <a href="https://www.gov.uk/calculate-child-maintenance" rel="noreferrer noopener" target="_blank" class="govuk-link govuk-link--no-visited-state">Calculate your child maintenance (opens in a new tab)</a>
-    </p>
-
-
+        </div>
+      </div>
+    </main>
   </div>
-</div>
 
-<div class="chat-widget">
-  <button class="chat-button">Chat with us</button>
-</div>
-
+  {#
+  <div class="chat-widget">
+    <button class="chat-button">Chat with us</button>
+  </div>
+  #}
 {% endblock %}

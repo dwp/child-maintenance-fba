@@ -9,7 +9,9 @@
 @import 'components/fba-card';
 @import 'components/fba-panel';
 
-/* --- FIXED POSITION CONTAINER (DESKTOP) --- */
+// CHAT WITH US BUTTON
+
+// FIXED POSITION ON DESKTOP
 .chat-widget {
   position: fixed;
   bottom: 0;
@@ -27,7 +29,7 @@
   border-radius: 0;
   font-weight: bold;
   font-size: 20px;
-  padding: 20px 20px;            /* Inner padding */
+  padding: 20px 20px;
   margin: 0;
   width: 100%;
   cursor: pointer;
@@ -61,6 +63,7 @@
   }
 }
 
-.govuk-accordion__show-all {
+// Hide 'Show/Hide Sections' from top of accordion on index page
+.hide-accordion-toggle .govuk-accordion__show-all {
   display: none;
 }

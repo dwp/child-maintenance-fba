@@ -1,0 +1,59 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Do you need to create a financial arrangement?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form class="form" action="create-answer" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">{{ pageTitle }}</h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="createFA" name="createFA" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="createFA">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="createFA-2" name="createFA" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="createFA-2">
+                    No
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="createFA-3" name="createFA" type="radio" value="not-sure">
+                  <label class="govuk-label govuk-radios__label" for="createFA-3">
+                    I'm not sure
+                  </label>
+                </div>            
+              </div>
+            </fieldset>
+          </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

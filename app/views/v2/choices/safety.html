@@ -1,0 +1,76 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Do you have concerns about safety for you or your child?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form class="form" action="safety-answer" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">{{ pageTitle }}</h1>
+              </legend>
+
+              <p class="govuk-body">You should be safe when making arrangements for your child.</p>
+              <p class="govuk-body">We can share resources if you have experienced someone:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>abuse or violence, including physical, emotional and sexual</li>
+                <li>financial or economic abuse</li>
+                <li>coercive control and psychological abuse (threats, humiliation, intimidation, degradation, isolation and control)</li>
+                <li>harassment and stalking</li>
+              </ul>
+              <p class="govuk-body">Answer 'Yes' if you have experienced any of the above, whether or not you have reported anything to the police.</p>
+
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="safetyConcerns" name="safetyConcerns" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="safetyConcerns">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="safetyConcerns-2" name="safetyConcerns" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="safetyConcerns-2">
+                    No
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="safetyConcerns-3" name="safetyConcerns" type="radio" value="not-sure">
+                  <label class="govuk-label govuk-radios__label" for="safetyConcerns-3">
+                    I'm not sure
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="safetyConcerns-4" name="safetyConcerns" type="radio" value="prefer-not">
+                  <label class="govuk-label govuk-radios__label" for="safetyConcerns-4">
+                    Prefer not to say
+                  </label>
+                </div>            
+              </div>
+            </fieldset>
+          </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

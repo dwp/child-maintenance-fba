@@ -1,51 +1,66 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  Get additional support – {{ serviceName }} – GOV.UK Prototype Kit
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Get additional support" %}
+
 {% block content %}
+  <div class="govuk-width-container">
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Home",
+          href: version + "/home"
+        }
+      ]
+    }) }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
 
-    <h1 class="govuk-heading-l">Get additional support</h1>
+          <p class="govuk-body">
+            These additional resources from the government and recommended organisations can help you connect with other separated parents and access mental health support.
+          </p>
 
-    <p class="govuk-body">
-      These additional resources from the government and recommended organisations can help you connect with other separated parents and access mental health support.
-    </p>
+          <h1 class="govuk-heading-m">Getting support as a single parent</h1>
 
-    <h1 class="govuk-heading-m">Getting support as a single parent</h1>
+          <p class="govuk-body">
+            <a href="resources/single-parent-support" class="govuk-link">Our recommended organisations</a> can help advise you and connect you to others in similar circumstances.
+          </p>
 
-    <p class="govuk-body">
-      <a href="resources/single-parent-support" class="govuk-link">Our recommended organisations</a> can help advise you and connect you to others in similar circumstances.
-    </p>
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+          <h1 class="govuk-heading-m">Getting mental health support</h1>
 
-    <h1 class="govuk-heading-m">Getting mental health support</h1>
+          <p class="govuk-body">
+            For mental health support, we also recommend:
+          </p>
+          
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a class="govuk-link" href="#">Calling a helpline</a>
+            </li>
+            <li>
+              <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.nhs.uk/mental-health/">Speaking with the NHS (opens in a new tab)</a>
+            </li>
+            <li>
+              <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.relate.org.uk/what-we-do/counselling/childrens-counselling">Getting counselling for you or your child from Relate (opens in a new tab)</a>
+            </li>            
+          </ul>
 
-    <p class="govuk-body">
-      For mental health support, we also recommend:
-    </p>
-    
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        <a class="govuk-link" href="#">Calling a helpline</a>
-      </li>
-      <li>
-        <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.nhs.uk/mental-health/">Speaking with the NHS (opens in a new tab)</a>
-      </li>
-      <li>
-        <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.relate.org.uk/what-we-do/counselling/childrens-counselling">Getting counselling for you or your child from Relate (opens in a new tab)</a>
-      </li>            
-    </ul>
-
+        </div>
+      </div>
+    </main>
   </div>
-</div>
 
-<div class="chat-widget">
-  <button class="chat-button">Chat with us</button>
-</div>
-
+  {#
+  <div class="chat-widget">
+    <button class="chat-button">Chat with us</button>
+  </div>
+  #}
 {% endblock %}

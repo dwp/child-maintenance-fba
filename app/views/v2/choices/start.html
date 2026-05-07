@@ -1,39 +1,52 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  Create a written agreement – {{ serviceName }} – GOV.UK Prototype Kit
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Find tools to financially support your child" %}
+
 {% block content %}
+  <div class="govuk-width-container">
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Home",
+          href: version + "/home"
+        }
+      ]
+    }) }}    
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
 
-    <h1 class="govuk-heading-xl">Create a written agreement</h1>
+          <p class="govuk-body">
+            This service can be used help you understand your options for supporting your child. You can use the service together as parents or as an individual.
+          </p>
 
-    <p class="govuk-body">
-      Most children benefit from having both parents or guardians involved in their lives in a positive way, whether they live with them or not. Parents can help to do this by working together with their children’s long-term interests at heart.
-    </p>
+          <p class="govuk-body">
+            If you are not sure which tools you need, this service can help you decide what to do next. 
+            It will ask about any current financial and care arrangements, how you communicate as parents, 
+            and if you have concerns for your child's well being. It will then highlight which of our tools 
+            may be the most useful for you.
+          </p>
 
-    <p class="govuk-body">
-      This arrangement form can help you work together to make sure your children get as much support as possible. Use it to make a record of what you have both agreed.
-    </p>
+          <div class="govuk-inset-text">
+            The service is confidential. You do not have to explain your situation and your answers will not 
+            be saved.
+          </div>
 
-    <p class="govuk-body">
-      You can download or print the finished form.
-    </p>
+          {{ govukButton({
+            text: "Start now",
+            href: "can-you-talk",
+            isStartButton: true
+          }) }}
 
-    <p class="govuk-body">
-      If you still need to decide how much each parent should pay, you can <a href="../calculator/start" class="govuk-link govuk-link--no-visited-state">work out the cost of your child</a>.
-    </p>
-
-    {{ govukButton({
-      text: "Start now",
-      href: "child-amount",
-      isStartButton: true
-    }) }}
-
+        </div>
+      </div>
+    </main>
   </div>
-</div>
-
 {% endblock %}

@@ -1,51 +1,62 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  Will you be paying or receiving child maintenance payments? – {{ serviceName }} – GOV.UK Prototype Kit
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
 {% set child2 = (data['child2Name'] or 'Child 2') %}
 {% set child3 = (data['child3Name'] or 'Child 3') %}
 
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle %}
+  Will you be paying or receiving child maintenance payments?
+{% endset %}
+
 {% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+          <form method="post" novalidate>
 
-      <form method="post" novalidate>
-
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Will you be paying or receiving child maintenance payments?
-            </h1>
-          </legend>
-          <div class="govuk-radios" data-module="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="payingOrReceiving" name="payingOrReceiving" type="radio" value="paying">
-              <label class="govuk-label govuk-radios__label" for="payingOrReceiving">
-                Paying
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="payingOrReceiving-2" name="payingOrReceiving" type="radio" value="receiving">
-              <label class="govuk-label govuk-radios__label" for="payingOrReceiving-2">
-                Receiving
-              </label>
-            </div>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  {{pageTitle}}
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="payingOrReceiving" name="payingOrReceiving" type="radio" value="paying">
+                  <label class="govuk-label govuk-radios__label" for="payingOrReceiving">
+                    Paying
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="payingOrReceiving-2" name="payingOrReceiving" type="radio" value="receiving">
+                  <label class="govuk-label govuk-radios__label" for="payingOrReceiving-2">
+                    Receiving
+                  </label>
+                </div>
+              </div>
+            </fieldset>
           </div>
-        </fieldset>
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+          </form>
+        </div>
       </div>
-
-      {{ govukButton({
-        text: "Continue"
-      }) }}
-
-      </form>
-
-    </div>
+    </main>
   </div>
-
 {% endblock %}

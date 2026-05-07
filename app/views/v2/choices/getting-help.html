@@ -1,0 +1,52 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Getting help if you have experienced abuse" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form class="form" action="financial-arrangement" method="post">
+
+            <h1 class="govuk-heading-l">{{ pageTitle }}</h1>
+
+            <p class="govuk-body">You may have been in an abusive relationship. Domestic abuse or violence is a crime. 
+              Domestic abuse does not only mean physical violence - it includes emotional, sexual, psychological and 
+              financial abuse, as well as harassment and stalking.
+            </p>
+
+            <p class="govuk-body">It is important to remember that there is help and support available to you.</p>
+
+            <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-visually-hidden">Warning</span>
+                If you are in immediate danger, call 999 and ask for the police.
+              </strong>
+            </div>
+
+            <h2 class="govuk-heading-m">If you want to continue to use this service</h2>
+
+            <p class="govuk-body">If you feel confident you can carry on without any danger to yourself or your children, continue using the service.</p>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

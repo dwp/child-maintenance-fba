@@ -1,0 +1,135 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Tools and guidance for your situation" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{ pageTitle }}</h1>
+
+          <p class="govuk-body">
+            Based on the answers you gave us, we recommend certain tools for your situation, but what you do next is your decision.
+          </p>
+
+          <p class="govuk-body">
+            You can use our resources to work out how to pay for your child's needs and get support for yourself.
+          </p>
+
+          <hr class="govuk-section-break govuk-section-break--m">
+
+          <div class="govuk-accordion" data-module="govuk-accordion" id="output-accordion">
+
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-FA">
+                    Because you told us you are setting up a financial arrangement
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-FA" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  Many parents prefer to have their agreements in writing. You can record decisions about who pays 
+                  for your child's different needs, schedules and any extra considerations. We will build a document 
+                  that you an download and sign, but it is not legally binding.
+                </p>
+                <p class="govuk-body">
+                  <a href="../agreement/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Use the financial arrangement tool (opens in a new tab)</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you want to work out costs
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  Our cost worksheet can help you organise and add up how much you spend on your child's needs.
+                  All costs are optional and we will not save your answers. You can take the cost worksheet to discussions 
+                  to help agree on a financial arrangement.
+                </p>
+                <p class="govuk-body">
+                  <a href="../calculator/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Fill out the cost worksheet (opens in a new tab)</a>
+                </p>          
+              </div>
+            </div>
+
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-care">
+                    Because you told us you need to change or set up care arrangements
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-care" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  You can create a care arrangement plan that sets out where your child spends their time, including 
+                  schedules, handovers, and holidays. It also covers additional topics such as religious practices, diet and 
+                  who else has access. While the plan is not legally binding, support is available if you need to take further steps 
+                  such as setting up court orders.
+                </p>
+                <p class="govuk-body">
+                  <a href="#" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Use the Ministry of Justice service (opens in a new tab)</a>
+                </p>             
+              </div>
+            </div>
+
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-other">
+                    Other options that may be relevant to your situation
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-other" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  Based on the answers you gave us, these are some additional tools and guidance that may be relevant to your situation.
+                </p>
+                <ul class="govuk-list">
+
+                  <li>
+                    <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.moneyhelper.org.uk/en/everyday-money/budgeting/budget-planner">Use the budget planner from MoneyHelper (opens in a new tab)</a>
+                  </li>
+
+                  <li>
+                    <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/government/publications/planning-your-child-maintenance-conversation">Planning your conversation (opens in a new tab)</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <hr class="govuk-section-break govuk-section-break--m">
+
+          <h3 class="govuk-heading-m">If you're not sure what to do</h3>
+
+          <p class="govuk-body">
+            You do not need to decide anything right away. Take time to explore your options and return when you feel ready to make decisions.
+          </p>
+
+          <p class="govuk-body">
+            <a href="../home" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Explore the single parent support hub (opens in a new tab)</a>
+          </p>
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

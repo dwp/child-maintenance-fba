@@ -1,7 +1,7 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  What is your name? – {{ serviceName }} – GOV.UK Prototype Kit
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
@@ -10,29 +10,40 @@
 {% set parentName = (data['parentName'] or 'Parent 1') %}
 {% set otherName = (data['otherName'] or 'Parent 2') %}
 
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle %}
+  What is your name?
+{% endset %}
+
 {% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form method="post" novalidate>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--l" for="parent-name">
+                {{pageTitle}}
+              </label>
+            </h1>
+            <input class="govuk-input" id="parent-name" name="parentName" type="text" spellcheck="false" autocomplete="name">
+          </div>
 
-      <form method="post" novalidate>
+          {{ govukButton({
+            text: "Continue"
+          }) }}
 
-      <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--l" for="parent-name">
-            What is your name?
-          </label>
-        </h1>
-        <input class="govuk-input" id="parent-name" name="parentName" type="text" spellcheck="false" autocomplete="name">
+          </form>
+        </div>
       </div>
-
-      {{ govukButton({
-        text: "Continue"
-      }) }}
-
-      </form>
-
-    </div>
+    </main>
   </div>
 
 {% endblock %}

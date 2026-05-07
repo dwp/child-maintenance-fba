@@ -1,18 +1,56 @@
 module.exports = () => {
+  // Bring in the GOV.UK Prototype Kit tools
   const govukPrototypeKit = require('govuk-prototype-kit');
+
+  // Create a router for THIS version (e.g. /v1 or /v2)
+  // Think of this as "all the rules for how pages flow in this journey"
   const subRouter = govukPrototypeKit.requests.setupRouter();
 
-  // Auto-prefix redirects with /v1 or /v2
+
+  // =========================================================
+  // VERSION DETECTION
+  // =========================================================
+
+  // This grabs the version from the URL (e.g. /v1 or /v2)
+  // and makes it available in all templates as "version"
+  //
+  // Example:
+  // version = "/v2"
+  //
+  // This is used so things like the service URL link
+  // will always go to the correct version of the prototype
+
+  subRouter.use((req, res, next) => {
+    const match = req.originalUrl.match(/^\/(v\d+)/);
+    res.locals.version = match ? `/${match[1]}` : '';
+    next();
+  });
+
+  // =========================================================
+  // AUTO-PREFIX REDIRECTS WITH VERSION
+  // =========================================================
+
+  // This automatically adds /v1 or /v2 to redirects
+  //
+  // With this:
+  //   res.redirect('/home') → goes to /v2/home
+  //
+  // This means you don't need to worry about versions
+  // when writing redirects — it happens automatically
+
   subRouter.use((req, res, next) => {
     const originalRedirect = res.redirect;
+
     res.redirect = function(url) {
       if (url.startsWith('/') && !url.startsWith(req.baseUrl)) {
         url = req.baseUrl + url;
       }
       return originalRedirect.call(this, url);
     };
+
     next();
   });
+
 
   // =============================
   // ==== CALCULATOR ROUTING =====
@@ -297,7 +335,6 @@ module.exports = () => {
     res.redirect(nextPageChild2(req.session.data['child2-costs'] || [], 'other'));
   });
 
-
   // -------------------------------------
   // END OF CALCULATOR → SUMMARY PAGE
   // -------------------------------------
@@ -308,6 +345,9 @@ module.exports = () => {
   subRouter.post('/calculator/child-2/check-answers', (req, res) => {
     res.redirect('../summary');
   });
+
+
+
 
 
   // =============================
@@ -394,5 +434,48 @@ module.exports = () => {
     res.redirect('summary');
   });
 
+
+
+
+  
+  // =========================================================
+  // CHOICES JOURNEY (Unique to v2+)
+  // =========================================================
+
+  // Simple decision routing using subRouter
+
+  subRouter.post('/choices/safety-answer', (req, res) => {
+    const safetyConcerns = req.session.data['safetyConcerns'];
+    if (safetyConcerns === "yes") {
+      return res.redirect('/choices/getting-help');
+    }
+    return res.redirect('/choices/financial-arrangement');
+  });
+
+  subRouter.post('/choices/FA-answer', (req, res) => {
+    const doYouHaveFA = req.session.data['doYouHaveFA'];
+    if (doYouHaveFA === "no") {
+      return res.redirect('/choices/create-arrangement');
+    }
+    return res.redirect('/choices/review-arrangement');
+  });
+
+  subRouter.post('/choices/create-answer', (req, res) => {
+    const createFA = req.session.data['createFA'];
+    if (createFA === "yes") {
+      return res.redirect('/choices/why-do-you-need-to-create');
+    }
+    return res.redirect('/choices/care-arrangements');
+  });
+
+  subRouter.post('/choices/review-answer', (req, res) => {
+    const reviewFA = req.session.data['reviewFA'];
+    if (reviewFA === "yes") {
+      return res.redirect('/choices/why-do-you-need-to-review');
+    }
+    return res.redirect('/choices/care-arrangements');
+  });  
+
+  // Always return the router at the end
   return subRouter;
-  };
+};

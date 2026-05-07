@@ -1,0 +1,71 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Do you have a financial arrangement for your child?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form class="form" action="FA-answer" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">{{ pageTitle }}</h1>
+              </legend>
+
+              <p class="govuk-body">A financial arrangement is an agreement between parents about how to pay for their child's needs. 
+                For example, it could be scheduled payments to each other or paying for certain costs.
+              </p>
+
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="doYouHaveFA" name="doYouHaveFA" type="radio" value="regular">
+                  <label class="govuk-label govuk-radios__label" for="doYouHaveFA">
+                    Yes, one parent pays the other regularly
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="doYouHaveFA-2" name="doYouHaveFA" type="radio" value="split">
+                  <label class="govuk-label govuk-radios__label" for="doYouHaveFA-2">
+                    Yes, we split costs as needed
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="doYouHaveFA-3" name="doYouHaveFA" type="radio" value="different">
+                  <label class="govuk-label govuk-radios__label" for="doYouHaveFA-3">
+                    Yes, we have a different arrangement
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="doYouHaveFA-4" name="doYouHaveFA" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="doYouHaveFA-4">
+                    No, we do not have a financial arrangement
+                  </label>
+                </div>            
+              </div>
+            </fieldset>
+          </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

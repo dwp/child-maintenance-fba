@@ -1,36 +1,46 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  How many children would you like to include? – {{ serviceName }} – GOV.UK Prototype Kit
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "How many children would you like to include?" %}
+
 {% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+          <form method="post" novalidate>
 
-      <form method="post" novalidate>
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
 
-      <h1 class="govuk-heading-l">How many children would you like to include?</h1>
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label" for="child-amount">
+                Number of children
+              </label>
+            </h1>
 
-      <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label" for="child-amount">
-            Number of children
-          </label>
-        </h1>
+            <input class="govuk-input govuk-input--width-10" id="child-amount" name="childAmount" type="text" spellcheck="false" inputmode="numeric">
 
-        <input class="govuk-input govuk-input--width-10" id="child-amount" name="childAmount" type="text" spellcheck="false" inputmode="numeric">
+          </div>
 
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
       </div>
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-      </form>
-
-    </div>
+    </main>
   </div>
-
 {% endblock %}

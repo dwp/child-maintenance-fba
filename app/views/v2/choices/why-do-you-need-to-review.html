@@ -1,0 +1,83 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Why do you need to review your financial arrangement?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form class="form" action="care-arrangement" method="post">
+
+          <div class="govuk-form-group">
+
+            {{ govukCheckboxes({
+              name: "create-reasons",
+              fieldset: {
+                legend: {
+                  text: "Why do you need to review your financial arrangement?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+              hint: {
+                text: "Select all that apply."
+              },
+              items: [
+                {
+                  value: "no-payments",
+                  text: "We are not able to make payments regularly"
+                },
+                {
+                  value: "unaffordable",
+                  text: "Our arrangement is no longer affordable"
+                },
+                {
+                  value: "financial-change",
+                  text: "Our financial situation has changed"
+                }, 
+                {
+                  value: "care-change",
+                  text: "Our care arrangement has changed"
+                },
+                {
+                  value: "costs",
+                  text: "We need to work out costs"
+                },
+                {
+                  value: "disagreement",
+                  text: "We cannot agree on our arrangement"
+                },
+                {
+                  value: "leaving-CMS",
+                  text: "We are leaving the Child Maintenance Service"
+                },            
+                {
+                  value: "another",
+                  text: "Another reason"
+                }
+              ]
+            }) }}
+
+          </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

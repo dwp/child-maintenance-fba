@@ -1,0 +1,80 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "What do you need to create a financial arrangement?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form class="form" action="care-arrangement" method="post">
+
+          <div class="govuk-form-group">
+
+            {{ govukCheckboxes({
+              name: "create-reasons",
+              fieldset: {
+                legend: {
+                  text: "What do you need to create a financial arrangement?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+              hint: {
+                text: "Select all that apply."
+              },
+              items: [
+                {
+                  value: "help-talking",
+                  text: "Help talking about money for our child"
+                },
+                {
+                  value: "exact",
+                  text: "An exact payment amount"
+                },
+                {
+                  value: "estimate",
+                  text: "An estimated maintenance payment"
+                }, 
+                {
+                  value: "costs",
+                  text: "The costs of raising my child"
+                },
+                {
+                  value: "CMS",
+                  text: "A service to manage payments for us"
+                },
+                {
+                  value: "advice",
+                  text: "Finance and budget advice"
+                },
+                {
+                  value: "not-sure",
+                  text: "I'm not sure"
+                }
+              ]
+            }) }}
+
+          </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

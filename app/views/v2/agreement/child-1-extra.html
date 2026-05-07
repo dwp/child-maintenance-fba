@@ -1,7 +1,7 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  Will {{child1}} stay any extra nights with {{otherName}}? – {{ serviceName }} – GOV.UK Prototype Kit
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
@@ -10,56 +10,66 @@
 {% set parentName = (data['parentName'] or 'Parent 1') %}
 {% set otherName = (data['otherName'] or 'Parent 2') %}
 
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle %}
+  Will {{child1}} stay any extra nights with {{otherName}}?
+{% endset %}
+
 {% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form method="post" novalidate>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <form method="post" novalidate>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="child1-extra-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Will {{child1}} stay any extra nights with {{otherName}}?
-              </h1>
-            </legend>
-            <div id="child1-extra-hint" class="govuk-hint">
-              For example, special occasions like school holidays or birthdays.
-            </div>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="child1-extra" name="child1Extra" type="radio" value="yes" data-aria-controls="conditional-child1-extra-amount">
-                <label class="govuk-label govuk-radios__label" for="child1-extra">
-                  Yes
-                </label>
-              </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-child1-extra-amount">
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="child1-extra-amount">
-                    How many extra nights each year will {{child1}} stay?
-                  </label>
-                  <input class="govuk-input govuk-input--width-4" id="child1-extra-amount" name="child1ExtraAmount" type="text" spellcheck="false" inputmode="numeric">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="child1-extra-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    {{pageTitle}}
+                  </h1>
+                </legend>
+                <div id="child1-extra-hint" class="govuk-hint">
+                  For example, special occasions like school holidays or birthdays.
                 </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="child1-extra-2" name="child1Extra" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="child1-extra-2">
-                  No
-                </label>
-              </div>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="child1-extra" name="child1Extra" type="radio" value="yes" data-aria-controls="conditional-child1-extra-amount">
+                    <label class="govuk-label govuk-radios__label" for="child1-extra">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-child1-extra-amount">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="child1-extra-amount">
+                        How many extra nights each year will {{child1}} stay?
+                      </label>
+                      <input class="govuk-input govuk-input--width-4" id="child1-extra-amount" name="child1ExtraAmount" type="text" spellcheck="false" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="child1-extra-2" name="child1Extra" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="child1-extra-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
             </div>
-          </fieldset>
+
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+          </form>
         </div>
-
-
-      {{ govukButton({
-        text: "Continue"
-      }) }}
-
-      </form>
-
-    </div>
+      </div>
+    </main>
   </div>
-
 {% endblock %}

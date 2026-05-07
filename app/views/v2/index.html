@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% set pageName="Index" %}
 
@@ -20,32 +20,36 @@
       An alpha phase prototype that aims to explore how we can guide parents to the right level of support at the right time.
     </p>
 
-    {{ govukAccordion({
-      id: "accordion-default",
-      items: [
-        {
-          heading: {
-            text: "Problem statement"
+    <hr class="govuk-section-break govuk-section-break--m">
+
+    <div class="hide-accordion-toggle">
+      {{ govukAccordion({
+        id: "accordion-default",
+        items: [
+          {
+            heading: {
+              text: "Problem statement"
+            },
+            content: {
+              html: '<p>Parents need flexible, bespoke support to create family-based arrangements, but excessive tooling risks confusion and disengagement.</p>'
+            }
           },
-          content: {
-            html: '<p>Parents need flexible, bespoke support to create family-based arrangements, but excessive tooling risks confusion and disengagement.</p>'
+          {
+            heading: {
+              text: "Hypotheses"
+            },
+            content: {
+              html: '<ol class="govuk-list govuk-list--number">
+                <li>If we design a core set of modular tools that can be used together or independently to guide parents to the right level of support at the right time, 
+                  then more parents will successfully set up and maintain sustainable, tailored FBAs.</li>
+                <li>If we give parents flexible support tools that make it easy to review and adapt their FBA when circumstances change, 
+                  then they will be more likely to return to these tools to sustain their arrangement over time.</li>
+              </ol>'
+            }
           }
-        },
-        {
-          heading: {
-            text: "Hypotheses"
-          },
-          content: {
-            html: '<ol class="govuk-list govuk-list--number">
-              <li>If we design a core set of modular tools that can be used together or independently to guide parents to the right level of support at the right time, 
-                then more parents will successfully set up and maintain sustainable, tailored FBAs.</li>
-              <li>If we give parents flexible support tools that make it easy to review and adapt their FBA when circumstances change, 
-                then they will be more likely to return to these tools to sustain their arrangement over time.</li>
-            </ol>'
-          }
-        }
-      ]
-    }) }}
+        ]
+      }) }}
+    </div>
 
     {{ govukButton({
       text: "Start",

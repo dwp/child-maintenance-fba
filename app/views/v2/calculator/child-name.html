@@ -1,67 +1,79 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  {% if data['childAmount'] > 1 %} What are the names of your children? {% else %} What is the name of your child? {% endif %} – {{ serviceName }} – GOV.UK Prototype Kit
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% set serviceName = "Single parent support hub" %}
+{% if data['childAmount'] > 1 %}
+  {% set pageTitle = "What are the names of your children?" %}
+{% else %}
+  {% set pageTitle = "What is the name of your child?" %}
+{% endif %}
+
 {% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+          <form method="post" novalidate>
 
-      <form method="post" novalidate>
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--l">{{pageTitle}}</label>
+            </h1>
+            
+            <p class="govuk-body">
+              Including names is optional and only used for your own reference. Names will appear on the cost summary but will not be stored.
+            </p>
 
-      <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--l">
-            {% if data['childAmount'] > 1 %} What are the names of your children? {% else %} What is the name of your child? {% endif %}
-          </label>
-        </h1>
-        
-        <p class="govuk-body">
-          Including names is optional and only used for your own reference. Names will appear on the cost summary but will not be stored.
-        </p>
+            {{ govukInput({
+              label: {
+                text: "Name for Child 1 (optional)"
+              },
+              classes: "govuk-input--width-20",
+              id: "child-1-name",
+              name: "child1Name"
+            }) }}
 
-        {{ govukInput({
-          label: {
-            text: "Name for Child 1 (optional)"
-          },
-          classes: "govuk-input--width-20",
-          id: "child-1-name",
-          name: "child1Name"
-        }) }}
+            {% if data['childAmount'] > 1 %}
+              {{ govukInput({
+                label: {
+                  text: "Name for Child 2 (optional)"
+                },
+                classes: "govuk-input--width-20",
+                id: "child-2-name",
+                name: "child2Name"
+              }) }}
+            {% endif %}
 
-        {% if data['childAmount'] > 1 %}
-          {{ govukInput({
-            label: {
-              text: "Name for Child 2 (optional)"
-            },
-            classes: "govuk-input--width-20",
-            id: "child-2-name",
-            name: "child2Name"
-          }) }}
-        {% endif %}
+            {% if data['childAmount'] > 2 %}
+              {{ govukInput({
+                label: {
+                  text: "Name for Child 3 (optional)"
+                },
+                classes: "govuk-input--width-20",
+                id: "child-3-name",
+                name: "child3Name"
+              }) }}
+            {% endif %}
 
-        {% if data['childAmount'] > 2 %}
-          {{ govukInput({
-            label: {
-              text: "Name for Child 3 (optional)"
-            },
-            classes: "govuk-input--width-20",
-            id: "child-3-name",
-            name: "child3Name"
-          }) }}
-        {% endif %}
+          </div>
 
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
       </div>
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-      </form>
-
-    </div>
+    </main>
   </div>
-
 {% endblock %}
