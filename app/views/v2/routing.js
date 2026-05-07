@@ -465,7 +465,7 @@ module.exports = () => {
     if (createFA === "yes") {
       return res.redirect('/choices/why-do-you-need-to-create');
     }
-    return res.redirect('/choices/care-arrangements');
+    return res.redirect('/choices/care-arrangement');
   });
 
   subRouter.post('/choices/review-answer', (req, res) => {
@@ -473,7 +473,7 @@ module.exports = () => {
     if (reviewFA === "yes") {
       return res.redirect('/choices/why-do-you-need-to-review');
     }
-    return res.redirect('/choices/care-arrangements');
+    return res.redirect('/choices/care-arrangement');
   });  
 
   // Always return the router at the end

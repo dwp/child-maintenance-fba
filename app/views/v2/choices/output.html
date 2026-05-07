@@ -26,7 +26,30 @@
           <hr class="govuk-section-break govuk-section-break--m">
 
           <div class="govuk-accordion" data-module="govuk-accordion" id="output-accordion">
+            
+            {% if data.canYouTalk == "no" %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-FA">
+                    Because you told us you cannot currently talk about finances for your children together
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-FA" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  If communication about money is difficult, mediation can help you have structured, supported conversations 
+                  and work towards agreement in a safe and neutral setting.
 
+                </p>
+                <p class="govuk-body">
+                  <a href="../resources/mediation" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Find a mediation organisation (opens in a new tab)</a>
+                </p>
+              </div>
+            </div>
+            {% endif %}
+            
+            {% if data.createFA == "yes" %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -46,7 +69,113 @@
                 </p>
               </div>
             </div>
+            {% endif %}
 
+            <!-- CREATE REASONS -->
+
+            <!-- CREATE - NEED HELP TALKING -->
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("help-talking") %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you need help talking about money for your child
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  Having a clear structure can make conversations about finances easier and help you stay focused on your child’s needs. 
+                  Our step-by-step guide can support you in keeping discussions calm and on track.
+                </p>
+                <p class="govuk-body">
+                  <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/government/publications/planning-your-child-maintenance-conversation">Planning your conversation (opens in a new tab)</a>
+                </p>          
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- CREATE - EXACT AMOUNT -->
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("exact") and not data['create-reasons'].includes("estimate") %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you need an exact payment amount
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  The Child Maintenance Calculator can help you work out an exact payment amount from one parent to the other. 
+                  You will need to know the paying parent's income and other details that affect their ability to pay. 
+                  You do not need to use the Child Maintenance Service to use the calculator.
+                </p>
+                <p class="govuk-body">
+                  <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/calculate-child-maintenance">Use the Child Maintenance Calculator (opens in a new tab)</a>
+                </p>          
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- CREATE - ESTIMATE AMOUNT -->
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("estimate") and not data['create-reasons'].includes("exact") %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you need an estimated maintenance payment
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  Our Child Maintenance Estimator is a better option if you do not know the paying parent's income. 
+                  You can use it to get an estimate and help guide your conversations about paying for your child's needs.
+                </p>
+                <p class="govuk-body">
+                  <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="#">Use the Child Maintenance Estimator (opens in a new tab)</a>
+                </p>          
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- CREATE - EXACT AND ESTIMATE -->
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("exact") and data['create-reasons'].includes("estimate") %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you need to work out a maintenance payment
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  The Child Maintenance Calculator can help you work out an exact payment amount from one parent to the other. 
+                  You will need to know the paying parent's income and other details that affect their ability to pay.
+                </p>
+                <p class="govuk-body">
+                  <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/calculate-child-maintenance">
+                    Use the Child Maintenance Calculator (opens in a new tab)
+                  </a>
+                </p>
+
+                <p class="govuk-body">
+                  The Child Maintenance Estimator is a better option if you do not know the paying parent's income. 
+                  You can use it to get an estimate and help guide your conversations about paying for your child's needs.
+                </p>
+                <p class="govuk-body">
+                  <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="#">
+                    Use the Child Maintenance Estimator (opens in a new tab)
+                  </a>
+                </p>
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- CREATE - WORK OUT COSTS -->
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("costs") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -66,7 +195,155 @@
                 </p>          
               </div>
             </div>
+            {% endif %}   
 
+            <!-- CREATE - FINANCE AND BUDGET ADVICE -->
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("advice") %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you need finance and budget advice
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  Our financial advice resources can help you set up budgets, apply for benefits, find an advisor and more. 
+                </p>
+                <p class="govuk-body">
+                  <a href="../financial-advice" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">See our full list of resources (opens in a new tab)</a>
+                </p>          
+              </div>
+            </div>
+            {% endif %}        
+
+            <!-- REVIEW REASONS -->
+
+            <!-- REVIEW - FINANCE AND BUDGET ADVICE -->
+            {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("unaffordable") %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us your arrangement is no longer affordable
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  Our financial advice resources can help you set up budgets, apply for benefits, find an advisor and more. 
+                </p>
+                <p class="govuk-body">
+                  <a href="../financial-advice" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">See our full list of resources (opens in a new tab)</a>
+                </p>          
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- REVIEW - FINANCIAL SITUATION -->
+              {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("financial-change") %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us your financial situation has changed
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                
+                <p class="govuk-body">
+                  The Child Maintenance Calculator can help you work out an exact payment amount from one parent to the other. 
+                  You will need to know the paying parent's income and other details that affect their ability to pay.
+                </p>
+                <p class="govuk-body">
+                  <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/calculate-child-maintenance">
+                    Use the Child Maintenance Calculator (opens in a new tab)
+                  </a>
+                </p>
+
+                <p class="govuk-body">
+                  The Child Maintenance Estimator is a better option if you do not know the paying parent's income. 
+                  You can use it to get an estimate and help guide your conversations about paying for your child's needs.
+                </p>
+                <p class="govuk-body">
+                  <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="#">
+                    Use the Child Maintenance Estimator (opens in a new tab)
+                  </a>
+                </p>
+
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- REVIEW - CARE ARRANGEMENT -->
+            {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("care-change") and data['careArrangement'] != "yes" %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-care">
+                    Because you told us your care arrangement has changed
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-care" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  You can create a care arrangement plan that sets out where your child spends their time, including 
+                  schedules, handovers, and holidays. It also covers additional topics such as religious practices, diet and 
+                  who else has access. While the plan is not legally binding, support is available if you need to take further steps 
+                  such as setting up court orders.
+                </p>
+                <p class="govuk-body">
+                  <a href="#" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Use the Ministry of Justice service (opens in a new tab)</a>
+                </p>             
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- REVIEW - WORK OUT COSTS -->
+            {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("costs") %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you want to work out costs
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  Our cost worksheet can help you organise and add up how much you spend on your child's needs.
+                  All costs are optional and we will not save your answers. You can take the cost worksheet to discussions 
+                  to help agree on a financial arrangement.
+                </p>
+                <p class="govuk-body">
+                  <a href="../calculator/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Fill out the cost worksheet (opens in a new tab)</a>
+                </p>          
+              </div>
+            </div>
+            {% endif %}   
+
+            <!-- REVIEW - WORK OUT COSTS -->
+            {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("disagreement") %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you cannot agree on your arrangement
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  If you need mediation to navigate conflict, we recommend speaking to one of our <a href="../calculator/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">listed specialised organisations (opens in a new tab)</a>.
+                </p>
+              </div>
+            </div>
+            {% endif %}   
+
+            <!-- CARE ARRANGEMENTS -->
+            {% if data.careArrangement == "yes" %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -87,7 +364,35 @@
                 </p>             
               </div>
             </div>
+            {% endif %}
 
+            <!-- SAFETY CONCERNS -->
+            {% if data.safetyConcerns == "yes" %}
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-FA">
+                    Because you told us you have concerns about safety for you or your child
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-FA" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  Safety for you and your child should be at the centre of any financial or care arrangement.
+                </p>
+                <p class="govuk-body">
+                  Domestic abuse or violence is a crime. It is important to remember that there is help and support available to you, including 
+                  <a href="#" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">police response, online support, refuges and other services (opens in a new tab)</a>. 
+                </p>                
+                <p class="govuk-body">
+                  Counselling and therapy can also be a helpful way to
+                  <a href="#" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">address conflicts and concerns for individuals or families (opens in a new tab)</a>.
+                </p>
+              </div>
+            </div>
+            {% endif %}
+
+            {#
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -113,6 +418,7 @@
                 </ul>
               </div>
             </div>
+            #}
 
           </div>
 
