@@ -12,7 +12,7 @@
 
 {% set serviceName = "Single parent support hub" %}
 {% set pageTitle %}
-  What is your name?
+  What are the parents' names? (optional)
 {% endset %}
 
 {% block content %}
@@ -33,7 +33,29 @@
                 {{pageTitle}}
               </label>
             </h1>
-            <input class="govuk-input" id="parent-name" name="parentName" type="text" spellcheck="false" autocomplete="name">
+
+            <p class="govuk-body">
+              Names are used for your own reference. They will appear on the financial agreement but will not be stored.
+            </p>
+
+            {{ govukInput({
+              label: {
+                text: "Your name"
+              },
+              classes: "govuk-input--width-20",
+              id: "parent-name",
+              name: "parentName"
+            }) }}
+
+            {{ govukInput({
+              label: {
+                text: "Other parent's name"
+              },
+              classes: "govuk-input--width-20",
+              id: "other-name",
+              name: "otherName"
+            }) }}
+
           </div>
 
           {{ govukButton({

@@ -1,0 +1,92 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set pageTitle = "How will you pay for one-off costs?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" novalidate>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--l" for="one-off-how-paid">
+                    {{pageTitle}}
+                  </label>
+                </h1>
+
+                <div class="govuk-radios" data-module="govuk-radios">
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="one-off-how-paid" name="oneOffHowPaid" type="radio" value="half">
+                    <label class="govuk-label govuk-radios__label" for="one-off-how-paid">
+                      We will each pay for half of costs
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="one-off-how-paid-2" name="oneOffHowPaid" type="radio" value="different">
+                    <label class="govuk-label govuk-radios__label" for="one-off-how-paid-2">
+                      We will each pay for different costs
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="one-off-how-paid-3" name="oneOffHowPaid" type="radio" value="both">
+                    <label class="govuk-label govuk-radios__label" for="one-off-how-paid-3">
+                      Both
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="split-how-paid-4" name="oneOffHowPaid" type="radio" value="other"data-aria-controls="conditional-split-how-paid-4">
+                    <label class="govuk-label govuk-radios__label" for="split-how-paid-4">
+                      Something else
+                    </label>
+                  </div>
+
+                  <!-- CONDITIONAL TEXT INPUT -->
+                  <div 
+                    class="govuk-radios__conditional govuk-radios__conditional--hidden" 
+                    id="conditional-split-how-paid-4"
+                  >
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="one-off-how-paid-other-text">
+                        Describe how you will split the costs
+                      </label>
+                      <input class="govuk-input" id="one-off-how-paid-other-text" name="oneOffHowPaidOther" type="text">
+                    </div>
+                  </div>
+
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

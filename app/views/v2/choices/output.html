@@ -7,6 +7,7 @@
 {% set serviceName = "Single parent support hub" %}
 {% set pageTitle = "Tools and guidance for your situation" %}
 
+
 {% block content %}
   <div class="govuk-width-container">
     <main class="govuk-main-wrapper">
@@ -74,7 +75,7 @@
             <!-- CREATE REASONS -->
 
             <!-- CREATE - NEED HELP TALKING -->
-            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("help-talking") %}
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'] and data['create-reasons'].includes("help-talking") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -96,7 +97,7 @@
             {% endif %}
 
             <!-- CREATE - EXACT AMOUNT -->
-            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("exact") and not data['create-reasons'].includes("estimate") %}
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'] and data['create-reasons'].includes("exact") and not data['create-reasons'].includes("estimate") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -119,7 +120,7 @@
             {% endif %}
 
             <!-- CREATE - ESTIMATE AMOUNT -->
-            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("estimate") and not data['create-reasons'].includes("exact") %}
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'] and data['create-reasons'].includes("estimate") and not data['create-reasons'].includes("exact") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -141,7 +142,7 @@
             {% endif %}
 
             <!-- CREATE - EXACT AND ESTIMATE -->
-            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("exact") and data['create-reasons'].includes("estimate") %}
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'] and data['create-reasons'].includes("exact") and data['create-reasons'].includes("estimate") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -175,7 +176,7 @@
             {% endif %}
 
             <!-- CREATE - WORK OUT COSTS -->
-            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("costs") %}
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'] and data['create-reasons'].includes("costs") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -198,7 +199,7 @@
             {% endif %}   
 
             <!-- CREATE - FINANCE AND BUDGET ADVICE -->
-            {% if data['doYouHaveFA'] == "no" and data['create-reasons'].includes("advice") %}
+            {% if data['doYouHaveFA'] == "no" and data['create-reasons'] and data['create-reasons'].includes("advice") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -221,7 +222,7 @@
             <!-- REVIEW REASONS -->
 
             <!-- REVIEW - FINANCE AND BUDGET ADVICE -->
-            {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("unaffordable") %}
+            {% if data['doYouHaveFA'] != "no" and data['review-reasons'] and data['review-reasons'].includes("unaffordable") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -242,7 +243,7 @@
             {% endif %}
 
             <!-- REVIEW - FINANCIAL SITUATION -->
-              {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("financial-change") %}
+              {% if data['doYouHaveFA'] != "no" and data['review-reasons'] and data['review-reasons'].includes("financial-change") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -278,7 +279,7 @@
             {% endif %}
 
             <!-- REVIEW - CARE ARRANGEMENT -->
-            {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("care-change") and data['careArrangement'] != "yes" %}
+            {% if data['doYouHaveFA'] != "no" and data['review-reasons'] and data['review-reasons'].includes("care-change") and data['careArrangement'] != "yes" %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -302,7 +303,7 @@
             {% endif %}
 
             <!-- REVIEW - WORK OUT COSTS -->
-            {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("costs") %}
+            {% if data['doYouHaveFA'] != "no" and data['review-reasons'] and data['review-reasons'].includes("costs") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">
@@ -325,7 +326,7 @@
             {% endif %}   
 
             <!-- REVIEW - WORK OUT COSTS -->
-            {% if data['doYouHaveFA'] != "no" and data['review-reasons'].includes("disagreement") %}
+            {% if data['doYouHaveFA'] != "no" and data['review-reasons'] and data['review-reasons'].includes("disagreement") %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">

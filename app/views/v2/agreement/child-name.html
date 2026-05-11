@@ -10,9 +10,9 @@
 
 {% set serviceName = "Single parent support hub" %}
 {% if data['childAmount'] > 1 %}
-  {% set pageTitle = "What are the names of your children?" %}
+  {% set pageTitle = "What are the names of your children? (optional)" %}
 {% else %}
-  {% set pageTitle = "What is the name of your child?" %}
+  {% set pageTitle = "What is the name of your child? (optional)" %}
 {% endif %}
 
 {% block content %}
@@ -35,12 +35,12 @@
             </h1>
             
             <p class="govuk-body">
-              Including names is optional and only used for your own reference. Names will appear on the written agreement but will not be stored.
+              Names are used for your own reference. They will appear on the financial agreement but will not be stored.
             </p>
 
             {{ govukInput({
               label: {
-                text: "Name for Child 1 (optional)"
+                text: "Name of Child 1"
               },
               classes: "govuk-input--width-20",
               id: "child-1-name",
@@ -50,7 +50,7 @@
             {% if data['childAmount'] > 1 %}
               {{ govukInput({
                 label: {
-                  text: "Name for Child 2 (optional)"
+                  text: "Name of Child 2"
                 },
                 classes: "govuk-input--width-20",
                 id: "child-2-name",
@@ -61,7 +61,7 @@
             {% if data['childAmount'] > 2 %}
               {{ govukInput({
                 label: {
-                  text: "Name for Child 3 (optional)"
+                  text: "Name of Child 3"
                 },
                 classes: "govuk-input--width-20",
                 id: "child-3-name",

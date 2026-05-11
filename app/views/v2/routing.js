@@ -348,91 +348,190 @@ module.exports = () => {
 
 
 
+// =============================
+// ==== AGREEMENT ROUTING =====
+// =============================
+
+// -------------------------------------
+// AMOUNT OF CHILDREN AND NAMES
+// -------------------------------------
+
+subRouter.post('/agreement/child-amount', (req, res) => {
+  res.redirect('child-name');
+});
+
+subRouter.post('/agreement/child-name', (req, res) => {
+  res.redirect('parent-name');
+});
+
+subRouter.post('/agreement/parent-name', (req, res) => {
+  res.redirect('choose-agreement');
+});
 
 
-  // =============================
-  // ==== AGREEMENT ROUTING =====
-  // =============================
+// -------------------------------------
+// AGREEMENT ORDER + FLOWS
+// -------------------------------------
 
-  // -------------------------------------
-  // AMOUNT OF CHILDREN AND NAMES
-  // -------------------------------------
-  //
-  subRouter.post('/agreement/child-amount', (req, res) => {
-    res.redirect('child-name');
-  });
+const agreementOrder = [
+  'regular',
+  'split',
+  'oneOff',
+  'household'
+];
 
-  subRouter.post('/agreement/child-name', (req, res) => {
-    res.redirect('parent-name');
-  });
-  
-  subRouter.post('/agreement/parent-name', (req, res) => {
-    res.redirect('other-parent-name');
-  });
+// ✅ Each agreement now has its own sequence of pages
+const agreementFlows = {
+  regular: [
+    '/agreement/regular-payment',
+    '/agreement/regular-who-pays',
+    '/agreement/regular-method',
+    '/agreement/regular-additional-details'
+  ],
+  split: [
+    '/agreement/split-costs',
+    '/agreement/split-how-paid',
+    '/agreement/split-method',
+    '/agreement/split-additional-details'
+  ],
+  oneOff: [
+    '/agreement/one-off-costs',
+    '/agreement/one-off-additional-details'
+  ],
+  household: [
+    '/agreement/household-costs',
+    '/agreement/household-who-pays',
+    '/agreement/household-method',
+    '/agreement/household-additional-details'
+  ]
+};
 
-  subRouter.post('/agreement/other-parent-name', (req, res) => {
-      res.redirect('paying-or-receiving');
-  });  
 
-  subRouter.post('/agreement/paying-or-receiving', (req, res) => {
-    res.redirect('include-overnight-stays');
-  });
+// -------------------------------------
+// NEXT PAGE LOGIC
+// -------------------------------------
 
-  // -------------------------------------
-  // INCLUDE OVERNIGHT STAYS CHOICE
-  // -------------------------------------
-  //
-  // If no, skip user to payment section.
-  //
-  subRouter.post('/agreement/overnight-answer', (req, res) => {
-    const includeOvernight = req.session.data['includeOvernight'];
+function nextPage(selected, currentAgreement, currentPath) {
+  const steps = agreementFlows[currentAgreement];
+  const stepIndex = steps.indexOf(currentPath);
 
-    if (includeOvernight === 'yes') {
-      return res.redirect('/agreement/child-1-nights');
+  // ✅ Move to next step in same agreement
+  if (stepIndex !== -1 && stepIndex < steps.length - 1) {
+    return steps[stepIndex + 1];
+  }
+
+  // ✅ Move to next selected agreement
+  const agreementIndex = agreementOrder.indexOf(currentAgreement);
+
+  for (let i = agreementIndex + 1; i < agreementOrder.length; i++) {
+    const nextAgreement = agreementOrder[i];
+
+    if (selected.includes(nextAgreement)) {
+      return agreementFlows[nextAgreement][0];
     }
+  }
 
-    return res.redirect('/agreement/paying-for-your-children');
-  });
+  // ✅ End of journey
+  return '/agreement/anything-else';
+}
 
-  subRouter.post('/agreement/child-1-nights', (req, res) => {
-    res.redirect('child-1-extra');
-  });
 
-  subRouter.post('/agreement/child-1-extra', (req, res) => {
-    const childAmount = Number(req.session.data['childAmount']);
+// -------------------------------------
+// START FLOW
+// -------------------------------------
 
-    if (childAmount > 1) {
-      // User added more than one child → go to Child 2 flow
-      return res.redirect('child-2-nights');
-    }
+subRouter.post('/agreement/choose-agreement', (req, res) => {
+  const selected = req.session.data['agreement-choices'] || [];
 
-    // Only one child → skip Child 2
-    return res.redirect('paying-for-your-children');
-  });
+  const first = agreementOrder.find(key => selected.includes(key));
 
-  subRouter.post('/agreement/child-1-extra', (req, res) => {
-    res.redirect('child-2-nights');
-  });
+  if (first) {
+    return res.redirect(agreementFlows[first][0]);
+  }
 
-  subRouter.post('/agreement/child-2-nights', (req, res) => {
-    res.redirect('child-2-extra');
-  });
+  return res.redirect('/agreement/anything-else');
+});
 
-  subRouter.post('/agreement/child-2-extra', (req, res) => {
-    res.redirect('paying-for-your-children');
-  });
 
-  subRouter.post('/agreement/paying-for-your-children', (req, res) => {
-    res.redirect('review-date');
-  });
+// -------------------------------------
+// REGULAR FLOW (4 QUESTIONS)
+// -------------------------------------
 
-  subRouter.post('/agreement/review-date', (req, res) => {
-    res.redirect('check-answers');
-  });
+subRouter.post('/agreement/regular-payment', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-payment'));
+});
 
-  subRouter.post('/agreement/check-answers', (req, res) => {
-    res.redirect('summary');
-  });
+subRouter.post('/agreement/regular-who-pays', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-who-pays'));
+});
+
+subRouter.post('/agreement/regular-method', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-method'));
+});
+
+subRouter.post('/agreement/regular-additional-details', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-additional-details'));
+});
+
+
+// -------------------------------------
+// (PLACEHOLDER ROUTES - KEEP FOR NOW)
+// Replace these later with real pages
+// -------------------------------------
+
+// SPLIT
+subRouter.post('/agreement/split-costs', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-costs'));
+});
+
+subRouter.post('/agreement/split-how-paid', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-how-paid'));
+});
+
+subRouter.post('/agreement/split-method', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-method'));
+});
+
+subRouter.post('/agreement/split-additional-details', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-additional-details'));
+});
+
+
+// ONE-OFF
+subRouter.post('/agreement/one-off-costs', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'oneOff', '/agreement/one-off-costs'));
+});
+
+subRouter.post('/agreement/one-off-additional-details', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'oneOff', '/agreement/one-off-additional-details'));
+});
+
+
+// HOUSEHOLD
+subRouter.post('/agreement/household-costs', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-costs'));
+});
+
+subRouter.post('/agreement/household-who-pays', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-who-pays'));
+});
+
+subRouter.post('/agreement/household-method', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-method'));
+});
+
+subRouter.post('/agreement/household-additional-details', (req, res) => {
+  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-additional-details'));
+});
+
+subRouter.post('/agreement/anything-else', (req, res) => {
+  res.redirect('/agreement/check-answers');
+});
+
+subRouter.post('/agreement/check-answers', (req, res) => {
+  res.redirect('/agreement/output');
+});
+
 
 
 
