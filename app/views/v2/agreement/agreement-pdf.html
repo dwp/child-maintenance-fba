@@ -1,0 +1,290 @@
+{% extends "layouts/pdf-layout.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}}
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set paymentLabels = {
+  "direct-debit": "direct debit",
+  "standing-order": "standing order",
+  "bank-transfer": "bank transfer",
+  "cash": "cash payment"
+} %}
+
+{% set householdLabels = {
+  "household-costs": {
+    "rent": "Rent or mortgage payments",
+    "energy": "Energy bills",
+    "water": "Water bills",
+    "council-tax": "Council tax",
+    "broadband": "Broadband or internet",
+    "tv-license": "TV licence or subscriptions",
+    "other": "Other"
+  }
+} %}
+
+{% set labels = {
+  "split-costs-all-ages": {
+    "food": "Food",
+    "childcare": "Childcare",
+    "clothing": "Clothing",
+    "toiletries": "Toiletries and medicines",
+    "toys": "Toys, books and play items",
+    "travel": "Travel",
+    "activities": "Activities",
+    "other": "Other"
+  },
+  "split-costs-baby": {
+    "cot": "Cot or crib",
+    "pram": "Pram, pushchair or buggy",
+    "car-seat": "Car seat",
+    "feeding": "Feeding equipment",
+    "other": "Other"
+  },
+  "split-costs-younger": {
+    "school-trips": "School trips",
+    "computer": "Computer or tablet",
+    "bike": "Bike",
+    "other": "Other"
+  },
+  "split-costs-older": {
+    "school-trips": "School trips",
+    "computer": "Computer or laptop",
+    "phone": "Mobile phone",
+    "bike": "Bike",
+    "other": "Other"
+  }
+} %}
+
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle %}
+  Your financial agreement is ready to download
+{% endset %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Your financial arrangement</h1>
+
+    <h2 class="govuk-heading-m">About this document</h2>
+
+    <p class="govuk-body">
+      This document outlines a financial arrangement that you both agree on. It includes information about how you will pay for your child's needs.
+    </p>
+
+    <p class="govuk-body">
+      <strong>Parents:</strong> {{parentName}}, {{otherName}}<br>
+    </p>
+
+    <p class="govuk-body">
+      <strong>Children in this arrangement:</strong> {{child1}}, {{child2}}
+    </p>    
+
+    <div class="govuk-inset-text">
+      This arrangement has been created from the information you gave us in the Build Your Financial Arrangement service. We have not saved any of this information and cannot help with any private arrangements. It is not legally binding.
+    </div>
+
+    <h2 class="govuk-heading-m govuk-!-padding-top-6">Regular payment amount</h2>
+
+    <div class="govuk-inset-text">
+      Regular payments are scheduled and reliable. One parent pays another to help pay to raise their child.
+    </div>
+
+    <p class="govuk-body">
+    {% if data['whoWillPay'] == "parent1" %}
+    {{ parentName }} will pay {{ otherName }}
+    {% elif data['whoWillPay'] == "parent2" %}
+    {{ otherName }} will pay {{ parentName }}
+    {% endif %}
+    £{{data['regularAmount']}} {{data['regularFrequency']}} by
+    {% if data['regularMethod'] %}
+    {% for method in data['regularMethod'] %}
+    {{ paymentLabels[method] }}.
+    {% endfor %}
+    {% endif %}
+    </p>
+
+    <p class="govuk-body">
+      <strong>Additional details:</strong> {{data['regularAdditional']}}
+    </p>
+
+    <h2 class="govuk-heading-m govuk-!-padding-top-6">Split costs</h2>
+
+    <div class="govuk-inset-text">
+      Parents can agree to be more flexible, paying for items or services as needed. The split can be by half or another percent. You may also agree to pay for different things.
+    </div>
+
+    <p class="govuk-body">
+      {% if data['splitHowPaid'] == "half" %}
+        We will each pay for half of costs:
+      {% elif data['splitHowPaid'] == "different" %}
+        We will each pay for different costs:
+      {% elif data['splitHowPaid'] == "both" %}
+        We will each pay half of costs and different costs:
+      {% elif data['splitHowPaid'] == "other" %}
+        {{data['splitHowPaidOther']}}             
+      {% endif %}
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      {% for group in ["split-costs-all-ages", "split-costs-baby", "split-costs-younger", "split-costs-older"] %}
+        {% if data[group] %}
+          {% for item in data[group] %}
+            <li>
+              {{ labels[group][item] }}
+
+              {% if item == "other" %}
+                {% if group == "split-costs-all-ages" %}
+                  - {{ data["all-other-details"] }}
+                {% elseif group == "split-costs-baby" %}
+                  - {{ data["baby-other-details"] }}
+                {% elseif group == "split-costs-younger" %}
+                  - {{ data["young-other-details"] }}
+                {% elseif group == "split-costs-older" %}
+                  - {{ data["older-other-details"] }}
+                {% endif %}
+              {% endif %}
+
+            </li>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <p class="govuk-body">
+      When needed, we will use
+      {% if data['splitMethod'] %}
+      {% for method in data['splitMethod'] %}
+      {{ paymentLabels[method] }}
+      {% endfor %}
+      {% endif %} 
+      to split costs.
+    </p>
+
+    <p class="govuk-body">
+      <strong>Additional details:</strong> {{data['splitAdditional']}}
+    </p>
+
+    <h2 class="govuk-heading-m govuk-!-padding-top-6">One-off costs</h2>
+
+    <div class="govuk-inset-text">
+      One-off costs are usually larger purchases or on special occasions. They may also be for emergencies.
+    </div>
+
+    <p class="govuk-body">
+    {% if data['oneOffHowPaid'] == "half" %}
+      We will each pay for half of costs.
+    {% elif data['oneOffHowPaid'] == "different" %}
+      We will each pay for different costs.
+    {% elif data['oneOffHowPaid'] == "both" %}
+      We will each pay half of costs and different costs.
+    {% elif data['oneOffHowPaid'] == "other" %}
+      {{data['oneOffHowPaidOther']}}             
+    {% endif %}
+    </p>
+
+    <p class="govuk-body">
+      <strong>Additional details:</strong> {{data['oneOffAdditional']}}
+    </p>
+
+    <h2 class="govuk-heading-m govuk-!-padding-top-6">Household costs</h2>
+
+    <div class="govuk-inset-text">
+      Parents can agree to support their child by paying for their living arrangements.
+    </div>
+
+    <p class="govuk-body">
+    {% if data['whoWillPayHousehold'] == "parent1" %}
+    {{ parentName }} will pay {{ otherName }} for:
+    {% elif data['whoWillPayHousehold'] == "parent2" %}
+    {{ otherName }} will pay {{ parentName }} for:
+    {% endif %}
+
+    <ul class="govuk-list govuk-list--bullet">
+      {% for group in ["household-costs"] %}
+        {% if data[group] %}
+          {% for item in data[group] %}
+            <li>
+              {{ householdLabels[group][item] }}
+
+              {% if item == "other" %}
+                  - {{ data["householdOtherDetails"] }}
+              {% endif %}     
+
+            </li>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+    </p>
+
+    <p class="govuk-body">
+      <strong>Additional details:</strong> {{data['householdAdditional']}}
+    </p>
+
+    <h2 class="govuk-heading-m govuk-!-padding-top-6">Additional details</h2>
+
+    <p class="govuk-body">
+      <strong>Additional details:</strong> {{data['anythingElse']}}
+    </p>
+
+    <h2 class="govuk-heading-m govuk-!-padding-top-6">What to do next</h2>
+
+    <p class="govuk-body">
+      We recommend reviewing this financial arrangement when your circumstances change, for example, your:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>incomes</li>
+      <li>care arrangement</li>
+      <li>child's age bracket</li>
+    </ul>
+
+    <h3 class="govuk-heading-m govuk-!-padding-top-6">Declaration</h3>
+
+    <p class="govuk-body">
+      By signing this financial arrangement, I agree that:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>I will prioritise my child's financial well being</li>
+      <li>We will review this arrangement when my circumstances change</li>
+      <li>We will work together for our child's benefit</li>
+    </ul>
+
+    <div class="app-signature-section">
+
+      <h2 class="govuk-heading-m">Signatures</h2>
+
+      <div class="app-signature-grid">
+
+        <div class="app-signature-block">
+          <div class="app-signature-box"></div>
+          <p class="govuk-body-s">{{parentName}}'s signature</p>
+          <p class="govuk-body-s">Date:</p>
+        </div>
+
+        <div class="app-signature-block">
+          <div class="app-signature-box"></div>
+          <p class="govuk-body-s">{{otherName}}'s signature</p>
+          <p class="govuk-body-s">Date:</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

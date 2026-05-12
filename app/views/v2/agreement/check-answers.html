@@ -281,7 +281,7 @@
                       "council-tax": "Council tax",
                       "broadband": "Broadband or internet",
                       "tv-license": "TV licence or subscriptions",
-                      "other": "{{data['householdOtherDetails']}}"
+                      "other": "Other"
                     }
                   } %}
 
@@ -291,6 +291,11 @@
                         {% for item in data[group] %}
                           <li>
                             {{ householdLabels[group][item] }}
+
+                            {% if item == "other" %}
+                                - {{ data["householdOtherDetails"] }}
+                            {% endif %}     
+
                           </li>
                         {% endfor %}
                       {% endif %}

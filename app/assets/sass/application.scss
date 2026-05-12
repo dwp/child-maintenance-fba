@@ -67,3 +67,24 @@
 .hide-accordion-toggle .govuk-accordion__show-all {
   display: none;
 }
+
+.app-signature-section {
+  margin-top: 60px;
+  page-break-inside: avoid;
+}
+
+.app-signature-grid {
+  display: flex;
+  gap: 40px;
+}
+
+.app-signature-block {
+  width: 50%;
+}
+
+.app-signature-box {
+  border: 2px solid #0b0c0c;
+  height: 80px;
+  margin-bottom: 10px;
+  background: #ffffff;
+}

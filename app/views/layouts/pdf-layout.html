@@ -1,0 +1,116 @@
+{# PDF-style layout (no GOV.UK header/footer) #}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block header %}{% endblock %}
+{% block beforeContent %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block pageStyles %}
+<style>
+
+  /* Document container */
+  .app-document {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 40px;
+    background: #ffffff;
+    border: 1px solid #b1b4b6;
+  }
+
+  /* Logo */
+  .app-document-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .app-logo {
+    height: 36px;
+    width: auto;
+  }
+
+  /* Layout density */
+  .govuk-body {
+    margin-bottom: 10px;
+  }
+
+  .govuk-heading-l {
+    margin-top: 30px;
+  }
+
+  /* Section spacing */
+  .govuk-section-break {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  /* Signature blocks */
+  .app-signature-section {
+    margin-top: 60px;
+    page-break-inside: avoid;
+  }
+
+  .app-signature-grid {
+    display: flex;
+    gap: 40px;
+  }
+
+  .app-signature-block {
+    width: 50%;
+  }
+
+  .app-signature-line {
+    border-bottom: 2px solid #0b0c0c;
+    height: 40px;
+    margin-bottom: 5px;
+  }
+
+  /* Prevent bad page breaks */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+
+  p, li, .govuk-inset-text {
+    page-break-inside: avoid;
+  }
+
+  /* Action area */
+  .app-document-actions {
+    text-align: right;
+  }
+
+  /* PRINT STYLES */
+  @media print {
+
+    body {
+      background: white;
+    }
+
+    .app-document {
+      border: none;
+      margin: 0;
+      padding: 0;
+      max-width: none;
+    }
+
+    .app-document-actions {
+      display: none;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .govuk-inset-text {
+      border-left: 5px solid #b1b4b6;
+    }
+  }
+
+</style>
+{% endblock %}
