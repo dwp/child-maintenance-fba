@@ -94,6 +94,7 @@
       This arrangement has been created from the information you gave us in the Build Your Financial Arrangement service. We have not saved any of this information and cannot help with any private arrangements. It is not legally binding.
     </div>
 
+    {% if data['agreement-choices'].includes("regular") %}
     <h2 class="govuk-heading-m govuk-!-padding-top-6">Regular payment amount</h2>
 
     <div class="govuk-inset-text">
@@ -115,9 +116,15 @@
     </p>
 
     <p class="govuk-body">
-      <strong>Additional details:</strong> {{data['regularAdditional']}}
+      {% if data['regularAdditional'] %}
+      <strong>Details about regular payments:</strong> {{data['regularAdditional']}}
+      {% else %}
+      <strong>Details about regular payments:</strong> None provided
+      {% endif %}      
     </p>
-
+    {% endif %}
+    
+    {% if data['agreement-choices'].includes("split") %}
     <h2 class="govuk-heading-m govuk-!-padding-top-6">Split costs</h2>
 
     <div class="govuk-inset-text">
@@ -172,9 +179,15 @@
     </p>
 
     <p class="govuk-body">
-      <strong>Additional details:</strong> {{data['splitAdditional']}}
+      {% if data['splitAdditional'] %}
+      <strong>Details about split costs:</strong> {{data['splitAdditional']}}
+      {% else %}
+      <strong>Details about split costs:</strong> None provided
+      {% endif %}      
     </p>
+    {% endif %}
 
+    {% if data['agreement-choices'].includes("oneOff") %}
     <h2 class="govuk-heading-m govuk-!-padding-top-6">One-off costs</h2>
 
     <div class="govuk-inset-text">
@@ -194,9 +207,15 @@
     </p>
 
     <p class="govuk-body">
-      <strong>Additional details:</strong> {{data['oneOffAdditional']}}
+      {% if data['oneOffAdditional'] %}
+      <strong>Details about one-off costs:</strong> {{data['oneOffAdditional']}}
+      {% else %}
+      <strong>Details about one-off costs:</strong> None provided
+      {% endif %}      
     </p>
+    {% endif %}
 
+    {% if data['agreement-choices'].includes("household") %}
     <h2 class="govuk-heading-m govuk-!-padding-top-6">Household costs</h2>
 
     <div class="govuk-inset-text">
@@ -229,13 +248,22 @@
     </p>
 
     <p class="govuk-body">
-      <strong>Additional details:</strong> {{data['householdAdditional']}}
+      {% if data['householdAdditional'] %}
+      <strong>Details about household costs:</strong> {{data['householdAdditional']}}
+      {% else %}
+      <strong>Details about household costs:</strong> None provided
+      {% endif %}
     </p>
+    {% endif %}
 
     <h2 class="govuk-heading-m govuk-!-padding-top-6">Additional details</h2>
 
     <p class="govuk-body">
-      <strong>Additional details:</strong> {{data['anythingElse']}}
+      {% if data['anythingElse'] %}
+      {{data['anythingElse']}}
+      {% else %}
+      None provided
+      {% endif %}
     </p>
 
     <h2 class="govuk-heading-m govuk-!-padding-top-6">What to do next</h2>
