@@ -27,7 +27,75 @@
           <hr class="govuk-section-break govuk-section-break--m">
 
           <div class="govuk-accordion" data-module="govuk-accordion" id="output-accordion">
-            
+
+            <!-- DEFAULT - NO REVIEW -->
+
+            {% if data['reviewFA'] == "no" 
+            or (data['reviewFA'] == "yes" and not data['review-reasons']) %}
+
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you already have a financial arrangement
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  The Child Maintenance Calculator can help you work out an exact payment amount from one parent to the other. 
+                  You will need to know the paying parent's income and other details that affect their ability to pay. 
+                  You do not need to use the Child Maintenance Service to use the calculator.
+                </p>
+                <p class="govuk-body">
+                  <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/calculate-child-maintenance">Use the Child Maintenance Calculator (opens in a new tab)</a>
+                </p>
+                <p class="govuk-body">
+                  Our cost worksheet can help you organise and add up how much you spend on your child's needs.
+                  All costs are optional and we will not save your answers. You can take the cost worksheet to discussions 
+                  to help agree on a financial arrangement.
+                </p>
+                <p class="govuk-body">
+                  <a href="../calculator/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Fill out the cost worksheet (opens in a new tab)</a>
+                </p>                   
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- DEFAULT - NO CREATE -->
+
+            {% if data['createFA'] == "no" 
+            or (data['createFA'] == "yes" and not data['create-reasons']) %}
+
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="output-heading-costs">
+                    Because you told us you don't have a financial arrangement
+                  </span>
+                </h2>
+              </div>
+              <div id="output-content-costs" class="govuk-accordion__section-content govuk-!-padding-top-0">
+                <p class="govuk-body">
+                  The Child Maintenance Calculator can help you work out an exact payment amount from one parent to the other. 
+                  You will need to know the paying parent's income and other details that affect their ability to pay. 
+                  You do not need to use the Child Maintenance Service to use the calculator.
+                </p>
+                <p class="govuk-body">
+                  <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/calculate-child-maintenance">Use the Child Maintenance Calculator (opens in a new tab)</a>
+                </p>
+                <p class="govuk-body">
+                  Our cost worksheet can help you organise and add up how much you spend on your child's needs.
+                  All costs are optional and we will not save your answers. You can take the cost worksheet to discussions 
+                  to help agree on a financial arrangement.
+                </p>
+                <p class="govuk-body">
+                  <a href="../calculator/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Fill out the cost worksheet (opens in a new tab)</a>
+                </p>                   
+              </div>
+            </div>
+            {% endif %}
+
             {% if data.canYouTalk == "no" %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
@@ -344,7 +412,7 @@
             {% endif %}   
 
             <!-- CARE ARRANGEMENTS -->
-            {% if data.careArrangement == "yes" %}
+            {% if data.careArrangement != "no" %}
             <div class="govuk-accordion__section">
               <div class="govuk-accordion__section-header">
                 <h2 class="govuk-accordion__section-heading">

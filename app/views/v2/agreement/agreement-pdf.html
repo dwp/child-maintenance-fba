@@ -83,16 +83,15 @@
     </p>
 
     <p class="govuk-body">
-      <strong>Parents:</strong> {{parentName}},<br> {{otherName}}
+      <strong>Parents:</strong> {{parentName}}, {{otherName}}
     </p>
 
     <p class="govuk-body">
-      <strong>Children in this arrangement:</strong> 
-        {{child1}}<br>
+      <strong>Children in this arrangement:</strong> {{child1}}, 
         {% if data['childAmount'] > 1 %}
-        {{child2}}<br>
+        {{child2}}, 
         {% elif data['childAmount'] > 2 %}
-        {{child3}}<br>
+        {{child3}}
         {% endif %}
     </p>    
 
