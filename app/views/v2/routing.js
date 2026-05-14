@@ -411,7 +411,7 @@ const agreementFlows = {
 // NEXT PAGE LOGIC
 // -------------------------------------
 
-function nextPage(selected, currentAgreement, currentPath) {
+function nextAgreementPage(selected, currentAgreement, currentPath) {
   const steps = agreementFlows[currentAgreement];
   const stepIndex = steps.indexOf(currentPath);
 
@@ -458,19 +458,19 @@ subRouter.post('/agreement/choose-agreement', (req, res) => {
 // -------------------------------------
 
 subRouter.post('/agreement/regular-payment', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-payment'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-payment'));
 });
 
 subRouter.post('/agreement/regular-who-pays', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-who-pays'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-who-pays'));
 });
 
 subRouter.post('/agreement/regular-method', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-method'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-method'));
 });
 
 subRouter.post('/agreement/regular-additional-details', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-additional-details'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'regular', '/agreement/regular-additional-details'));
 });
 
 
@@ -481,47 +481,47 @@ subRouter.post('/agreement/regular-additional-details', (req, res) => {
 
 // SPLIT
 subRouter.post('/agreement/split-costs', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-costs'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-costs'));
 });
 
 subRouter.post('/agreement/split-how-paid', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-how-paid'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-how-paid'));
 });
 
 subRouter.post('/agreement/split-method', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-method'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-method'));
 });
 
 subRouter.post('/agreement/split-additional-details', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-additional-details'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'split', '/agreement/split-additional-details'));
 });
 
 
 // ONE-OFF
 subRouter.post('/agreement/one-off-costs', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'oneOff', '/agreement/one-off-costs'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'oneOff', '/agreement/one-off-costs'));
 });
 
 subRouter.post('/agreement/one-off-additional-details', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'oneOff', '/agreement/one-off-additional-details'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'oneOff', '/agreement/one-off-additional-details'));
 });
 
 
 // HOUSEHOLD
 subRouter.post('/agreement/household-costs', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-costs'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-costs'));
 });
 
 subRouter.post('/agreement/household-who-pays', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-who-pays'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-who-pays'));
 });
 
 subRouter.post('/agreement/household-method', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-method'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-method'));
 });
 
 subRouter.post('/agreement/household-additional-details', (req, res) => {
-  res.redirect(nextPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-additional-details'));
+  res.redirect(nextAgreementPage(req.session.data['agreement-choices'] || [], 'household', '/agreement/household-additional-details'));
 });
 
 subRouter.post('/agreement/anything-else', (req, res) => {
