@@ -5,6 +5,7 @@
     "start": "govuk-prototype-kit start"
   },
   "dependencies": {
+    "@dwp-govuk/govuk-prototype-kit": "latest",
     "@dwp/dwp-frontend": "3.4.0",
     "@govuk-prototype-kit/common-templates": "2.0.1",
     "@govuk-prototype-kit/step-by-step": "2.2.4",
@@ -13,7 +14,7 @@
     "express": "5.2.1",
     "govuk-frontend": "^5.14.0",
     "qs": "6.14.1",
-    "@dwp-govuk/govuk-prototype-kit": "latest"
+    "uuid": "^14.0.0"
   },
   "overrides": {
     "qs": "6.14.1",
