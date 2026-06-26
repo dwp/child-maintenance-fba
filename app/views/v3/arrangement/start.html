@@ -1,0 +1,72 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Create a financial arrangement" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../planning-private-arrangement.html">Private arrangements</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="start">Create a financial arrangement</a>
+      </li>      
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            Most children benefit from having both parents or guardians involved in their lives in a positive way, whether they live with them or not.
+          </p>
+
+          <p class="govuk-body">
+            A financial arrangement can help both of you focus on supporting your children. Use it to record what you have agreed.
+          </p>
+
+          <p class="govuk-body">This form will ask you about:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Your names and your children's names</li>
+            <li>Any regular payments or financial support</li>
+            <li>Any additional details you want to include</li>
+          </ul>
+
+          <p class="govuk-body">
+            You do not need to answer all the questions. You can complete this form together or separately, but you should only include details you both agree on.
+          </p>
+
+          <p class="govuk-body">
+            You can download or print the finished form. You can also create an account to save it online.
+          </p>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              This financial arrangement is not legally binding and it is intended to be used only for your own reference.
+            </strong>
+          </div>
+
+          {{ govukButton({
+            text: "Start now",
+            href: "child-amount",
+            isStartButton: true
+          }) }}
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

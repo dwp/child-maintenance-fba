@@ -1,0 +1,77 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Get financial advice" %}
+
+
+{% block content %}
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="financial-advice.html">Get financial advice</a>
+      </li>
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            These resources from the government and recommended organisations can help you prepare your finances.
+          </p>
+
+          <h1 class="govuk-heading-m">Benefits</h1>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/universal-credit/how-to-claim">Apply for or manage Universal Credit (opens in a new tab)</a>
+            </li>
+            <li>
+              <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/benefits-calculators">Use a benefits calculator (opens in a new tab)</a>
+            </li>           
+          </ul>
+          
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+          
+          <h1 class="govuk-heading-m">Budgeting</h1>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.moneyhelper.org.uk/en/everyday-money/budgeting/budget-planner">Use the budget planner from MoneyHelper (opens in a new tab)</a>
+            </li>          
+          </ul>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <h1 class="govuk-heading-m">Debt management</h1>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/pay-off-debts">Check how you can deal with your debts (opens in a new tab)</a>
+            </li>
+            <li>
+              <a class="govuk-link" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/debt-advice">Get free debt advice (opens in a new tab)</a>
+            </li>            
+          </ul>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  {#
+  <div class="chat-widget">
+    <button class="chat-button">Chat with us</button>
+  </div>
+  #}
+{% endblock %}

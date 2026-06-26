@@ -1,0 +1,113 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set pageTitle = "Which household costs will be covered?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form method="post" novalidate>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="household-costs-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    {{pageTitle}}
+                  </h1>
+                </legend>
+
+                <div id="household-costs-hint" class="govuk-hint">
+                  Select all that apply
+                </div>
+
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="rent" name="household-costs" type="checkbox" value="rent">
+                    <label class="govuk-label govuk-checkboxes__label" for="rent">
+                      Rent or mortgage payments
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="energy" name="household-costs" type="checkbox" value="energy">
+                    <label class="govuk-label govuk-checkboxes__label" for="energy">
+                      Energy bills (gas and electricity)
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="water" name="household-costs" type="checkbox" value="water">
+                    <label class="govuk-label govuk-checkboxes__label" for="water">
+                      Water bills
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="council-tax" name="household-costs" type="checkbox" value="council-tax">
+                    <label class="govuk-label govuk-checkboxes__label" for="council-tax">
+                      Council tax
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="broadband" name="household-costs" type="checkbox" value="broadband">
+                    <label class="govuk-label govuk-checkboxes__label" for="broadband">
+                      Broadband or internet
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="tv-license" name="household-costs" type="checkbox" value="tv-license">
+                    <label class="govuk-label govuk-checkboxes__label" for="tv-license">
+                      TV licence or subscriptions
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="household-other" name="household-costs" type="checkbox" value="other" data-aria-controls="conditional-household-other">
+                    <label class="govuk-label govuk-checkboxes__label" for="household-other">
+                      Other household cost
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-household-other">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="household-other-details">
+                        Describe the cost
+                      </label>
+                      <input class="govuk-input" id="household-other-details" name="householdOtherDetails" type="text">
+                    </div>
+                  </div>
+
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}
