@@ -52,7 +52,7 @@
           </p>
 
           <p class="govuk-body">
-            {% if 'start-date' in data['review-type'] or 'recurring-date' in data['review-type'] %}
+            {% if data['review-type'] %}
             <a href="set-review-reminders" class="govuk-link govuk-link--no-visited-state">Set review reminders</a>
             {% else %}
             <a href="#" class="govuk-link govuk-link--no-visited-state">Set review reminders</a>

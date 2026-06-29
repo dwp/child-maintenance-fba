@@ -26,7 +26,7 @@
       </ol>
     </nav>    
     <main class="govuk-main-wrapper">
-    {% if data['arrangementSaved'] == 'yes' %}
+    {% if data['arrangementSaved'] %}
     <!-- Show saved arrangement home page -->
 
       <div class="govuk-grid-row">
@@ -36,13 +36,13 @@
           
           <p class="govuk-body">
             Your financial arrangement is for
-            {{ data['child1Name'] }}
+            {{ child1 }}
             {% if data['childAmount'] == 2 %}
-              and {{ data['child2Name'] }}
+              and {{ child2 }}
             {% elif data['childAmount'] == 3 %}
-              , {{ data['child2Name'] }} and {{ data['child3Name'] }}
+              , {{ child2 }} and {{ child3 }}
             {% elif data['childAmount'] == 4 %}
-              , {{ data['child2Name'] }}, {{ data['child3Name'] }} and {{ data['child4Name'] }}
+              , {{ child2 }}, {{ child3 }} and {{ child4 }}
             {% endif %}
           </p>
 
