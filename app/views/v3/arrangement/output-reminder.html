@@ -1,0 +1,94 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle %}
+  Your arrangement is ready to download
+{% endset %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}    
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              {{pageTitle}}
+            </h1>
+          </div>
+
+          {% set months = {
+            "1": "January",
+            "2": "February",
+            "3": "March",
+            "4": "April",
+            "5": "May",
+            "6": "June",
+            "7": "July",
+            "8": "August",
+            "9": "September",
+            "10": "October",
+            "11": "November",
+            "12": "December"
+          } %}
+
+          <p class="govuk-body">
+            You have set a reminder to review your arrangement on <strong>{{ data['reminder-day'] }} {{ months[data['reminder-month']] }} {{ data['reminder-year'] }}</strong>. We will send this reminder to <strong>{{ data['email'] }}</strong>.
+          </p>
+
+          <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Download your arrangement (saves as PDF)</a></p>        
+
+          <h2 class="govuk-heading-m">Save your arrangement online</h2>
+
+          <p class="govuk-body">
+            You can still create an account to save this arrangement.
+          </p>          
+
+          <p class="govuk-body">Creating an account lets you:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>view your arrangement online</li>
+            <li>update it if things change</li>
+            <li>download it again</li>
+            <li>set reminders to review it</li>
+          </ul>
+
+          <p class="govuk-body"><a href="save-online" class="govuk-link govuk-link--no-visited-state">Create an account and save this arrangement</a></p>        
+
+          <h2 class="govuk-heading-m">What to do next</h2>
+          <p class="govuk-body">
+            If you need advice about how to move forward, you can learn about <a href="#" class="govuk-link govuk-link--no-visited-state">planning your child maintenance conversation (opens in a new tab)</a>. 
+          </p>
+
+          <p class="govuk-body">
+            If you cannot talk to the other parent, you can use your financial arrangement in mediation or with other third-party support.
+          </p>
+
+          <p class="govuk-body">
+            You should <a href="#" class="govuk-link govuk-link--no-visited-state">review your arrangement as your situation changes (opens in a new tab)</a>. 
+          </p>
+          
+          <p class="govuk-body">
+            Browse more resources and guidance on the <a href="../home" class="govuk-link govuk-link--no-visited-state">single parent support hub (opens in a new tab)</a>. 
+          </p>
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

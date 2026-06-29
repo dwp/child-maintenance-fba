@@ -22,10 +22,11 @@
       "href": "javascript:history.back()"
       }) 
     }}
+
     <main class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <form method="post" novalidate>
+          <form action="type-of-arrangement" method="post">
 
           <div class="govuk-form-group">
             <h1 class="govuk-label-wrapper">
@@ -49,7 +50,7 @@
 
             {{ govukInput({
               label: {
-                text: "Other parent's name"
+                text: "Name of other parent"
               },
               classes: "govuk-input--width-20",
               id: "other-name",

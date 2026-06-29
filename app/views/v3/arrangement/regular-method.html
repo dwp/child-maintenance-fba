@@ -30,7 +30,7 @@
     <main class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <form method="post" novalidate>
+          <form action="regular-who-pays" method="post">
 
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" aria-describedby="regular-method-hint">
@@ -39,34 +39,46 @@
                   {{pageTitle}}
                 </h1>
               </legend>
-              <div id="regular-method-hint" class="govuk-hint">
-                Select all that apply
-              </div>
-              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="regular-method" name="regularMethod" type="checkbox" value="direct-debit">
-                  <label class="govuk-label govuk-checkboxes__label" for="waste">
+
+              <div class="govuk-radios" data-module="govuk-radios">
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="regular-method" name="regularMethod" type="radio" value="direct-debit" aria-describedby="regular-method-item-hint-1">
+                  <label class="govuk-label govuk-radios__label" for="regular-method">
                     Direct debit
                   </label>
+                  <div id="regular-method-item-hint-1" class="govuk-hint govuk-radios__hint">
+                    One parent's bank pulls money from the other's on a schedule
+                  </div>
                 </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="regular-method-2" name="regularMethod" type="checkbox" value="standing-order">
-                  <label class="govuk-label govuk-checkboxes__label" for="regular-method-2">
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="regular-method-2" name="regularMethod" type="radio" value="standing-order" aria-describedby="regular-method-item-hint-2">
+                  <label class="govuk-label govuk-radios__label" for="regular-method-2">
                     Standing order
                   </label>
+                  <div id="regular-method-item-hint-2" class="govuk-hint govuk-radios__hint">
+                    One parent's bank pays money on a regular schedule
+                  </div>
                 </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="regular-method-3" name="regularMethod" type="checkbox" value="bank-transfer">
-                  <label class="govuk-label govuk-checkboxes__label" for="regular-method-3">
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="regular-method-3" name="regularMethod" type="radio" value="bank-transfer" aria-describedby="regular-method-item-hint-3">
+                  <label class="govuk-label govuk-radios__label" for="regular-method-3">
                     Bank transfer
                   </label>
+                  <div id="regular-method-item-hint-3" class="govuk-hint govuk-radios__hint">
+                    One parent makes a manual payment
+                  </div>
                 </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="regular-method-4" name="regularMethod" type="checkbox" value="cash">
-                  <label class="govuk-label govuk-checkboxes__label" for="regular-method-4">
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="regular-method-4" name="regularMethod" type="radio" value="cash">
+                  <label class="govuk-label govuk-radios__label" for="regular-method-4">
                     Cash payment
                   </label>
-                </div>                
+                </div>
+
               </div>
             </fieldset>
           </div>

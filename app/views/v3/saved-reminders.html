@@ -1,0 +1,103 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set child4 = (data['child4Name'] or 'Child 4') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Your reminders" %}
+
+{% set monthLabels = {
+  "1": "January",
+  "2": "February",
+  "3": "March",
+  "4": "April",
+  "5": "May",
+  "6": "June",
+  "7": "July",
+  "8": "August",
+  "9": "September",
+  "10": "October",
+  "11": "November",
+  "12": "December"
+} %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="saved-reminders">Reminders</a>
+      </li>
+    </ol>
+  </nav>
+    
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <dl class="govuk-summary-list">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Reminder 1
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              {% if data['review-type'] and 'start-date' in data['review-type'] %}
+                Every {{ data['review-frequency'] }} year{% if data['review-frequency'] != '1' %}s{% endif %} from 6 July 2026
+              {% else %}
+                Not set
+              {% endif %}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="set-review-reminders.html">Change</a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Reminder 2
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              {% if data['review-type'] and 'recurring-date' in data['review-type'] %}
+                Every year on {{ data['review-day'] }} {{ monthLabels[data['review-month']] }}
+              {% else %}
+                Not set
+              {% endif %}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="set-review-reminders.html">Change</a>
+            </dd>
+          </div>
+
+          </dl>
+
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Turn off reminders</a>
+            </li>                      
+          </ul>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

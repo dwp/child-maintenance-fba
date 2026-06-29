@@ -7,6 +7,8 @@
 {% set child1 = (data['child1Name'] or 'Child 1') %}
 {% set child2 = (data['child2Name'] or 'Child 2') %}
 {% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set child4 = (data['child4Name'] or 'Child 4') %}
+
 
 {% set serviceName = "Single parent support hub" %}
 {% if data['childAmount'] > 1 %}
@@ -22,10 +24,11 @@
       "href": "javascript:history.back()"
       }) 
     }}
+
     <main class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <form action="parent-name" method="post" novalidate>
+          <form action="parent-name" method="post">
 
           <div class="govuk-form-group">
             <h1 class="govuk-label-wrapper">
@@ -68,6 +71,17 @@
                 name: "child3Name"
               }) }}
             {% endif %}
+
+            {% if data['childAmount'] > 3 %}
+              {{ govukInput({
+                label: {
+                  text: "Name of Child 4"
+                },
+                classes: "govuk-input--width-20",
+                id: "child-4-name",
+                name: "child4Name"
+              }) }}
+            {% endif %}            
 
           </div>
 

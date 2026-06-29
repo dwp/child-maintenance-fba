@@ -1,0 +1,125 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set child4 = (data['child4Name'] or 'Child 4') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Set review reminders" %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            {{pageTitle}}
+          </h1>
+          <p class="govuk-body">
+            You started your arrangement on <strong>6 July 2026</strong>.
+          </p>
+          <p class="govuk-body">
+            Tell us when you want to review your financial arrangement. We will send you a reminder to the email address you gave us.
+          </p>      
+
+          <form action="saved-reminders" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  When do you want to review your arrangement?
+                </legend>
+                <div id="reminder-hint" class="govuk-hint">
+                  Select all that apply
+                </div>
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="review-start-date" name="review-type" type="checkbox" value="start-date" data-aria-controls="conditional-review-start-date">
+                    <label class="govuk-label govuk-checkboxes__label" for="review-start-date">
+                      Review at regular intervals
+                    </label>
+                    <div id="review-start-date-hint" class="govuk-hint govuk-checkboxes__hint">
+                      For example, every year or every 2 years since the start date
+                    </div>
+                  </div>
+
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-review-start-date">
+                    <div class="govuk-form-group">
+                      <select class="govuk-select" id="review-frequency" name="review-frequency">
+                        <option value="1" selected>Every year</option>
+                        <option value="2">Every 2 years</option>
+                        <option value="3">Every 3 years</option>
+                        <option value="4">Every 4 years</option>
+                        <option value="5">Every 5 years</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="reminder-schedule-2" name="review-type" type="checkbox" value="recurring-date" data-aria-controls="conditional-reminder-schedule-2">
+                    <label class="govuk-label govuk-checkboxes__label" for="reminder-schedule-2">
+                      Review on the same date every year
+                    </label>
+                    <div id="reminder-schedule-2-hint" class="govuk-hint govuk-checkboxes__hint">
+                      For example, the first day of school or your child's birthday
+                    </div>
+                  </div>
+
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-reminder-schedule-2">
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" role="group" aria-describedby="review-date-hint">
+
+                        <div class="govuk-date-input" id="review-date">
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="review-day">
+                                Day
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="review-day" name="review-day" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="review-month">
+                                Month
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="review-month" name="review-month" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                        </div>
+
+                      </fieldset>
+                    </div>
+                  </div>
+
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>    
+  </div>
+
+{% endblock %}

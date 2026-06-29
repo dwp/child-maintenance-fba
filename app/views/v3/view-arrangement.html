@@ -1,7 +1,7 @@
 {% extends "layouts/main-v2.html" %}
 
 {% block pageTitle %}
-  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %}
@@ -11,104 +11,30 @@
 {% set parentName = (data['parentName'] or 'Parent 1') %}
 {% set otherName = (data['otherName'] or 'Parent 2') %}
 
-{% set costLabels = {
-  "food-equal": "We will share costs equally",
-  "food-parent1": parentName + " will pay for most",
-  "food-parent2": otherName + " will pay for most",
-  "food-parent1-all": parentName + " will pay for all",
-  "food-parent2-all": otherName + " will pay for all",
-
-  "clothing-equal": "We will share costs equally",
-  "clothing-parent1": parentName + " will pay for most",
-  "clothing-parent2": otherName + " will pay for most",
-  "clothing-parent1-all": parentName + " will pay for all",
-  "clothing-parent2-all": otherName + " will pay for all",
-
-  "education-equal": "We will share costs equally",
-  "education-parent1": parentName + " will pay for most",
-  "education-parent2": otherName + " will pay for most",
-  "education-parent1-all": parentName + " will pay for all",
-  "education-parent2-all": otherName + " will pay for all",
-
-  "baby-equal": "We will share costs equally",
-  "baby-parent1": parentName + " will pay for most",
-  "baby-parent2": otherName + " will pay for most",
-  "baby-parent1-all": parentName + " will pay for all",
-  "baby-parent2-all": otherName + " will pay for all",
-
-  "childcare-equal": "We will share costs equally",
-  "childcare-parent1": parentName + " will pay for most",
-  "childcare-parent2": otherName + " will pay for most",
-  "childcare-parent1-all": parentName + " will pay for all",
-  "childcare-parent2-all": otherName + " will pay for all",
-
-  "activities-equal": "We will share costs equally",
-  "activities-parent1": parentName + " will pay for most",
-  "activities-parent2": otherName + " will pay for most",
-  "activities-parent1-all": parentName + " will pay for all",
-  "activities-parent2-all": otherName + " will pay for all",
-
-  "entertainment-equal": "We will share costs equally",
-  "entertainment-parent1": parentName + " will pay for most",
-  "entertainment-parent2": otherName + " will pay for most",
-  "entertainment-parent1-all": parentName + " will pay for all",
-  "entertainment-parent2-all": otherName + " will pay for all",
-
-  "technology-equal": "We will share costs equally",
-  "technology-parent1": parentName + " will pay for most",
-  "technology-parent2": otherName + " will pay for most",
-  "technology-parent1-all": parentName + " will pay for all",
-  "technology-parent2-all": otherName + " will pay for all",
-
-  "travel-equal": "We will share costs equally",
-  "travel-parent1": parentName + " will pay for most",
-  "travel-parent2": otherName + " will pay for most",
-  "travel-parent1-all": parentName + " will pay for all",
-  "travel-parent2-all": otherName + " will pay for all",
-
-  "health-equal": "We will share costs equally",
-  "health-parent1": parentName + " will pay for most",
-  "health-parent2": otherName + " will pay for most",
-  "health-parent1-all": parentName + " will pay for all",
-  "health-parent2-all": otherName + " will pay for all",
-
-  "household-equal": "We will share costs equally",
-  "household-parent1": parentName + " will pay for most",
-  "household-parent2": otherName + " will pay for most",
-  "household-parent1-all": parentName + " will pay for all",
-  "household-parent2-all": otherName + " will pay for all",
-
-  "savings-equal": "We will share costs equally",
-  "savings-parent1": parentName + " will pay for most",
-  "savings-parent2": otherName + " will pay for most",
-  "savings-parent1-all": parentName + " will pay for all",
-  "savings-parent2-all": otherName + " will pay for all",
-
-  "other-equal": "We will share costs equally",
-  "other-parent1": parentName + " will pay for most",
-  "other-parent2": otherName + " will pay for most",
-  "other-parent1-all": parentName + " will pay for all",
-  "other-parent2-all": otherName + " will pay for all"
-} %}
-
 {% set serviceName = "Single parent support hub" %}
-{% set pageTitle = "Check your answers" %}
+{% set pageTitle = "Your arrangement" %}
 
 {% block content %}
+
   <div class="govuk-width-container">
+
     {{ govukBackLink({
       "text": "Back",
       "href": "javascript:history.back()"
       }) 
     }}
-
+    
     <main class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <form action="save-online" method="post">
 
           <h1 class="govuk-heading-l">{{pageTitle}}</h1>
-          
+
+          {{ govukButton({
+            text: "Review arrangement",
+            href: "#"
+          }) }}          
+
           <h2 class="govuk-heading-m">Children and parents</h2>
 
           <dl class="govuk-summary-list">
@@ -126,9 +52,6 @@
                 {{ child4 }}
                 {% endif %}
               </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
-              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -137,9 +60,6 @@
               <dd class="govuk-summary-list__value">
                 {{parentName}}<br>
                 {{otherName}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
               </dd>
             </div>
           </dl>
@@ -162,9 +82,6 @@
                 } %}
                 {{ labels['arrangement-type'][data['arrangement-type']] }}
               </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
-              </dd>
             </div>
             {% if data['arrangement-type'] == "regular" or data['arrangement-type'] == "both" %}
             <div class="govuk-summary-list__row">
@@ -173,9 +90,6 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 £{{ data['regularAmount'] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -218,9 +132,6 @@
                 } %}
                 Paid {{ data['regularFrequency'] }} on the {{ dayLabels[data['monthly-date']] }}
               </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
-              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -237,9 +148,6 @@
                 } %}
                 {{ labels['payment-method'][data['regularMethod']] }}
               </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
-              </dd>
             </div>   
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -254,9 +162,6 @@
                   }
                 } %}
                 {{ labels['who-will-pay'][data['whoWillPay']] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
               </dd>
             </div>
           {% endif %}
@@ -292,9 +197,6 @@
                       {{ sharedCostLabels[item] }}{% if not loop.last %}, {% endif %}
                     {% endfor %}
                   {% endif %}
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
@@ -381,10 +283,7 @@
                   <li>{{ data['other-custom'] or 'Other' }}: {{ costLabels[data['other-option']] }}</li>
                   {% endif %}
                 </ul>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
-              </dd>              
+              </dd>           
             </div>
 
             {% endif %}
@@ -398,9 +297,6 @@
               <dd class="govuk-summary-list__value">
                 {{ data['fa-description'] }}
               </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
-              </dd>
             </div>
           {% endif %}
 
@@ -412,21 +308,26 @@
               <dd class="govuk-summary-list__value">
                 {{ data['anythingElse'] }}
               </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
-              </dd>
             </div>
           {% endif %}          
 
-          </dl>            
+          </dl>
 
-          {{ govukButton({
-            text: "Continue"
-          }) }}
 
-          </form>
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Download (saves as PDF)</a>
+            </li>   
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Delete arrangement</a>
+            </li>                         
+          </ul>
+
+          <hr class="govuk-section-break govuk-section-break--l">
+
         </div>
       </div>
     </main>
   </div>
+
 {% endblock %}

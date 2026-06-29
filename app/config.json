@@ -1,5 +1,5 @@
 {
-  "serviceName": "Separated Families Support Hub",
+  "serviceName": "Single parent support hub",
   "plugins": {
     "govuk-frontend": {
       "rebrand": true

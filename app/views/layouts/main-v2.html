@@ -10,10 +10,23 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
     {{ govukHeader() }}
     {% if includeServiceNav != "false" %}
+        {% if data['arrangementSaved'] == 'yes' %}
+        {{ govukServiceNavigation({
+        serviceName: serviceName,
+        serviceUrl: version + "/home",
+        navigation: [
+            {
+            href: version + "/index",
+            text: "Sign out"
+            }
+        ]
+        })}}
+    {% else %}
     {{ govukServiceNavigation({
         serviceName: serviceName,
         serviceUrl: version + "/home"
-    })}}
+    })}}    
+    {% endif %}
     {% endif %}
 
 {% endblock %}

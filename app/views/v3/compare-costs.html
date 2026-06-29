@@ -1,0 +1,95 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Compare costs" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="compare-costs">Compare costs</a>
+      </li>
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="compare-costs-calculation" method="post">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            Child maintenance does not automatically adjust with inflation. After a certain amount of time, within your own private arrangement, you may want to consider changing payment amounts to meet childcare costs.
+          </p>
+
+          <p class="govuk-body">
+            You can use our inflation calculator to check how much your current maintenance payment would rise with inflation since you set up your arrangement.
+          </p>
+
+          <hr class="govuk-section-break govuk-section-break--m">
+        
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Inflation calculator
+              </legend>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="compare-amount">
+                  Amount
+                </label>
+                <div class="govuk-input__wrapper">
+                  <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                  <input class="govuk-input govuk-input--width-5" id="compare-amount" name="compare-amount" type="text" spellcheck="false">
+                </div>
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="compare-since">
+                  Paid since
+                </label>
+                <select class="govuk-select govuk-!-width-5" id="compare-since" name="compare-since">
+                  <option>2006</option>
+                  <option>2007</option>
+                  <option>2008</option>
+                  <option>2009</option>
+                  <option>2010</option>
+                  <option>2011</option>
+                  <option>2012</option>
+                  <option>2013</option>
+                  <option>2014</option>
+                  <option>2015</option>
+                  <option>2016</option>
+                  <option>2017</option>
+                  <option>2018</option>
+                  <option>2019</option>
+                  <option selected>2020</option>
+                  <option>2021</option>
+                  <option>2022</option>
+                  <option>2023</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                  <option>2026</option>
+                </select>
+              </div>
+            </fieldset>
+          </div>
+
+          {{ govukButton({
+            text: "Calculate",
+            href: "compare-costs-calculation"
+          }) }}
+        </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

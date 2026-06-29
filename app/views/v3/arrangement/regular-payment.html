@@ -29,7 +29,7 @@
             This is the total amount that one parent agrees to pay to the other to help raise their children.
           </p>
 
-          <form method="post" novalidate>
+          <form action="regular-method" method="post">
 
             <div class="govuk-form-group">
               <h1 class="govuk-label-wrapper">
@@ -45,30 +45,75 @@
 
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
-                  <h1 class="govuk-label-wrapper">
-                    <label class="govuk-label govuk-label--m" for="regular-frequency">
-                      How often?
-                    </label>
-                  </h1>
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--m" for="regular-frequency">
+                    How often?
+                  </label>
+                </h1>
                 <div class="govuk-radios" data-module="govuk-radios">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="regular-frequency" name="regularFrequency" type="radio" value="weekly">
+                    <input class="govuk-radios__input" id="regular-frequency" name="regularFrequency" type="radio" value="weekly" data-aria-controls="conditional-frequency">
                     <label class="govuk-label govuk-radios__label" for="regular-frequency">
                       Weekly
                     </label>
                   </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-frequency">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="weekly-date">
+                        Day of the week
+                      </label>
+                      <select class="govuk-select" id="weekly-date" name="weekly-date">
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                      </select>
+                    </div>
+                  </div>
+
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="regular-frequency-3" name="regularFrequency" type="radio" value="fortnightly">
-                    <label class="govuk-label govuk-radios__label" for="regular-frequency-3">
+                    <input class="govuk-radios__input" id="regular-frequency-2" name="regularFrequency" type="radio" value="fortnightly" data-aria-controls="conditional-frequency-2">
+                    <label class="govuk-label govuk-radios__label" for="regular-frequency-2">
                       Fortnightly
                     </label>
-                  </div>                  
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-frequency-2">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="fortnightly-date">
+                        Day of the week
+                      </label>
+                      <select class="govuk-select" id="fortnightly-date" name="fortnightly-date">
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                      </select>
+                    </div>
+                  </div>         
+                  
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="regular-frequency-2" name="regularFrequency" type="radio" value="monthly">
-                    <label class="govuk-label govuk-radios__label" for="regular-frequency-2">
+                    <input class="govuk-radios__input" id="regular-frequency-3" name="regularFrequency" type="radio" value="monthly" data-aria-controls="conditional-frequency-3">
+                    <label class="govuk-label govuk-radios__label" for="regular-frequency-3">
                       Monthly
                     </label>
                   </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-frequency-3">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="monthly-date">
+                        Day of the month
+                      </label>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monthly-date" name="monthly-date" type="text" inputmode="numeric">
+                        </div>
+                    </div>
+                  </div>                           
                 </div>
               </fieldset>
             </div>

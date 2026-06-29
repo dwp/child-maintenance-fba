@@ -4,12 +4,20 @@
   {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set child4 = (data['child4Name'] or 'Child 4') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
 {% set serviceName = "Single parent support hub" %}
 {% set pageTitle = "Single parent support hub" %}
 
 {% block content %}
 
   <div class="govuk-width-container">
+
     <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
       <ol class="govuk-breadcrumbs__list">
         <li class="govuk-breadcrumbs__list-item">
@@ -18,6 +26,247 @@
       </ol>
     </nav>    
     <main class="govuk-main-wrapper">
+    {% if data['arrangementSaved'] == 'yes' %}
+    <!-- Show saved arrangement home page -->
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{parentName}}'s arrangement</h1>
+          
+          <p class="govuk-body">
+            Your financial arrangement is for
+            {{ data['child1Name'] }}
+            {% if data['childAmount'] == 2 %}
+              and {{ data['child2Name'] }}
+            {% elif data['childAmount'] == 3 %}
+              , {{ data['child2Name'] }} and {{ data['child3Name'] }}
+            {% elif data['childAmount'] == 4 %}
+              , {{ data['child2Name'] }}, {{ data['child3Name'] }} and {{ data['child4Name'] }}
+            {% endif %}
+          </p>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Start date
+              </dt>
+              <dd class="govuk-summary-list__value">
+                6 July 2026
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Last review date
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Not reviewed yet
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Shared with
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{otherName}}
+              </dd>
+            </div>
+          </dl>
+
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="view-arrangement">View arrangement</a>
+            </li>
+            {% if data['review-type'] %}
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="saved-reminders">View reminders</a>
+            </li>
+            {% else %}
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="set-review-reminders">Set review reminders</a>
+            </li>
+            {% endif %}
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Download arrangement (saves as PDF)</a>
+            </li>            
+          </ul>
+
+          <hr class="govuk-section-break govuk-section-break--l">
+
+        </div>
+      </div>
+
+      <!-- REVIEW SECTION -->
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h2 class="govuk-heading-m">Review your arrangement</h2>
+
+          <p class="govuk-body">
+            Keeping your financial arrangement up to date is important for your child's benefit.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="govuk-grid-row fba-card-row">
+        <div class="govuk-grid-column-one-third fba-card-wrapper">
+          <div class="fba-card">
+            <div class="fba-card__content">
+              <h3 class="govuk-heading-s fba-card__heading">
+                <a href="decide-when-to-review" class="govuk-link fba-card__link">
+                  Decide when to review your arrangement
+                </a>
+              </h3>
+              <p class="govuk-body">
+                See examples for when to review and set reminders.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third fba-card-wrapper">
+          <div class="fba-card">
+            <div class="fba-card__content">
+              <h3 class="govuk-heading-s fba-card__heading">
+                <a href="compare-costs" class="govuk-link fba-card__link">
+                  Compare costs
+                </a>
+              </h3>
+              <p class="govuk-body">
+                See how average costs have changed since your arrangement started.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINANCIAL TOOLS SECTION -->
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h2 class="govuk-heading-m">Support your child financially</h2>
+
+          <p class="govuk-body">
+            Understand how to plan and manage financial support for your child.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="govuk-grid-row fba-card-row">
+        <div class="govuk-grid-column-one-third fba-card-wrapper">
+          <div class="fba-card">
+            <div class="fba-card__content">
+              <h3 class="govuk-heading-s fba-card__heading">
+                <a href="work-out-what-to-pay" class="govuk-link fba-card__link">
+                  Work out payments for your child
+                </a>
+              </h3>
+              <p class="govuk-body">
+                Use our tools to work out how much could be paid to support your child.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third fba-card-wrapper">
+          <div class="fba-card">
+            <div class="fba-card__content">
+              <h3 class="govuk-heading-s fba-card__heading">
+                <a href="planning-private-arrangement" class="govuk-link fba-card__link">
+                  Make your own arrangement
+                </a>
+              </h3>
+              <p class="govuk-body">
+                If possible, you can agree how to share costs with the other parent and record your agreement.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third fba-card-wrapper">
+          <div class="fba-card">
+            <div class="fba-card__content">
+              <h3 class="govuk-heading-s fba-card__heading">
+                <a href="child-maintenance-service" class="govuk-link fba-card__link">
+                  Use the Child Maintenance Service
+                </a>
+              </h3>
+              <p class="govuk-body">
+                If you need support managing payments, you can apply to the Child Maintenance Service online instead.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUPPORT SECTION -->
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h2 class="govuk-heading-m">Find help and support</h2>
+
+          <p class="govuk-body">
+            Get advice and support on separation, money and your wellbeing.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="govuk-grid-row fba-card-row">
+        <div class="govuk-grid-column-one-third fba-card-wrapper">
+          <div class="fba-card">
+            <div class="fba-card__content">
+              <h3 class="govuk-heading-s fba-card__heading">
+                <a href="separation-advice" class="govuk-link fba-card__link">
+                  Get advice on separation
+                </a>
+              </h3>
+              <p class="govuk-body">
+                Explore resources from recommended organisations relating to separation, mediation and more.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third fba-card-wrapper">
+          <div class="fba-card">
+            <div class="fba-card__content">
+              <h3 class="govuk-heading-s fba-card__heading">
+                <a href="financial-advice" class="govuk-link fba-card__link">
+                  Get financial advice
+                </a>
+              </h3>
+              <p class="govuk-body">
+                Explore resources that can help you with benefits, budgeting and debt management.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third fba-card-wrapper">
+          <div class="fba-card">
+            <div class="fba-card__content">
+              <h3 class="govuk-heading-s fba-card__heading">
+                <a href="support" class="govuk-link fba-card__link">
+                  Get additional support
+                </a>
+              </h3>
+              <p class="govuk-body">
+                Explore resources relating to single parent support and wellbeing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>     
+
+    {% else %}
+    <!-- Show empty state / start page -->
+
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -122,7 +371,7 @@
           <div class="fba-card">
             <div class="fba-card__content">
               <h3 class="govuk-heading-s fba-card__heading">
-                <a href="#" class="govuk-link fba-card__link">
+                <a href="decide-when-to-review" class="govuk-link fba-card__link">
                   Decide when to review your arrangement
                 </a>
               </h3>
@@ -137,7 +386,7 @@
           <div class="fba-card">
             <div class="fba-card__content">
               <h3 class="govuk-heading-s fba-card__heading">
-                <a href="planning-private-arrangement" class="govuk-link fba-card__link">
+                <a href="compare-costs" class="govuk-link fba-card__link">
                   Compare costs
                 </a>
               </h3>
@@ -209,6 +458,8 @@
           </div>
         </div>
       </div>
+
+    {% endif %}
     </main>
   </div>
 
