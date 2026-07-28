@@ -1,0 +1,131 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set pageTitle = "Regular payment amount" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            This is the total amount that one parent agrees to pay to the other to help raise their children.
+          </p>
+
+          <form action="regular-method" method="post">
+
+            <div class="govuk-form-group">
+              <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="payment-amount">
+                  How much will be paid?
+                </label>
+              </h1>
+              <div class="govuk-input__wrapper">
+                <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                <input class="govuk-input govuk-input--width-5" id="regular-amount" name="regularAmount" type="text" spellcheck="false">
+              </div>
+            </div>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--m" for="regular-frequency">
+                    How often?
+                  </label>
+                </h1>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="regular-frequency" name="regularFrequency" type="radio" value="weekly" data-aria-controls="conditional-frequency">
+                    <label class="govuk-label govuk-radios__label" for="regular-frequency">
+                      Weekly
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-frequency">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="weekly-date">
+                        Day of the week
+                      </label>
+                      <select class="govuk-select" id="weekly-date" name="weekly-date">
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="regular-frequency-2" name="regularFrequency" type="radio" value="fortnightly" data-aria-controls="conditional-frequency-2">
+                    <label class="govuk-label govuk-radios__label" for="regular-frequency-2">
+                      Fortnightly
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-frequency-2">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="fortnightly-date">
+                        Day of the week
+                      </label>
+                      <select class="govuk-select" id="fortnightly-date" name="fortnightly-date">
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                      </select>
+                    </div>
+                  </div>         
+                  
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="regular-frequency-3" name="regularFrequency" type="radio" value="monthly" data-aria-controls="conditional-frequency-3">
+                    <label class="govuk-label govuk-radios__label" for="regular-frequency-3">
+                      Monthly
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-frequency-3">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="monthly-date">
+                        Day of the month
+                      </label>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monthly-date" name="monthly-date" type="text" inputmode="numeric">
+                        </div>
+                    </div>
+                  </div>                           
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

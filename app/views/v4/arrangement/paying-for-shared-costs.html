@@ -1,0 +1,124 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set sharedCostLabels = {
+  "food": "Food",
+  "clothing": "Clothing",
+  "education": "Education",
+  "baby": "Baby care",
+  "childcare": "Childcare",
+  "activities": "Activities",
+  "entertainment": "Entertainment",
+  "technology": "Technology",
+  "travel": "Travel and transport",
+  "health": "Health and personal care",
+  "household": "Household bills",
+  "savings": "Savings and allowances",
+  "other": "Other"
+} %}
+
+{% set selectedCosts = data['shared-cost'] %}
+
+{% set pageTitle = "How do you want to pay for these shared costs?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="varied-check" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--l" for="who-will-pay">
+                    {{pageTitle}}
+                  </label>
+                </h1>
+
+                <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Shared costs
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {% if selectedCosts %}
+                        {% for item in selectedCosts %}
+                          {{ sharedCostLabels[item] }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </dd>
+                  </div>
+                </dl>
+
+                <p class="govuk-body">We will ask about details in the next steps.</p>          
+
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="shared-cost-payment" name="shared-cost-payment" type="radio" value="equal">
+                    <label class="govuk-label govuk-radios__label" for="shared-cost-payment">
+                      We will share these costs equally
+                    </label>
+                  </div>               
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="shared-cost-payment-2" name="shared-cost-payment" type="radio" value="uneven" data-aria-controls="conditional-shared-cost-payment-2">
+                    <label class="govuk-label govuk-radios__label" for="shared-cost-payment-2">
+                      We will share these costs unevenly
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-shared-cost-payment-2">
+                    <div class="govuk-form-group">
+                      <select class="govuk-select" id="uneven-option" name="uneven-option">
+                        <option value="choose" selected>Choose how you will pay</option>
+                        <option value="parent-1">{{parentName}} will pay for most</option>
+                        <option value="parent-2">{{otherName}} will pay for most</option>
+                      </select>                      
+                    </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="shared-cost-payment-3" name="shared-cost-payment" type="radio" value="one-parent" data-aria-controls="conditional-shared-cost-payment-3">
+                    <label class="govuk-label govuk-radios__label" for="shared-cost-payment-3">
+                      One parent will pay for all of these costs
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-shared-cost-payment-3">
+                    <div class="govuk-form-group">
+                      <select class="govuk-select" id="one-parent-option" name="one-parent-option">
+                        <option value="choose" selected>Choose who will pay</option>
+                        <option value="parent-1">{{parentName}}</option>
+                        <option value="parent-2">{{otherName}}</option>
+                      </select>                                 
+                    </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="shared-cost-payment-4" name="shared-cost-payment" type="radio" value="varied">
+                    <label class="govuk-label govuk-radios__label" for="shared-cost-payment-4">
+                      How we pay for each cost will vary
+                    </label>
+                  </div>                     
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

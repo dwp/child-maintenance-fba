@@ -1,0 +1,97 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  Would you like anyone else to be there?
+{% endset %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      })
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="add-details" method="post">
+
+            <div class="govuk-form-group">
+              <h1 class="govuk-heading-l">
+                {{ pageTitle }}
+              </h1>
+            </div>
+
+            <p class="govuk-body">
+              You could ask a friend or family member to be there during your conversation. Some people find this helpful, if it is a person that both parents trust and who can stay calm and neutral.
+            </p>
+            
+            <p class="govuk-body">
+              You could also <a href="#" class="govuk-link">ask a professional family mediator to help you (opens in a new tab)</a>.
+            </p>
+
+            <p class="govuk-body">
+              If you want someone else to be with you, make sure you tell the other parent so they know what to expect.
+            </p>
+
+            <div class="govuk-form-group">
+
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-visually-hidden">
+                  Would you like anyone else to be there?
+                </legend>
+
+                <div class="govuk-radios" data-module="govuk-radios">
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="anyone-else" name="anyone-else" type="radio" value="yes" data-aria-controls="conditional-anyone-else">
+                    <label class="govuk-label govuk-radios__label" for="anyone-else">
+                      Yes
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-anyone-else">
+                    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="who-else">
+                          Who do you want to be there?
+                        </label>
+                        <textarea class="govuk-textarea govuk-js-character-count" id="who-else" name="who-else" rows="5" aria-describedby="who-else-info"></textarea>
+                        <div id="who-else-info" class="govuk-hint govuk-character-count__message">
+                          You can enter up to 200 characters
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="anyone-else-2" name="anyone-else" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="anyone-else-2">
+                      No
+                    </label>
+                  </div>
+
+                </div>
+
+              </fieldset>
+
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

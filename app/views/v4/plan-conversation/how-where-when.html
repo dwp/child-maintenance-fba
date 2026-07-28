@@ -1,0 +1,115 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  How, where and when do you want to talk?
+{% endset %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      })
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="anyone-else" method="post">
+
+            <div class="govuk-form-group">
+              <h1 class="govuk-heading-l">
+                {{pageTitle}}
+              </h1>
+
+              <p class="govuk-body">
+                Think about somewhere to meet where you will both feel able to talk to each other. Depending on where you feel comfortable, you could meet at:
+              </p>
+
+              <ul class="govuk-list govuk-list--bullet">
+                <li>one parent's home</li>
+                <li>a friend or family member's home</li>
+                <li>a public place (for example, a cafe or library)</li>
+              </ul>
+
+              <p class="govuk-body">
+                If meeting face to face will not work, think about other forms of communication (for example, text, email or telephone).
+              </p>
+
+              <p class="govuk-body">
+                Try to agree on a time when you can talk openly, without children around. Leave yourself plenty of time so you are not under pressure.
+              </p>
+            </div>
+
+            {{ govukRadios({
+              name: "contact-method",
+              fieldset: {
+                legend: {
+                  text: "How do you want to talk?",
+                  classes: "govuk-fieldset__legend--m"
+                }
+              },
+              items: [
+                {
+                  value: "face-to-face",
+                  text: "face to face"
+                },
+                {
+                  value: "text",
+                  text: "by text"
+                },
+                {
+                  value: "email",
+                  text: "by email"
+                },
+                {
+                  value: "telephone",
+                  text: "by telephone"
+                }
+              ]
+            }) }}
+
+            <div class="govuk-form-group">
+              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+
+                <label class="govuk-label govuk-label--m" for="talk-location">
+                  Where do you want to talk? (optional)
+                </label>
+
+                <textarea class="govuk-textarea govuk-js-character-count" id="talk-location" name="talk-location" rows="5" aria-describedby="talk-location-info"></textarea>
+
+                <div id="talk-location-info" class="govuk-hint govuk-character-count__message">
+                  You can enter up to 200 characters
+                </div>
+
+              </div>
+            </div>
+
+            {{ govukDateInput({
+              id: "talk-date",
+              namePrefix: "talk-date",
+              fieldset: {
+                legend: {
+                  text: "When do you want to talk?",
+                  classes: "govuk-fieldset__legend--m"
+                }
+              }
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

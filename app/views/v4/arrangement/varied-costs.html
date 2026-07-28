@@ -1,0 +1,239 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set pageTitle = "How will you share each cost?" %}
+
+{% block content %}
+<div class="govuk-width-container">
+  {{ govukBackLink({
+    "text": "Back",
+    "href": "javascript:history.back()"
+    }) 
+  }}
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="anything-else" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--l" for="who-will-pay">
+                  {{pageTitle}}
+                </label>
+              </h1>
+
+              <p class="govuk-body">Select how you will pay for each cost. You can describe exact payment amounts in the next steps.</p>          
+
+              {% if 'food' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="food-option">Food</label>
+                <select class="govuk-select" id="food-option" name="food-option">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="food-equal">We will share costs equally</option>
+                  <option value="food-parent1">{{parentName}} will pay for most</option>
+                  <option value="food-parent2">{{otherName}} will pay for most</option>
+                  <option value="food-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="food-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'clothing' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="clothing-option">Clothing</label>
+                <select class="govuk-select" id="clothing-option" name="clothing-option">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="clothing-equal">We will share costs equally</option>
+                  <option value="clothing-parent1">{{parentName}} will pay for most</option>
+                  <option value="clothing-parent2">{{otherName}} will pay for most</option>
+                  <option value="clothing-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="clothing-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'education' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="education-option">Education</label>
+                <div id="education-hint" class="govuk-hint">including school uniforms, school supplies and trips</div>
+                <select class="govuk-select" id="education-option" name="education-option" aria-describedby="education-hint">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="education-equal">We will share costs equally</option>
+                  <option value="education-parent1">{{parentName}} will pay for most</option>
+                  <option value="education-parent2">{{otherName}} will pay for most</option>
+                  <option value="education-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="education-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'baby' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="baby-option">Baby care</label>
+                <div id="baby-hint" class="govuk-hint">including nappies, prams, car seats and cots</div>
+                <select class="govuk-select" id="baby-option" name="baby-option" aria-describedby="baby-hint">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="baby-equal">We will share costs equally</option>
+                  <option value="baby-parent1">{{parentName}} will pay for most</option>
+                  <option value="baby-parent2">{{otherName}} will pay for most</option>
+                  <option value="baby-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="baby-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'childcare' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="childcare-option">Childcare</label>
+                <div id="childcare-hint" class="govuk-hint">including nursery, after-school care and babysitting</div>
+                <select class="govuk-select" id="childcare-option" name="childcare-option" aria-describedby="childcare-hint">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="childcare-equal">We will share costs equally</option>
+                  <option value="childcare-parent1">{{parentName}} will pay for most</option>
+                  <option value="childcare-parent2">{{otherName}} will pay for most</option>
+                  <option value="childcare-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="childcare-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'activities' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="activities-option">Activities</label>
+                <div id="activities-hint" class="govuk-hint">including clubs, sports and hobbies</div>
+                <select class="govuk-select" id="activities-option" name="activities-option" aria-describedby="activities-hint">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="activities-equal">We will share costs equally</option>
+                  <option value="activities-parent1">{{parentName}} will pay for most</option>
+                  <option value="activities-parent2">{{otherName}} will pay for most</option>
+                  <option value="activities-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="activities-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'entertainment' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="entertainment-option">Entertainment</label>
+                <div id="entertainment-hint" class="govuk-hint">including toys, games and media</div>
+                <select class="govuk-select" id="entertainment-option" name="entertainment-option" aria-describedby="entertainment-hint">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="entertainment-equal">We will share costs equally</option>
+                  <option value="entertainment-parent1">{{parentName}} will pay for most</option>
+                  <option value="entertainment-parent2">{{otherName}} will pay for most</option>
+                  <option value="entertainment-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="entertainment-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'technology' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="technology-option">Technology</label>
+                <div id="technology-hint" class="govuk-hint">including mobile phones and computers</div>
+                <select class="govuk-select" id="technology-option" name="technology-option" aria-describedby="technology-hint">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="technology-equal">We will share costs equally</option>
+                  <option value="technology-parent1">{{parentName}} will pay for most</option>
+                  <option value="technology-parent2">{{otherName}} will pay for most</option>
+                  <option value="technology-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="technology-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'travel' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="travel-and-transport-option">Travel and transport</label>
+                <select class="govuk-select" id="travel-option" name="travel-option">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="travel-equal">We will share costs equally</option>
+                  <option value="travel-parent1">{{parentName}} will pay for most</option>
+                  <option value="travel-parent2">{{otherName}} will pay for most</option>
+                  <option value="travel-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="travel-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'health' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="health-and-personal-care-option">Health and personal care</label>
+                <div id="health-hint" class="govuk-hint">including prescriptions and toiletries</div>
+                <select class="govuk-select" id="health-option" name="health-option" aria-describedby="health-hint">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="health-equal">We will share costs equally</option>
+                  <option value="health-parent1">{{parentName}} will pay for most</option>
+                  <option value="health-parent2">{{otherName}} will pay for most</option>
+                  <option value="health-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="health-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'household' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="household-bills-option">Household bills</label>
+                <div id="household-hint" class="govuk-hint">including rent, mortgage payments and utility bills</div>
+                <select class="govuk-select" id="household-option" name="household-option" aria-describedby="household-hint">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="household-equal">We will share costs equally</option>
+                  <option value="household-parent1">{{parentName}} will pay for most</option>
+                  <option value="household-parent2">{{otherName}} will pay for most</option>
+                  <option value="household-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="household-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% if 'savings' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="savings-option">Savings and allowances</label>
+                <select class="govuk-select" id="savings-option" name="savings-option">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="savings-equal">We will share costs equally</option>
+                  <option value="savings-parent1">{{parentName}} will pay for most</option>
+                  <option value="savings-parent2">{{otherName}} will pay for most</option>
+                  <option value="savings-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="savings-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+              {% set otherLabel = data['other-custom'] if data['other-custom'] else 'Other' %}
+
+              {% if 'other' in data['shared-cost'] %}
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="other-option">{{ otherLabel }}</label>
+                <select class="govuk-select" id="other-option" name="other-option">
+                  <option value="choose" selected>Choose an option</option>
+                  <option value="other-equal">We will share costs equally</option>
+                  <option value="other-parent1">{{parentName}} will pay for most</option>
+                  <option value="other-parent2">{{otherName}} will pay for most</option>
+                  <option value="other-parent1-all">{{parentName}} will pay for all</option>
+                  <option value="other-parent2-all">{{otherName}} will pay for all</option>
+                </select>
+              </div>
+              {% endif %}
+
+            </fieldset>
+          </div>
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

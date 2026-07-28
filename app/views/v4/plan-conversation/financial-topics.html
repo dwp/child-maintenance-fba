@@ -1,0 +1,86 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  What specifically do you want to talk about?
+{% endset %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        <form action="financial-topics-choice" method="post">
+
+          <div class="govuk-form-group">
+            <span class="govuk-caption-l">Creating or changing our financial arrangement</span>
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-heading-l" for="financial-topic">
+                {{pageTitle}}
+              </label>
+            </h1>
+
+            <div id="nationality-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="financial-topic" name="financial-topic" type="checkbox" value="payment-change">
+                <label class="govuk-label govuk-checkboxes__label" for="financial-topic">
+                  A change to the payment amount
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="financial-topic-2" name="financial-topic" type="checkbox" value="payment-choose">
+                <label class="govuk-label govuk-checkboxes__label" for="financial-topic-2">
+                  Choosing a payment amount
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="financial-topic-3" name="financial-topic" type="checkbox" value="payment-when">
+                <label class="govuk-label govuk-checkboxes__label" for="financial-topic-3">
+                  When payments will be made
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="financial-topic-4" name="financial-topic" type="checkbox" value="shared-costs">
+                <label class="govuk-label govuk-checkboxes__label" for="financial-topic-4">
+                  Paying for shared costs for our child
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="financial-topic-5" name="financial-topic" type="checkbox" value="extra">
+                <label class="govuk-label govuk-checkboxes__label" for="financial-topic-5">
+                  Paying for extra or unexpected expenses
+                </label>        
+              </div>                  
+
+            </div>
+          </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

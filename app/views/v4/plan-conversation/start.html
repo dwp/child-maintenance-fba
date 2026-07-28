@@ -1,0 +1,53 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Plan a conversation about your children" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../planning-private-arrangement.html">Private arrangements</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="start">Plan a conversation</a>
+      </li>      
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            Use this guide to help you plan a conversation with your child’s other parent. You could ask the other parent to also use it so you both have a plan when you talk. If you work together, it can have a positive impact on your children.
+          </p>
+
+          <p class="govuk-body">
+            Talk through your plans with a friend or family member to help you think about any other questions.
+          </p>
+
+          <p class="govuk-body">
+            Your plan will not be saved but you can download or print it to use in conversations.
+          </p>
+
+          {{ govukButton({
+            text: "Start now",
+            href: "what-do-you-want-to-talk-about.html",
+            isStartButton: true
+          }) }}
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  What specifically do you want to talk about?
+{% endset %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        <form action="how-where-when" method="post">
+
+          <div class="govuk-form-group">
+            <span class="govuk-caption-l">Creating or changing our care arrangement</span>
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-heading-l" for="care-topic">
+                {{pageTitle}}
+              </label>
+            </h1>
+
+            <div id="nationality-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="care-topic" name="care-topic" type="checkbox" value="day-to-day">
+                <label class="govuk-label govuk-checkboxes__label" for="care-topic">
+                  Day to day arrangements
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="care-topic-2" name="care-topic" type="checkbox" value="living">
+                <label class="govuk-label govuk-checkboxes__label" for="care-topic-2">
+                  Where the children will live
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="care-topic-3" name="care-topic" type="checkbox" value="time">
+                <label class="govuk-label govuk-checkboxes__label" for="care-topic-3">
+                  Time with each parent
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="care-topic-4" name="care-topic" type="checkbox" value="occasions">
+                <label class="govuk-label govuk-checkboxes__label" for="care-topic-4">
+                  Holidays and special occasions
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="care-topic-5" name="care-topic" type="checkbox" value="travel">
+                <label class="govuk-label govuk-checkboxes__label" for="care-topic-5">
+                  Travel and transport
+                </label>        
+              </div>                  
+
+            </div>
+          </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

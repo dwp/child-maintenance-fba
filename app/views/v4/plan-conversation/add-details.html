@@ -1,0 +1,132 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  Add details to your plan (optional)
+{% endset %}
+
+{% set topicLabels = {
+  "financial": "Creating or changing our financial arrangement",
+  "care": "Creating or changing our care arrangement",
+  "education": "Our child's education",
+  "medical": "Our child's medical needs",
+  "decision": "Important decisions about our child",
+  "communication": "How we will communicate",
+  "circs": "A change in my circumstances",
+  "documents": "Our child's legal documents"
+} %}
+
+{% set financialLabels = {
+  "payment-change": "A change to the payment amount",
+  "payment-choose": "Choosing a payment amount",
+  "payment-when": "When payments will be made",
+  "shared-costs": "Paying for shared costs for our child",
+  "extra": "Paying for extra or unexpected expenses"
+} %}
+
+{% set careLabels = {
+  "day-to-day": "Day to day arrangements",
+  "living": "Where the children will live",
+  "time": "Time with each parent",
+  "occasions": "Holidays and special occasions",
+  "travel": "Travel and transport"
+} %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      })
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="check-answers" method="post">
+
+            <div class="govuk-form-group">
+              <h1 class="govuk-heading-l">
+                {{pageTitle}}
+              </h1>
+
+              <p class="govuk-body">
+                You told us that you want to talk about:
+              </p>
+
+              <ul class="govuk-list govuk-list--bullet">
+
+                {% if data['financial-topic'] %}
+                  {% for item in data['financial-topic'] %}
+                    <li>{{ financialLabels[item] }}</li>
+                  {% endfor %}
+                {% endif %}
+
+                {% if data['care-topic'] %}
+                  {% for item in data['care-topic'] %}
+                    <li>{{ careLabels[item] }}</li>
+                  {% endfor %}
+                {% endif %}
+
+                {% if data['topic'] and 'education' in data['topic'] %}
+                  <li>Our child's education</li>
+                {% endif %}
+
+                {% if data['topic'] and 'medical' in data['topic'] %}
+                  <li>Our child's medical needs</li>
+                {% endif %}
+
+                {% if data['topic'] and 'decision' in data['topic'] %}
+                  <li>Important decisions about our child</li>
+                {% endif %}
+
+                {% if data['topic'] and 'communication' in data['topic'] %}
+                  <li>How we will communicate</li>
+                {% endif %}
+
+                {% if data['topic'] and 'circs' in data['topic'] %}
+                  <li>A change in my circumstances</li>
+                {% endif %}
+
+                {% if data['topic'] and 'documents' in data['topic'] %}
+                  <li>Our child's legal documents</li>
+                {% endif %}
+
+                {% if data['topic-something-else'] %}
+                  <li>{{ data['topic-something-else'] }}</li>
+                {% endif %}
+
+              </ul>
+
+            <p class="govuk-body">
+              You can add details about this list or anything else that may help you during the conversation.
+            </p>
+
+            <div class="govuk-form-group">
+              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
+
+                <textarea class="govuk-textarea govuk-js-character-count" id="plan-details" name="plan-details" rows="8" aria-describedby="plan-details-info"></textarea>
+
+                <div id="plan-details-info" class="govuk-hint govuk-character-count__message">
+                  You can enter up to 500 characters
+                </div>
+
+              </div>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
