@@ -1,0 +1,204 @@
+{% extends "layouts/pdf-layout.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}}
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  Your conversation plan
+{% endset %}
+
+{% set topicLabels = {
+  "financial": "Creating or changing our financial arrangement",
+  "care": "Creating or changing our care arrangement",
+  "education": "Our child's education",
+  "medical": "Our child's medical needs",
+  "decision": "Important decisions about our child",
+  "communication": "How we will communicate",
+  "circs": "A change in my circumstances",
+  "documents": "Our child's legal documents"
+} %}
+
+{% set financialLabels = {
+  "payment-change": "A change to the payment amount",
+  "payment-choose": "Choosing a payment amount",
+  "payment-when": "When payments will be made",
+  "shared-costs": "Paying for shared costs for our child",
+  "extra": "Paying for extra or unexpected expenses"
+} %}
+
+{% set careLabels = {
+  "day-to-day": "Day to day arrangements",
+  "living": "Where the children will live",
+  "time": "Time with each parent",
+  "occasions": "Holidays and special occasions",
+  "travel": "Travel and transport"
+} %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ pageTitle }}
+    </h1>
+
+    <h2 class="govuk-heading-m">
+      Topics to discuss
+    </h2>
+
+    <p class="govuk-body">
+      You told us that you want to talk about:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+
+      {% if data['financial-topic'] %}
+        {% for item in data['financial-topic'] %}
+          <li>{{ financialLabels[item] }}</li>
+        {% endfor %}
+      {% endif %}
+
+      {% if data['care-topic'] %}
+        {% for item in data['care-topic'] %}
+          <li>{{ careLabels[item] }}</li>
+        {% endfor %}
+      {% endif %}
+
+      {% if data['topic'] and 'education' in data['topic'] %}
+        <li>Our child's education</li>
+      {% endif %}
+
+      {% if data['topic'] and 'medical' in data['topic'] %}
+        <li>Our child's medical needs</li>
+      {% endif %}
+
+      {% if data['topic'] and 'decision' in data['topic'] %}
+        <li>Important decisions about our child</li>
+      {% endif %}
+
+      {% if data['topic'] and 'communication' in data['topic'] %}
+        <li>How we will communicate</li>
+      {% endif %}
+
+      {% if data['topic'] and 'circs' in data['topic'] %}
+        <li>A change in my circumstances</li>
+      {% endif %}
+
+      {% if data['topic'] and 'documents' in data['topic'] %}
+        <li>Our child's legal documents</li>
+      {% endif %}
+
+      {% if data['topic-something-else'] %}
+        <li>{{ data['topic-something-else'] }}</li>
+      {% endif %}
+
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      How, when and where I want to talk
+    </h2>
+
+    <p class="govuk-body">
+      I want to talk {{data['contact-method']}} at {{data['talk-location']}}. I also want to talk on {{data['talk-date']}}.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      Supporting people
+    </h2>
+
+    <p class="govuk-body">
+      {% if data['anyone-else'] == "yes" %}
+        I want {{data['who-else']}} to be there during our conversation.
+      {% else %}
+        I do not want someone else to be there during our conversation.
+      {% endif %}
+    </p>
+
+    <h2 class="govuk-heading-m">
+      Other details
+    </h2>
+
+    <p class="govuk-body">
+      During our conversation, we should consider the following details:
+    </p>
+
+    <p class="govuk-body">
+      {{data['plan-details']}}
+    </p>
+
+    <h1 class="govuk-heading-l govuk-!-margin-top-8">
+      Advice for conversations
+    </h1>
+
+    <p class="govuk-body">
+      If your relationship with your child's other parent is difficult or complicated, it is often best to keep your child as the focus of conversations. Here are some strategies to help you work together.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      Asking for a conversation
+    </h2>
+
+    <p class="govuk-body">
+      When planning or setting up a conversation, you should:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Clarify the purpose</li>
+      <li>Decide the outcome you are hoping for</li>
+      <li>Consider what information you can and cannot share</li>
+      <li>Avoid starting the conversation when you or the other parent is in a hurry, tired, or stressed</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Avoiding conflict
+    </h2>
+
+    <p class="govuk-body">
+      To lower the chance of conflict, you can:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Start with things you have in common, even if they are not your top priority</li>
+      <li>Be polite and treat the other parent as you would want to be treated</li>
+      <li>Use "I" statements like "I feel concerned when..." instead of accusations like "you never..." or "you always..."</li>
+      <li>Talk about specific examples instead of generalisations</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Experiencing conflict
+    </h2>
+
+    <p class="govuk-body">
+      It may be best to return to the conversation later if there is too much conflict. However, if you choose to continue you can try to:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Understand and acknowledge the other person's feelings</li>
+      <li>Acknowledge your own mistakes</li>
+      <li>Take responsibility for your contributions</li>
+      <li>Be clear about your needs and limits</li>
+      <li>Talk about consequences as boundaries instead of threats</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Ending the conversation
+    </h2>
+
+    <p class="govuk-body">
+      At the end of a conversation, it can be helpful to:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Summarise what you talked about to make sure you both have the same understanding</li>
+      <li>Confirm decisions and next steps (possibly in writing)</li>
+      <li>Thank the other person for engaging</li>
+    </ul>  
+     
+  </div>
+</div>
+
+{% endblock %}

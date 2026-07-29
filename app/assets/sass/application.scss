@@ -88,3 +88,14 @@
   margin-bottom: 10px;
   background: #ffffff;
 }
+
+.story-hero-image {
+  margin-bottom: 30px;
+}
+
+.story-hero-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}

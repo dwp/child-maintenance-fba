@@ -1,0 +1,75 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Separated family stories" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="library">{{pageTitle}}</a>
+      </li>      
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            Short page description goes here.
+          </p>
+
+          <hr class="govuk-section-break govuk-section-break--l">
+
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-half fba-card-wrapper">
+        <div class="fba-card">
+          <div class="fba-card__content">
+            <h3 class="govuk-headingms fba-card__heading">
+              <a href="amira" class="govuk-link fba-card__link">
+                Amira's story
+              </a>
+            </h3>
+            <p class="govuk-body">
+              Short description
+            </p>
+          </div>
+          <div class="fba-card__image">
+            <img src="/public/images/amira.jpg" alt="Amira">
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-half fba-card-wrapper">
+        <div class="fba-card">
+          <div class="fba-card__content">
+            <h3 class="govuk-headingms fba-card__heading">
+              <a href="matt" class="govuk-link fba-card__link">
+                Matt's story
+              </a>
+            </h3>
+            <p class="govuk-body">
+              Short description
+            </p>
+          </div>
+          <div class="fba-card__image">
+            <img src="/public/images/matt.jpg" alt="Matt">
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+{% endblock %}

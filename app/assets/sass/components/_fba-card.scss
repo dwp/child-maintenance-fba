@@ -5,26 +5,36 @@
 }
 
 /* Allow columns to stretch */
-.govuk-grid-row.fba-card-row > .govuk-grid-column-one-third {
+.govuk-grid-row.fba-card-row > .govuk-grid-column-one-third,
+.govuk-grid-row.fba-card-row > .govuk-grid-column-half {
   display: flex;
 }
 
-/* Your existing card styles (unchanged) */
+/* Card wrapper */
+.fba-card-wrapper {
+  margin-bottom: 32px;
+}
+
+/* Card */
 .fba-card {
   position: relative;
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  height: 240px;
+
   padding: 24px;
+  gap: 24px;
 
   border: 1px solid #b1b4b6;
   background-color: #ffffff;
 
   box-sizing: border-box;
+  overflow: hidden;
 }
 
+/* Left side */
 .fba-card__content {
-  flex-grow: 1;
+  flex: 1;
+  z-index: 2;
 }
 
 .fba-card__heading {
@@ -42,6 +52,7 @@
   color: #1d70b8;
 }
 
+/* Makes whole card clickable */
 .fba-card__link::after {
   content: "";
   position: absolute;
@@ -49,18 +60,34 @@
   z-index: 1;
 }
 
+/* Right side */
+.fba-card__image {
+  flex: 1;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.fba-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hover states */
 .fba-card:hover,
 .fba-card:hover .govuk-body {
   color: #ffffff;
-  border-color: #b1b4b6;
   background-color: #0f385c;
+  border-color: #b1b4b6;
 }
 
 .fba-card:hover .fba-card__link {
-  text-decoration: none;
   color: #ffffff;
+  text-decoration: none;
 }
 
+/* Focus states */
 .fba-card:focus-within {
   outline: 3px solid #ffdd00;
   outline-offset: 0;
@@ -71,8 +98,4 @@
   background-color: #ffdd00;
   color: #0b0c0c;
   text-decoration: none;
-}
-
-.fba-card-wrapper {
-  margin-bottom: 32px;
 }
