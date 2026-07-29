@@ -9,7 +9,7 @@ metadata:
   annotations:
     gitlab.com/project-slug: dwp/user-centred-design/child-maiontenance-fba
   labels:
-    dwp.gov.uk/version: 1.2.4
+    dwp.gov.uk/version: 1.2.5
     dwp.gov.uk/license: unknown
 
     dwp.gov.uk/last-verified.by: James Seabright
