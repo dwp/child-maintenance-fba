@@ -87,7 +87,19 @@ module.exports = function (router) {
       res.redirect('how-where-when')
     }
 
+  });
+
+  router.post('/v4/compare/compare-against-choice', function (req, res) {
+    var compareChoice = req.session.data['compare-against'];
+
+    if (compareChoice == "income"){
+      res.redirect("starting-income");
+    } else {
+      res.redirect("check-answers");
+    }
+
   })
+  
 
 
   

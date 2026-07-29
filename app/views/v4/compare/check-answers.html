@@ -1,0 +1,112 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  Check your answers
+{% endset %}
+
+{% set monthNames = {
+  "1": "January",
+  "2": "February",
+  "3": "March",
+  "4": "April",
+  "5": "May",
+  "6": "June",
+  "7": "July",
+  "8": "August",
+  "9": "September",
+  "10": "October",
+  "11": "November",
+  "12": "December"
+} %}
+
+{% block content %}
+  <div class="govuk-width-container">
+
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+    }) }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="confirmation" method="post">
+
+            <h1 class="govuk-heading-l">
+              {{ pageTitle }}
+            </h1>
+
+            <dl class="govuk-summary-list">
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  When did you start your arrangement?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['arrangement-start-day'] }}
+                  {{ monthNames[data['arrangement-start-month']] }}           
+                  {{ data['arrangement-start-year'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="arrangement-start">Change<span class="govuk-visually-hidden"> when you started your arrangement</span></a>
+                </dd>
+              </div>
+              
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  How much is your monthly payment amount?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £{{ data['arrangement-amount'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="arrangement-amount">Change<span class="govuk-visually-hidden"> your payment amount</span></a>
+                </dd>
+              </div>
+
+              {% if data['compare-against'] == "income" %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  What was your annual income in {{data['arrangement-start-year']}}?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £{{ data['income-start-amount'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="starting-income">Change<span class="govuk-visually-hidden"> your annual income in {{data['arrangement-start-year']}}</span></a>
+                </dd>
+              </div>
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  What is your annual income now?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £{{ data['income-current-amount'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="current-income">Change<span class="govuk-visually-hidden"> your current annual income now</span></a>
+                </dd>
+              </div>
+              {% endif %}
+
+            </dl>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+{% endblock %}

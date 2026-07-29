@@ -1,0 +1,158 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  Your comparison
+{% endset %}
+
+{% if data['arrangement-start-year'] == '2000' %}
+  {% set changeInValue = 1.960 %}
+{% elseif data['arrangement-start-year'] == '2001' %}
+  {% set changeInValue = 1.936 %}
+{% elseif data['arrangement-start-year'] == '2002' %}
+  {% set changeInValue = 1.913 %}
+{% elseif data['arrangement-start-year'] == '2003' %}
+  {% set changeInValue = 1.887 %}
+{% elseif data['arrangement-start-year'] == '2004' %}
+  {% set changeInValue = 1.863 %}
+{% elseif data['arrangement-start-year'] == '2005' %}
+  {% set changeInValue = 1.825 %}
+{% elseif data['arrangement-start-year'] == '2006' %}
+  {% set changeInValue = 1.783 %}
+{% elseif data['arrangement-start-year'] == '2007' %}
+  {% set changeInValue = 1.742 %}
+{% elseif data['arrangement-start-year'] == '2008' %}
+  {% set changeInValue = 1.682 %}
+{% elseif data['arrangement-start-year'] == '2009' %}
+  {% set changeInValue = 1.645 %}
+{% elseif data['arrangement-start-year'] == '2010' %}
+  {% set changeInValue = 1.594 %}
+{% elseif data['arrangement-start-year'] == '2011' %}
+  {% set changeInValue = 1.526 %}
+{% elseif data['arrangement-start-year'] == '2012' %}
+  {% set changeInValue = 1.482 %}
+{% elseif data['arrangement-start-year'] == '2013' %}
+  {% set changeInValue = 1.445 %}
+{% elseif data['arrangement-start-year'] == '2014' %}
+  {% set changeInValue = 1.424 %}
+{% elseif data['arrangement-start-year'] == '2015' %}
+  {% set changeInValue = 1.423 %}
+{% elseif data['arrangement-start-year'] == '2016' %}
+  {% set changeInValue = 1.414 %}
+{% elseif data['arrangement-start-year'] == '2017' %}
+  {% set changeInValue = 1.377 %}
+{% elseif data['arrangement-start-year'] == '2018' %}
+  {% set changeInValue = 1.344 %}
+{% elseif data['arrangement-start-year'] == '2019' %}
+  {% set changeInValue = 1.320 %}
+{% elseif data['arrangement-start-year'] == '2020' %}
+  {% set changeInValue = 1.309 %}
+{% elseif data['arrangement-start-year'] == '2021' %}
+  {% set changeInValue = 1.276 %}
+{% elseif data['arrangement-start-year'] == '2022' %}
+  {% set changeInValue = 1.170 %}
+{% elseif data['arrangement-start-year'] == '2023' %}
+  {% set changeInValue = 1.077 %}
+{% elseif data['arrangement-start-year'] == '2024' %}
+  {% set changeInValue = 1.063 %}
+{% elseif data['arrangement-start-year'] == '2025' %}
+  {% set changeInValue = 1.018 %}
+{% endif %}
+
+{% set newAmount = (data['arrangement-amount'] * changeInValue).toFixed(0) %}
+{% set exampleAmount = (100 * changeInValue).toFixed(0) %}
+
+{% set paymentPercentage =
+  ((data['arrangement-amount'] * 12) / data['income-start-amount'])
+%}
+
+{% set displayPercentage = (paymentPercentage * 100).toFixed(0) %}
+
+{% set newIncomeAmount =
+  ((data['income-current-amount'] * paymentPercentage) / 12).toFixed(0)
+%}
+
+{% set incomeDifference =
+  data['income-current-amount'] - data['income-start-amount']
+%}
+
+{% set incomeDifferenceAbs =
+  incomeDifference | abs
+%}
+
+{% if incomeDifference > 0 %}
+  {% set incomeDirection = 'increased' %}
+{% elseif incomeDifference < 0 %}
+  {% set incomeDirection = 'decreased' %}
+{% else %}
+  {% set incomeDirection = 'stayed the same' %}
+{% endif %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              {{ pageTitle }}
+            </h1>
+          </div>
+
+          {% if data['compare-against'] == "income" %}
+
+          <p class="govuk-body">
+            You currently pay £{{data['arrangement-amount']}} toward the cost of raising your child. This was {{ displayPercentage }}% of your £{{data['income-start-amount']}} yearly income when you started your arrangement in {{data['arrangement-start-year']}}.
+          </p>
+
+          <p class="govuk-body">
+            You told us your yearly income {{ incomeDirection }} by <strong>£{{ incomeDifferenceAbs }}</strong> and is now <strong>£{{ data['income-current-amount'] }}</strong>.
+          </p>
+
+          <p class="govuk-body">
+            If you want to continue paying {{ displayPercentage }}% of your income, you could change your payment to <strong>£{{ newIncomeAmount }}</strong>.
+          </p>
+
+          {% else %}
+
+          <p class="govuk-body">
+            You told us that your financial arrangement began in {{data['arrangement-start-year']}} and that payments for your child are about £{{data['arrangement-amount']}} each month.
+          </p>
+
+          <p class="govuk-body">
+            Based on the value of the pound today, <strong>£{{ newAmount }}</strong> would have the same value.
+          </p>
+
+          <p class="govuk-body">
+            This means that a weekly shop that cost £100 in {{data['arrangement-start-year']}} would cost £{{ exampleAmount }} today.
+          </p>
+
+          <p class="govuk-body">
+            You can consider changing your payment amount to match this value. You can also review your arrangement with our <a href="#" class="govuk-link govuk-link--no-visited-state">work out the cost of your child</a> tool.
+          </p>          
+
+          {% endif %}
+
+          <p class="govuk-body">
+            <a href="compare-payments" class="govuk-link govuk-link--no-visited-state">Compare another arrangement</a>
+          </p>
+
+          <p class="govuk-body">
+            <a href="../home" class="govuk-link govuk-link--no-visited-state">Return to the support hub</a>
+          </p>          
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+{% endblock %}

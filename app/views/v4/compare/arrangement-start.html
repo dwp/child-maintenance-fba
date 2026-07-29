@@ -1,0 +1,66 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  When did you start your arrangement?
+{% endset %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        <form action="arrangement-amount" method="post">
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-heading-l" for="arrangement-start-date">
+                {{pageTitle}}
+              </label>
+            </h1>
+            <p>If you do not remember the exact date, tell us the closest year.</p>
+            <div id="arrangement-start-date-hint" class="govuk-hint">
+              For example, 3 2025
+            </div>
+            <div class="govuk-date-input" id="arrangement-start-date">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="arrangement-start-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="arrangement-start-month" name="arrangement-start-month" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="arrangement-start-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="arrangement-start-year" name="arrangement-start-year" type="text" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
