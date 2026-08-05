@@ -91,16 +91,34 @@
               </div>
             </div>
 
-            {{ govukDateInput({
-              id: "talk-date",
-              namePrefix: "talk-date",
-              fieldset: {
-                legend: {
-                  text: "When do you want to talk?",
-                  classes: "govuk-fieldset__legend--m"
-                }
-              }
-            }) }}
+            <div class="govuk-form-group">
+              <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="talk-date">
+                  When do you want to talk? (optional)
+                </label>
+              </h1>
+              <div id="talk-date-hint" class="govuk-hint">
+                For example, 3 2026
+              </div>
+              <div class="govuk-date-input" id="talk-date">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="talk-date-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="talk-date-month" name="talk-date-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="talk-date-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="talk-date-year" name="talk-date-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </div>            
 
             {{ govukButton({
               text: "Continue"

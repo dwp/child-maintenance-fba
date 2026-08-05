@@ -26,7 +26,8 @@
   "payment-choose": "Choosing a payment amount",
   "payment-when": "When payments will be made",
   "shared-costs": "Paying for shared costs for our child",
-  "extra": "Paying for extra or unexpected expenses"
+  "extra": "Paying for extra or unexpected expenses",
+  "other": data['financial-topic-something-else']
 } %}
 
 {% set careLabels = {
@@ -34,7 +35,30 @@
   "living": "Where the children will live",
   "time": "Time with each parent",
   "occasions": "Holidays and special occasions",
-  "travel": "Travel and transport"
+  "travel": "Travel and transport",
+  "other": data['care-topic-something-else']
+} %}
+
+{% set contactMethodLabels = {
+  "face-to-face": "face to face",
+  "text": "through text messages",
+  "email": "by email",
+  "telephone": "by telephone"
+} %}
+
+{% set monthNames = {
+  "1": "January",
+  "2": "February",
+  "3": "March",
+  "4": "April",
+  "5": "May",
+  "6": "June",
+  "7": "July",
+  "8": "August",
+  "9": "September",
+  "10": "October",
+  "11": "November",
+  "12": "December"
 } %}
 
 {% block content %}
@@ -60,7 +84,7 @@
         {% for item in data['financial-topic'] %}
           <li>{{ financialLabels[item] }}</li>
         {% endfor %}
-      {% endif %}
+      {% endif %}              
 
       {% if data['care-topic'] %}
         {% for item in data['care-topic'] %}
@@ -103,7 +127,14 @@
     </h2>
 
     <p class="govuk-body">
-      I want to talk {{data['contact-method']}} at {{data['talk-location']}}. I also want to talk on {{data['talk-date']}}.
+      {% if data['talk-location'] %}
+      I want to talk {{ contactMethodLabels[data['contact-method']] }} at {{ data['talk-location'] }}.
+      {% else %}
+      I want to talk {{ contactMethodLabels[data['contact-method']] }}.
+      {% endif %}
+      {% if data['talk-date'] %}
+      I also want to talk on {{ monthNames[data['talk-date-month']] }} {{ data['talk-date-year'] }}.
+      {% endif %}
     </p>
 
     <h2 class="govuk-heading-m">
@@ -118,6 +149,7 @@
       {% endif %}
     </p>
 
+    {% if data['plan-details'] %}
     <h2 class="govuk-heading-m">
       Other details
     </h2>
@@ -129,6 +161,10 @@
     <p class="govuk-body">
       {{data['plan-details']}}
     </p>
+    {% endif %}
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-8">
+
 
     <h1 class="govuk-heading-l govuk-!-margin-top-8">
       Advice for conversations

@@ -26,7 +26,8 @@
   "payment-choose": "Choosing a payment amount",
   "payment-when": "When payments will be made",
   "shared-costs": "Paying for shared costs for our child",
-  "extra": "Paying for extra or unexpected expenses"
+  "extra": "Paying for extra or unexpected expenses",
+  "other": data['financial-topic-something-else']
 } %}
 
 {% set careLabels = {
@@ -34,7 +35,8 @@
   "living": "Where the children will live",
   "time": "Time with each parent",
   "occasions": "Holidays and special occasions",
-  "travel": "Travel and transport"
+  "travel": "Travel and transport",
+  "other": data['care-topic-something-else']
 } %}
 
 {% block content %}
@@ -65,7 +67,7 @@
                   {% for item in data['financial-topic'] %}
                     <li>{{ financialLabels[item] }}</li>
                   {% endfor %}
-                {% endif %}
+                {% endif %}              
 
                 {% if data['care-topic'] %}
                   {% for item in data['care-topic'] %}

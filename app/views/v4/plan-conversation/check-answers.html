@@ -15,7 +15,8 @@
   "payment-choose": "Choosing a payment amount",
   "payment-when": "When payments will be made",
   "shared-costs": "Paying for shared costs for our child",
-  "extra": "Paying for extra or unexpected expenses"
+  "extra": "Paying for extra or unexpected expenses",
+  "other": data['financial-topic-something-else']
 } %}
 
 {% set careLabels = {
@@ -23,7 +24,8 @@
   "living": "Where the children will live",
   "time": "Time with each parent",
   "occasions": "Holidays and special occasions",
-  "travel": "Travel and transport"
+  "travel": "Travel and transport",
+  "other": data['care-topic-something-else']
 } %}
 
 {% set monthNames = {
@@ -60,62 +62,98 @@
 
             <dl class="govuk-summary-list">
 
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  What do you want to talk about?
-                </dt>
-                <dd class="govuk-summary-list__value">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What do you want to talk about?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
 
-                  <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+                  {% if data['topic'] and 'financial' in data['topic'] %}
+                    <li>Creating or changing our financial arrangement</li>
+                  {% endif %}
 
-                    {% if data['financial-topic'] %}
-                      {% for item in data['financial-topic'] %}
-                        <li>{{ financialLabels[item] }}</li>
-                      {% endfor %}
+                  {% if data['topic'] and 'care' in data['topic'] %}
+                    <li>Creating or changing our care arrangement</li>
+                  {% endif %}
+
+                  {% if data['topic'] and 'education' in data['topic'] %}
+                    <li>Our child's education</li>
+                  {% endif %}                  
+
+                  {% if data['topic'] and 'medical' in data['topic'] %}
+                    <li>Our child's medical needs</li>
+                  {% endif %}
+
+                  {% if data['topic'] and 'decision' in data['topic'] %}
+                    <li>Important decisions about our child</li>
+                  {% endif %}
+
+                  {% if data['topic'] and 'communication' in data['topic'] %}
+                    <li>How we will communicate</li>
+                  {% endif %}
+
+                  {% if['topic-something-else'] in data['topic'] %}
+                    <li>A change in my circumstances</li>
+                  {% endif %}
+
+                  {% if data['topic'] and 'documents' in data['topic'] %}
+                    <li>Our child's legal documents</li>
+                  {% endif %}
+
+                  {% if data['topic-something-else'] %}
+                    <li>{{ data['topic-something-else'] }}</li>
+                  {% endif %}
+
+                </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="what-do-you-want-to-talk-about">Change<span class="govuk-visually-hidden"> what you want to talk about</span>
+                </a>
+              </dd>
+            </div>
+
+            {% if data['financial-topic'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What part of your financial arrangement do you want to talk about?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+                  {% for item in data['financial-topic'] %}
+                    {% if financialLabels[item] %}
+                      <li>{{ financialLabels[item] }}</li>
                     {% endif %}
+                  {% endfor %}
+                </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="financial-topics">Change<span class="govuk-visually-hidden"> what part of your financial arrangement you want to talk about</span>
+                </a>
+              </dd>
+            </div>
+            {% endif %}
 
-                    {% if data['care-topic'] %}
-                      {% for item in data['care-topic'] %}
-                        <li>{{ careLabels[item] }}</li>
-                      {% endfor %}
+            {% if data['care-topic'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What part of your care arrangement do you want to talk about?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+                  {% for item in data['care-topic'] %}
+                    {% if careLabels[item] %}
+                      <li>{{ careLabels[item] }}</li>
                     {% endif %}
-
-                    {% if data['topic'] and 'education' in data['topic'] %}
-                      <li>Our child's education</li>
-                    {% endif %}
-
-                    {% if data['topic'] and 'medical' in data['topic'] %}
-                      <li>Our child's medical needs</li>
-                    {% endif %}
-
-                    {% if data['topic'] and 'decision' in data['topic'] %}
-                      <li>Important decisions about our child</li>
-                    {% endif %}
-
-                    {% if data['topic'] and 'communication' in data['topic'] %}
-                      <li>How we will communicate</li>
-                    {% endif %}
-
-                    {% if data['topic'] and 'circs' in data['topic'] %}
-                      <li>A change in my circumstances</li>
-                    {% endif %}
-
-                    {% if data['topic'] and 'documents' in data['topic'] %}
-                      <li>Our child's legal documents</li>
-                    {% endif %}
-
-                    {% if data['topic-something-else'] %}
-                      <li>{{ data['topic-something-else'] }}</li>
-                    {% endif %}
-
-                  </ul>
-
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="what-do-you-want-to-talk-about">Change<span class="govuk-visually-hidden"> what you want to talk about</span>
-                  </a>
-                </dd>
-              </div>
+                  {% endfor %}
+                </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="care-topics">Change<span class="govuk-visually-hidden"> what part of your care arrangement you want to talk about</span>
+                </a>
+              </dd>
+            </div>
+            {% endif %}
 
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -158,9 +196,12 @@
                   When do you want to talk?
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {{ data['talk-date-day'] }}
+                  {% if data['talk-date-year'] or data['talk-date-month'] %}
                   {{ monthNames[data['talk-date-month']] }}           
                   {{ data['talk-date-year'] }}
+                  {% else %}
+                  Not provided
+                  {% endif %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="how-where-when.html">Change<span class="govuk-visually-hidden"> when you want to talk</span>

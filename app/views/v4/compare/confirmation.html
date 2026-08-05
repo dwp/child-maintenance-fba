@@ -68,13 +68,13 @@
 {% set exampleAmount = (100 * changeInValue).toFixed(0) %}
 
 {% set paymentPercentage =
-  ((data['arrangement-amount'] * 12) / data['income-start-amount'])
+  (data['arrangement-amount'] / data['income-start-amount'])
 %}
 
 {% set displayPercentage = (paymentPercentage * 100).toFixed(0) %}
 
 {% set newIncomeAmount =
-  ((data['income-current-amount'] * paymentPercentage) / 12).toFixed(0)
+  (data['income-current-amount'] * paymentPercentage).toFixed(0)
 %}
 
 {% set incomeDifference =
@@ -110,11 +110,11 @@
           {% if data['compare-against'] == "income" %}
 
           <p class="govuk-body">
-            You currently pay £{{data['arrangement-amount']}} toward the cost of raising your child. This was {{ displayPercentage }}% of your £{{data['income-start-amount']}} yearly income when you started your arrangement in {{data['arrangement-start-year']}}.
+            You currently pay £{{data['arrangement-amount']}} toward the cost of raising your child each month. This was {{ displayPercentage }}% of your £{{data['income-start-amount']}} monthly income when you started your arrangement in {{data['arrangement-start-year']}}.
           </p>
 
           <p class="govuk-body">
-            You told us your yearly income {{ incomeDirection }} by <strong>£{{ incomeDifferenceAbs }}</strong> and is now <strong>£{{ data['income-current-amount'] }}</strong>.
+            You told us your monthly income {{ incomeDirection }} by <strong>£{{ incomeDifferenceAbs }}</strong> and is now <strong>£{{ data['income-current-amount'] }}</strong>.
           </p>
 
           <p class="govuk-body">

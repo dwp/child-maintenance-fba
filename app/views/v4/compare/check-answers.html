@@ -73,7 +73,7 @@
               {% if data['compare-against'] == "income" %}
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  What was your annual income in {{data['arrangement-start-year']}}?
+                  What was your monthly income in {{data['arrangement-start-year']}}?
                 </dt>
                 <dd class="govuk-summary-list__value">
                   £{{ data['income-start-amount'] }}
@@ -85,7 +85,7 @@
 
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  What is your annual income now?
+                  What is your monthly income now?
                 </dt>
                 <dd class="govuk-summary-list__value">
                   £{{ data['income-current-amount'] }}
