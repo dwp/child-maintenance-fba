@@ -7,7 +7,9 @@
 {# Blank header with no service name for this page #}
 {% block header %}
   <header>
-    {{govukHeader()}}
+    {{ govukHeader({
+      homepageUrl: "/"
+    }) }}
   </header>
 {% endblock %}
 

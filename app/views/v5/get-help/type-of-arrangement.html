@@ -1,0 +1,70 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pageTitle = "What type of financial arrangement do you want to make for your child?" %}
+{% set serviceName = "Set up financial support for your child" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="da-screening" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--l" for="arrangement-type">
+                    {{pageTitle}}
+                  </label>
+                </h1>
+
+                <div class="govuk-radios" data-module="govuk-radios">
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="fa-type" name="fa-type" type="radio" value="private">
+                    <label class="govuk-label govuk-radios__label" for="fa-type">
+                      I want a private arrangement
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="fa-type-2" name="fa-type" type="radio" value="cms">
+                    <label class="govuk-label govuk-radios__label" for="fa-type-2">
+                      I want to apply to the Child Maintenance Service
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="fa-type-3" name="fa-type" type="radio" value="idk">
+                    <label class="govuk-label govuk-radios__label" for="fa-type-3">
+                      I do not know
+                    </label>
+                  </div>
+
+                </div>
+
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

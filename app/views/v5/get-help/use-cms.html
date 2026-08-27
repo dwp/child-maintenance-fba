@@ -1,0 +1,66 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pageTitle = "Use the Child Maintenance Service " %}
+{% set serviceName = "Set up financial support for your child" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+          {{pageTitle}}
+        </h1>
+        <p>Because you told us 
+        {% if data['workingTogether'] == "no" %}
+        both parents cannot work together to make a private arrangement...</p>
+        {% elseif data['help-needed'] == "none" %}
+        you want someone to manage your payments...</p>
+        {% endif %}
+
+
+        <p>If you only want to work out what the payments might be you can <a href="https://www.gov.uk/calculate-child-maintenance" class="govuk-link govuk-link--no-visited-state">use the calculator from the Child Maintenance Service</a>.</p>
+
+
+        <form action="cms-apply-answer" method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Do you want to continue to apply for child maintenance?
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="cms-apply" name="cms-apply" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="cms-apply">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="cms-apply-2" name="cms-apply" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="cms-apply-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

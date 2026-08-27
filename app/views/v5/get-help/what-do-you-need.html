@@ -1,0 +1,88 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pageTitle = "What do you need help with regarding a financial arrangement for your child?" %}
+{% set serviceName = "Set up financial support for your child" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="help-needed-answer" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    {{ pageTitle }}
+                  </h1>
+                </legend>
+
+                <div id="help-hint" class="govuk-hint">
+                  Select all that apply
+                </div>
+
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="help-needed" name="help-needed" type="checkbox" value="costs">
+                    <label class="govuk-label govuk-checkboxes__label" for="help-needed">
+                      I want to choose a payment amount based on my child's costs
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="help-needed-2" name="help-needed" type="checkbox" value="income">
+                    <label class="govuk-label govuk-checkboxes__label" for="help-needed-2">
+                      I want to be told what the payments should be based on care and income
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="help-needed-3" name="help-needed" type="checkbox" value="talking">
+                    <label class="govuk-label govuk-checkboxes__label" for="help-needed-3">
+                      I need help talking to the other parent
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="help-needed-4" name="help-needed" type="checkbox" value="written">
+                    <label class="govuk-label govuk-checkboxes__label" for="help-needed-4">
+                      I want a written record of the financial arrangement
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__divider">or</div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="help-needed-none" name="help-needed" type="checkbox" value="none">
+                    <label class="govuk-label govuk-checkboxes__label" for="help-needed-none">
+                      I want someone to manage payments for me
+                    </label>
+                  </div>
+
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pageTitle = "Can both parents work together to make a financial arrangement?" %}
+{% set serviceName = "Set up financial support for your child" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="both-parents-answer" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--l" for="arrangement-type">
+                    {{pageTitle}}
+                  </label>
+                </h1>
+
+                <div class="govuk-radios" data-module="govuk-radios">
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="workingTogether" name="workingTogether" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="workingTogether">
+                      Yes
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="workingTogether-2" name="workingTogether" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="workingTogether-2">
+                      No
+                    </label>
+                  </div>
+
+                </div>
+
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}
