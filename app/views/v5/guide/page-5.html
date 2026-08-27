@@ -1,0 +1,185 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Arrange finances for your child after separation
+{% endblock %}
+
+{# Blank header with no service name for this page #}
+{% block header %}
+  <header>
+    {{govukHeader()}}
+  </header>
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div>
+  <main>
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+          Arrange finances for your child after separation
+        </h1>
+
+        <aside class="govuk-prototype-kit-common-templates-mainstream-guide-contents-list" role="complementary">
+          <nav class="govuk-prototype-kit-common-templates-contents-list" aria-label="Pages in this guide" role="navigation">
+            <h2 class="govuk-prototype-kit-common-templates-contents-list__title">
+              Contents
+            </h2>
+            <ol class="govuk-prototype-kit-common-templates-contents-list__list">
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-1">
+                  What is a private arrangement
+                </a>
+              </li>
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-2">
+                Using a private arrangement
+                </a>
+              </li>
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-3">
+                  If you cannot use a private arrangement
+                </a>
+              </li>
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-4">
+                  Making a care arrangement
+                </a>
+              </li>
+              <li aria-current="true" class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed govuk-prototype-kit-common-templates-contents-list__list-item--active">
+                  Get separation advice
+              </li>              
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-6">
+                  Get financial advice
+                </a>
+              </li>
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-7">
+                  Get additional support
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </aside>
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+        
+        <h2 class="govuk-heading-l">
+          Get separation advice
+        </h2>
+        
+        <h3 class="govuk-heading-m">Getting support and guidance</h3>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="resources/mediation">Find mediation resources</a>
+            </li>
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.citizensadvice.org.uk/about-us/contact-us/">Speak to Citizens Advice (opens in a new tab)</a>
+            </li>
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="resources/telling-your-children">Learn how to tell your children about separation</a>
+            </li>
+          </ul>
+
+          <h3 class="govuk-heading-m">Making Arrangements for Your Children</h3>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="resources/get-separation-advice">Get support if you are separated from your children</a>
+            </li>
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/looking-after-children-divorce">Make arrangements if you are divorced or separating (opens in a new tab)</a>
+            </li>
+          </ul>
+
+          <h3 class="govuk-heading-m">Legal and financial steps</h3>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.moneyhelper.org.uk/en/family-and-care/divorce-and-separation/how-to-sort-out-your-finances-on-separation?source=mas#">Read advice on sorting finances from MoneyHelper (opens in a new tab)</a>
+            </li>
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state"rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/get-a-divorce">Get a divorce (opens in a new tab)</a>
+            </li>
+          </ul>
+
+        <nav class="govuk-prototype-kit-common-templates-pagination" role="navigation" aria-label="Pagination">
+
+        {{ govukPagination({
+          previous: {
+            labelText: "Making a care arrangement",
+            href: "page-4"
+          },
+          next: {
+            labelText: "Get financial advice",
+            href: "page-6"
+          }
+        }) }}
+
+        <p>
+          <a href="#">
+            View a printable version of the whole guide
+          </a>
+        </p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Subsection
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+
+  </main>
+</div>
+
+{% endblock %}

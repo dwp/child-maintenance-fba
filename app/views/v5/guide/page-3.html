@@ -1,0 +1,171 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Arrange finances for your child after separation
+{% endblock %}
+
+{# Blank header with no service name for this page #}
+{% block header %}
+  <header>
+    {{govukHeader()}}
+  </header>
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div>
+  <main>
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+          Arrange finances for your child after separation
+        </h1>
+
+        <aside class="govuk-prototype-kit-common-templates-mainstream-guide-contents-list" role="complementary">
+          <nav class="govuk-prototype-kit-common-templates-contents-list" aria-label="Pages in this guide" role="navigation">
+            <h2 class="govuk-prototype-kit-common-templates-contents-list__title">
+              Contents
+            </h2>
+            <ol class="govuk-prototype-kit-common-templates-contents-list__list">
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-1">
+                  What is a private arrangement
+                </a>
+              </li>
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-2">
+                Using a private arrangement
+                </a>
+              </li>
+              <li aria-current="true" class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed govuk-prototype-kit-common-templates-contents-list__list-item--active">
+                  If you cannot use a private arrangement
+              </li>
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-4">
+                  Making a care arrangement
+                </a>
+              </li>
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-5">
+                  Get separation advice
+                </a>
+              </li>              
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-6">
+                  Get financial advice
+                </a>
+              </li>
+              <li class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed">
+                <a href="page-7">
+                  Get additional support
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </aside>
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+        
+        <h2 class="govuk-heading-l">
+          If you cannot use a private arrangement
+        </h2>
+        
+        <p>The Child Maintenance Service manages payments and can take action to recover missed payments. It may be a good choice if you: </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            cannot talk about finances with the other parent
+          </li>
+          <li>
+            want a service to manage payments for you
+          </li>
+          <li>
+            want an online account to keep track of your payments
+          </li>
+          <li>
+            have concerns for your safety or your child's safety
+          </li>
+          <li>
+            do not know where the other parent is or cannot contact them
+          </li>          
+        </ul>
+
+        <p><a href="https://www.gov.uk/child-maintenance-service" class="govuk-link govuk-link--no-visited-state">Learn more about the Child Maintenance Service.</a></p>
+
+        <nav class="govuk-prototype-kit-common-templates-pagination" role="navigation" aria-label="Pagination">
+
+        {{ govukPagination({
+          previous: {
+            labelText: "Using a private arrangment",
+            href: "page-2"
+          },
+          next: {
+            labelText: "Making a care arrangement",
+            href: "page-4"
+          }
+        }) }}
+
+        <p>
+          <a href="#">
+            View a printable version of the whole guide
+          </a>
+        </p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Subsection
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+
+  </main>
+</div>
+
+{% endblock %}
