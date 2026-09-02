@@ -4,8 +4,9 @@
   {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% set pageTitle = "Set up your own financial arrangement" %}
+{% set pageTitle = "Make your financial arrangement" %}
 {% set serviceName = "Set up financial support for your child" %}
+{% set helpNeeded = data['help-needed'] or [] %}
 
 {% block content %}
   <div class="govuk-width-container">
@@ -18,48 +19,28 @@
           {{pageTitle}}
         </h1>
 
-        <div class="govuk-inset-text">
-          These links will open in a new tab. This page will stay open so you can come back to it at any time.
-        </div>
+        <p>There are many tools and resources to halp you make your financial arrangement.</p>
 
-        {% if "costs" in data['help-needed'] or data['cms-apply'] == "no" %}
-        <p class="govuk-body">
-          <a href="../../v2/calculator/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Work out the cost of your child (opens in new tab)</a>
-        </p>
-        <p class="govuk-body">govuk-body</p>
-
-        <hr class="govuk-section-break govuk-section-break--m">
-        {% endif %}
-
-        {% if "income" in data['help-needed'] or data['cms-apply'] == "no" %}
-        <p class="govuk-body">
-          <a href="https://www.gov.uk/calculate-child-maintenance" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Calculate your child maintenance (opens in new tab)</a>
-        </p>
-        <p class="govuk-body">govuk-body</p>
-
-        <hr class="govuk-section-break govuk-section-break--m">
-        {% endif %}
-
-        {% if "written" in data['help-needed'] or data['cms-apply'] == "no" %}
-        <p class="govuk-body">
-          <a href="../../v4/arrangement/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Create a financial arrangement (opens in new tab)</a>
-        </p>
-        <p class="govuk-body">govuk-body</p>
-
-        <hr class="govuk-section-break govuk-section-break--m">
-        {% endif %}
-
-        {% if "talking" in data['help-needed'] or data['cms-apply'] == "no" %}
-        <p class="govuk-body">
-          <a href="../../v4/plan-conversation/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Plan your conversation (opens in new tab)</a>
-        </p>
-        <p class="govuk-body">govuk-body</p>
-        {% endif %}
+        <p class="govuk-body">Based on what you told us, tools that may be useful include:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          {% if "costs" in helpNeeded or data['cms-apply'] == "no" %}
+          <li><a href="../../v2/calculator/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Work out the cost of your child (opens in new tab)</a></li>
+          {% endif %}
+          {% if "income" in helpNeeded or data['cms-apply'] == "no" %}
+          <li><a href="https://www.gov.uk/calculate-child-maintenance" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Calculate your child maintenance (opens in new tab)</a></li>
+          {% endif %}
+          {% if "written" in helpNeeded or data['cms-apply'] == "no" %}
+          <li><a href="../../v4/arrangement/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Create a financial arrangement (opens in new tab)</a></li>
+          {% endif %}
+          {% if "talking" in helpNeeded or data['cms-apply'] == "no" %}
+          <li><a href="../../v4/plan-conversation/start" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Plan your conversation (opens in new tab)</a></li>
+          {% endif %}
+        </ul>
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
         <p class="govuk-body">
-          <a href="../guide/page-1" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Find out more about arranging finances for your child after separation (opens in new tab)</a>
+          To learn about all our tools and get advice for your situation, visit <a href="../guide/page-1" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Arrange finances for your child after separation (opens in a new tab)</a>.
         </p>        
 
         </div>
