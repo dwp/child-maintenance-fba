@@ -7,7 +7,7 @@
   "dependencies": {
     "@govuk-prototype-kit/common-templates": "3.0.0",
     "dfe-frontend": "^2.0.1",
-    "govuk-frontend": "6.3.0",
-    "govuk-prototype-kit": "13.20.2"
+    "govuk-frontend": "6.5.0",
+    "govuk-prototype-kit": "13.20.4"
   }
 }
