@@ -8,9 +8,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% block header %}
 
-    {{ govukHeader({
-        homepageUrl: "/"
-    }) }}
+    {{ govukHeader() }}
     {% if includeServiceNav != "false" %}
         {% if data['arrangementSaved'] == 'yes' %}
         {{ govukServiceNavigation({
