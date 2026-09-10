@@ -1,0 +1,92 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Compare costs" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="compare-costs-calculation">Compare costs</a>
+      </li>
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            The cost of raising a child often increases because of inflation. After a certain amount of time you may want to consider changing payment amounts to match costs.
+          </p>
+
+          <p class="govuk-body">
+            You can use our inflation calculator to check how the value of the pound has changed since you set up your arrangement.
+          </p>
+
+          <hr class="govuk-section-break govuk-section-break--m">
+        
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Inflation calculator
+              </legend>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="compare-amount">
+                  Amount
+                </label>
+                <div class="govuk-input__wrapper">
+                  <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                  <input class="govuk-input govuk-input--width-5" id="compare-amount" name="compare-amount" type="text" spellcheck="false">
+                </div>
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="compare-since">
+                  Paid since
+                </label>
+                <select class="govuk-select govuk-!-width-5" id="compare-since" name="compare-since">
+                  <option selected>2020</option>
+                  <option>2021</option>
+                  <option>2022</option>
+                  <option>2023</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                  <option>2026</option>
+                </select>
+              </div>
+            </fieldset>
+          </div>
+
+          {{ govukButton({
+            text: "Calculate",
+            href: "#"
+          }) }}
+
+          <h2 class="govuk-heading-s">Equivalent amount</h2>
+          
+          <div class="govuk-inset-text">
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-2">
+              £509.59
+            </h2>
+
+            <p class="govuk-body govuk-!-margin-bottom-0">
+              What cost £400.00 in 2020 would cost £509.59 in June 2026.
+            </p>
+          </div>       
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

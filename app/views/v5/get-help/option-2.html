@@ -1,0 +1,52 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pageTitle = "One of your options: Use the Child Maintenance Service" %}
+{% set serviceName = "Set up financial support for your child" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+ 
+        <h1 class="govuk-heading-l">{{ pageTitle }}</h1>
+
+        <p class="govuk-body">The Child Maintenance Service is a government service. It can:</p>
+        
+        <ul class="govuk-list govuk-list--bullet">
+          <li>work out payment amounts based on care arrangements and the paying parent's income</li>
+          <li>manage payments from one parent to the other for you</li>
+          <li>take action to ensure payments are made on time and in full</li>
+          <li>help find the other parent if you have lost contact</li>
+          <li>keep your location and contact details private</li>
+        </ul>
+
+        <p class="govuk-body">Parents often choose to use the service if they cannot agree on a private arrangement.</p>
+        
+        <h2 class="govuk-heading-m">How long an application takes</h2>
+
+        <p class="govuk-body">It can take up to 6 weeks to process an application and arrange a payment plan. Complex cases may take longer.</p>
+
+        <p class="govuk-body">It will take longer to process if your child is not registered for <a href="#" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Child benefit (opens in a new tab)</a>.</p>
+
+        {{ govukButton({
+          text: "Continue",
+          href: "type-of-arrangement"
+        }) }}
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  What do you want to talk about?
+{% endset %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        <form action="topics-choice" method="post">
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-heading-l" for="topic">
+                {{pageTitle}}
+              </label>
+            </h1>
+
+            <div id="nationality-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="topic" name="topic" type="checkbox" value="financial">
+                <label class="govuk-label govuk-checkboxes__label" for="topic">
+                  Creating or changing our financial arrangement
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="topic-2" name="topic" type="checkbox" value="care">
+                <label class="govuk-label govuk-checkboxes__label" for="topic-2">
+                  Creating or changing our care arrangement
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="topic-3" name="topic" type="checkbox" value="education">
+                <label class="govuk-label govuk-checkboxes__label" for="topic-3">
+                  Our child's education
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="topic-4" name="topic" type="checkbox" value="medical">
+                <label class="govuk-label govuk-checkboxes__label" for="topic-4">
+                  Our child's medical needs
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="topic-5" name="topic" type="checkbox" value="decision">
+                <label class="govuk-label govuk-checkboxes__label" for="topic-5">
+                  Important decisions about our child
+                </label>
+                <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  For example, introducing a new partner
+                </div>                
+              </div>                  
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="topic-6" name="topic" type="checkbox" value="communication">
+                <label class="govuk-label govuk-checkboxes__label" for="topic-6">
+                  How we will communicate
+                </label>              
+              </div>                
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="topic-7" name="topic" type="checkbox" value="circs">
+                <label class="govuk-label govuk-checkboxes__label" for="topic-7">
+                  A change in my circumstances
+                </label>              
+              </div>                 
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="topic-8" name="topic" type="checkbox" value="documents">
+                <label class="govuk-label govuk-checkboxes__label" for="topic-8">
+                  Our child's legal documents
+                </label>              
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="topic-9" name="topic" type="checkbox" value="other" data-aria-controls="conditional-other">
+                <label class="govuk-label govuk-checkboxes__label" for="topic-9">
+                  Something else
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-other">
+                <div class="govuk-form-group">
+                  <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
+                    <label class="govuk-label" for="topic-something-else">
+                      Describe what you want to talk about
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="topic-something-else" name="topic-something-else" rows="5" aria-describedby="something-else-info"></textarea>
+                    <div id="something-else-info" class="govuk-hint govuk-character-count__message">
+                      You can enter up to 500 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

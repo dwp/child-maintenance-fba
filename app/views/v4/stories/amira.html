@@ -1,0 +1,77 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  Amira's story
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="library">Separated family stories</a>
+      </li>  
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="amira">{{pageTitle}}</a>
+      </li>      
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            {{ pageTitle }}
+          </h1>
+
+          <div class="story-hero-image">
+            <img src="/public/images/amira.jpg" alt="Amira">
+          </div>
+
+          <p class="govuk-body">Amira and Martin have 3 preteen children. After a long while of constant arguments, their relationship officially ended 2 years ago when they decided they did not want the children to grow up in a household of tension. Amira pushed to equally share costs.</p>
+
+          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    Working out a financial arrangement
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+                <p class="govuk-body">To Amira's relief, Martin moved back to his parents' house. However, money was tight for both and they still could not agree on a way forward for care or finances. Amira deided to write down everything she wanted to discuss and shared it with Martin in advance to avoid surprises.</p>
+                <p class="govuk-body">He agreed to meet at a cafe, where they were more likely to stay calm. They started by talking about school costs  -- uniforms and lunch. To keep it fair, they decided to each add lunch credit every other month and to split the cost of uniforms. Logically, they concldued, the same should apply to the kids' hobbies and clothes.</p>
+              </div>
+            </div>
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                    The arrangement now
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+                <p class="govuk-body">Amira's dislike of Martin has cooled a bit since he's proven to be reliable in the long term. And, to her surprise, his new partner has made a great impression. She convinced Martin to contribute toward the food bill as the kids have gotten older. </p>
+              </div>
+            </div>
+          </div>    
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+{% endblock %}

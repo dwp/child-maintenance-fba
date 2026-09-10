@@ -1,0 +1,68 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pageTitle = "Get help if you or your children have experienced domestic abuse" %}
+{% set serviceName = "Set up financial support for your child" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+          {{pageTitle}}
+        </h1>
+        <h2 class="govuk-heading-m">
+          You may have been in an abusive relationship if you or your children have experienced any of the following behaviours:
+        </h2>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Psychological or emotional abuse</li>
+          <li>Physical or sexual abuse</li>
+          <li>Financial or economic abuse</li>
+          <li>Coercive control (an act or pattern of acts of assault, threats, humiliation, intimidation, degradation, isolation and control)</li>
+          <li>Harassment and stalking</li>
+          <li>Online or digital abuse</li>          
+        </ul>
+
+        <form action="da-screening-answer" method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Would you like more information about where you can get support if you need it?
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="moreInfo" name="moreInfo" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="moreInfo">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="moreInfo-2" name="moreInfo" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="moreInfo-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

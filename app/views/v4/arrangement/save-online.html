@@ -1,0 +1,64 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pageTitle = "Save your arrangement online" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            {{pageTitle}}
+          </h1>
+          <p class="govuk-body">
+            You can create an account to save this arrangement online. Creating an account lets you view, update or download this arrangement at any time. You can also set reminders to review it.
+          </p>
+          <p class="govuk-body">
+            If you do not create an account, your arrangement will not be saved. You can still download or print it on the next page.
+          </p>      
+
+          <form action="save-online-answer" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Do you want to save this arrangement?
+                </legend>
+
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="save-online-decision" name="save-online-decision" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="save-online-decision">
+                      Yes, create an account and save it
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="save-online-decision" name="save-online-decision" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="save-online-decision">
+                      No, continue without saving
+                    </label>
+                  </div>                        
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

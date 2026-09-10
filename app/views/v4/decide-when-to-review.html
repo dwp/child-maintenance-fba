@@ -1,0 +1,98 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "When to review your financial arrangement" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="decide-when-to-review.html">When to review</a>
+      </li>
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            There are many valid reasons to review the financial and care arrangments for your child. You can 
+            {% if data['arrangementSaved'] == 'yes' %}            
+            <a href="view-arrangement" class="govuk-link govuk-link--no-visited-state">review your arrangement (opens in a new tab)</a>
+            {% else %}
+            <a href="#" class="govuk-link govuk-link--no-visited-state">review your arrangement (opens in a new tab)</a>
+            {% endif %}
+            on your own or with the other parent.
+          </p>
+
+          <p class="govuk-body">There are two common ways to review your arrangement:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>on a regular schedule</li>
+            <li>due to a change in your circumstances</li>
+          </ul>
+
+          <h1 class="govuk-heading-m">Reviewing on a schedule</h1>
+
+          <p class="govuk-body">
+            You can choose to review your arrangement with a certain frequency, for example once per year or every two years.
+          </p>
+
+          <p class="govuk-body">
+            You can also choose to review on a certain date, for example on your child's birthday or the first day of school each year.
+          </p>
+
+          <p class="govuk-body">
+            {% if data['review-type'] %}
+            <a href="set-review-reminders" class="govuk-link govuk-link--no-visited-state">Set review reminders</a>
+            {% else %}
+            <a href="#" class="govuk-link govuk-link--no-visited-state">Set review reminders</a>
+            {% endif %}
+
+          </p>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <h1 class="govuk-heading-m">Reviewing for a change in your circumstances</h1>
+
+          <p class="govuk-body">Changes could include:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>an update to your care arrangment</li>
+            <li>an increase or decrease in income</li>
+            <li>getting benefits</li>
+            <li>a new medical condition</li>
+            <li>a milestone for your child (for example, starting a new school)</li>
+            <li>moving far away or abroad</li>
+            <li>if your child has a new adoptive parent</li>
+            <li>if your child loses a step-parent</li>
+
+          </ul>
+
+          <p class="govuk-body">
+            {% if data['arrangementSaved'] == 'yes' %}
+            <a href="view-arrangement" class="govuk-link govuk-link--no-visited-state">Review your financial arrangement</a>
+            {% else %}
+            <a href="#" class="govuk-link govuk-link--no-visited-state">Review your financial arrangement</a>
+            {% endif %}
+          </p>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  {#
+  <div class="chat-widget">
+    <button class="chat-button">Chat with us</button>
+  </div>
+  #}
+{% endblock %}

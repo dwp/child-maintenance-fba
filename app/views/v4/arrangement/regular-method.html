@@ -1,0 +1,96 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set regularMethodLabels = {
+  "direct-debit": "Direct debit",
+  "standing-order": "Standing order",
+  "bank-transfer": "Bank transfer",
+  "cash": "Cash payment"
+} %}
+
+
+{% set pageTitle = "How will payments be made?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="regular-who-pays" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="regular-method-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  {{pageTitle}}
+                </h1>
+              </legend>
+
+              <div class="govuk-radios" data-module="govuk-radios">
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="regular-method" name="regularMethod" type="radio" value="direct-debit" aria-describedby="regular-method-item-hint-1">
+                  <label class="govuk-label govuk-radios__label" for="regular-method">
+                    Direct debit
+                  </label>
+                  <div id="regular-method-item-hint-1" class="govuk-hint govuk-radios__hint">
+                    One parent's bank pulls money from the other's on a schedule
+                  </div>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="regular-method-2" name="regularMethod" type="radio" value="standing-order" aria-describedby="regular-method-item-hint-2">
+                  <label class="govuk-label govuk-radios__label" for="regular-method-2">
+                    Standing order
+                  </label>
+                  <div id="regular-method-item-hint-2" class="govuk-hint govuk-radios__hint">
+                    One parent's bank pays money on a regular schedule
+                  </div>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="regular-method-3" name="regularMethod" type="radio" value="bank-transfer" aria-describedby="regular-method-item-hint-3">
+                  <label class="govuk-label govuk-radios__label" for="regular-method-3">
+                    Bank transfer
+                  </label>
+                  <div id="regular-method-item-hint-3" class="govuk-hint govuk-radios__hint">
+                    One parent makes a manual payment
+                  </div>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="regular-method-4" name="regularMethod" type="radio" value="cash">
+                  <label class="govuk-label govuk-radios__label" for="regular-method-4">
+                    Cash payment
+                  </label>
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

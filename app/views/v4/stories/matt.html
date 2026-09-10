@@ -1,0 +1,101 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  Matt's story
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="library">Separated family stories</a>
+      </li>  
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="matt">{{pageTitle}}</a>
+      </li>      
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            {{ pageTitle }}
+          </h1>
+
+          <div class="story-hero-image">
+            <img src="/public/images/matt.jpg" alt="Matt">
+          </div>
+
+          <p class="govuk-body">Matt and Denise have 2 children, ages 10 and 12. They have been divorced for a few years and have had trouble settling on a financial arrangement since. Denise does not believe Matt is being honest about his ability to pay.</p>
+
+          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    Separation
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+                <p class="govuk-body">When Matt and Denise split 4 years ago, Matt moved into his own flat after some difficulty getting together a deposit and furniture. He needed support from a couple friends because Denise kept the family home so the kids would have familiarity.</p>
+              </div>
+            </div>
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                    The arrangement now
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+                <p class="govuk-body">Matt expected his relationship with Denise to get better when they had their own space, but they still argued in every conversation, especially as she would ask for more money often. Matt felt it would be best to follow guidelines from a trusted source.</p>
+                <p class="govuk-body">His friend shared the Child Maintenance Service calculator, which Matt felt could keep things balanced. Denise was still unhappy and asked for more support, so Matt added money to pay for the kids' weekly sports club and half of school trips. They agreed on the arrangement in writing over WhatsApp.</p>
+              </div>
+            </div>
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                    Matt's new job
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+                <p class="govuk-body">Matt and Denise do not speak besides texting about the children. When he recently got a new job, he offered to pay £50 more each month. Feeling that Matt wasn't honest about the increase in his income, Denise said it should be £100 more instead. This led to an angry conversation and Matt messaged her a link to the Income Comparison Tool so she could see for herself how his new income would affect payments.</p>
+              </div>
+            </div>       
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                    The arrangement now
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+                <p class="govuk-body">The relationship between Matt and Denise is still an uneasy truce with little communication, but Matt feels confident that raising his payments proportionally was the right thing for his children.</p>
+              </div>
+            </div>                     
+          </div>    
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+{% endblock %}

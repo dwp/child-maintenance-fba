@@ -1,0 +1,61 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set pageTitle = "Who will pay?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="regular-and-shared-check" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                  <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--l" for="who-will-pay">
+                      {{pageTitle}}
+                    </label>
+                  </h1>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="who-will-pay" name="whoWillPay" type="radio" value="parent1">
+                    <label class="govuk-label govuk-radios__label" for="who-will-pay">
+                      {{parentName}} will pay {{otherName}}
+                    </label>
+                  </div>               
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="who-will-pay-2" name="whoWillPay" type="radio" value="parent2">
+                    <label class="govuk-label govuk-radios__label" for="who-will-pay-2">
+                      {{otherName}} with pay {{parentName}}
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

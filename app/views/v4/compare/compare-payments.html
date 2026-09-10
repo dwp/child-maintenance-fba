@@ -1,0 +1,57 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+
+{% set pageTitle %}
+  What do you want to compare your payments against?
+{% endset %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        <form action="arrangement-start" method="post">
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-heading-l" for="compare-against">
+                {{pageTitle}}
+              </label>
+            </h1>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="compare-against" name="compare-against" type="radio" value="inflation">
+                <label class="govuk-label govuk-radios__label" for="compare-against">
+                  Inflation or cost of living
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="compare-against-2" name="compare-against" type="radio" value="income">
+                <label class="govuk-label govuk-radios__label" for="compare-against-2">
+                  Changes in my income 
+                </label>
+              </div>
+            </div>
+          </div>
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        </form>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

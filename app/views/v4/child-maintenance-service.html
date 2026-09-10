@@ -1,0 +1,58 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Use the Child Maintenance Service" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="child-maintenance-service.html">Use the Child Maintenance Service</a>
+      </li>
+    </ol>
+  </nav>
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{ pageTitle }}</h1>
+
+          <p class="govuk-body">
+            Use the government's Child Maintenance Service if you and the other parent cannot work out a private arrangement or if you feel it would be a safer option.
+          </p>
+
+          <p class="govuk-body">
+            With the service, you can:
+          </p>    
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://child-maintenance.service.gov.uk/apply/get-help-arranging-child-maintenance/">Get help arranging child maintenance (opens in a new tab)</a>
+            </li>
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://childmaintenanceservice.direct.gov.uk/onlinerevive/public/landing-screen">Manage your child maintenance case online (opens in a new tab)</a>
+            </li>
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/child-maintenance-service/contact">Contact the Child Maintenance Service (opens in a new tab)</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  {#
+  <div class="chat-widget">
+    <button class="chat-button">Chat with us</button>
+  </div>
+  #}
+{% endblock %}

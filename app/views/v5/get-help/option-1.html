@@ -1,0 +1,51 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pageTitle = "One of your options: Make a private arrangement" %}
+{% set serviceName = "Set up financial support for your child" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+ 
+        <h1 class="govuk-heading-l">{{ pageTitle }}</h1>
+
+        <p class="govuk-body">A private arrangement is an agreement between parents. It usually includes a care arrangement and a financial arrangement. These describe how to manage your child's time with each parent and how to pay for their needs.</p>
+
+        <p class="govuk-body">A private arrangement might be a good option if:</p>
+        
+        <ul class="govuk-list govuk-list--bullet">
+          <li>you and the the other parent can communicate about your child and situations that can affect how you provide for them</li>
+          <li>you feel safe dealing with the other parent</li>
+          <li>you need flexibility for payments</li>
+          <li>you both can follow the arrangement</li>
+        </ul>
+
+        <p class="govuk-body">You will need to manage care and finances yourself. You may decide to use third party support or advice.</p>
+
+        <p class="govuk-body">Arrangements can be informal, in writing or throug a court order.</p>
+
+        <p class="govuk-body">The Child Maintenance Service cannot influence or enforce a private arrangement.</p>
+
+        {{ govukButton({
+          text: "Continue",
+          href: "option-2"
+        }) }}
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

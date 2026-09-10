@@ -1,0 +1,332 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set child4 = (data['child4Name'] or 'Child 4') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Your arrangement" %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">{{pageTitle}}</h1>       
+
+          <h2 class="govuk-heading-m">Children and parents</h2>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Children's names
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ child1 }}<br>
+                {% if data['childAmount'] == 2 %}
+                {{ child2 }}<br>
+                {% elif data['childAmount'] == 3 %}
+                {{ child3 }}<br>
+                {% elif data['childAmount'] == 4 %}
+                {{ child4 }}
+                {% endif %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Parents' names
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{parentName}}<br>
+                {{otherName}}
+              </dd>
+            </div>
+          </dl>
+
+          <h2 class="govuk-heading-m">Arrangement details</h2>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Type of financial arrangement
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% set labels = {
+                  "arrangement-type": {
+                    "regular": "We will make regular payments",
+                    "shared": "We will share costs",
+                    "both": "We will make regular payments and share costs",
+                    "other": "Something else"
+                  }
+                } %}
+                {{ labels['arrangement-type'][data['arrangement-type']] }}
+              </dd>
+            </div>
+            {% if data['arrangement-type'] == "regular" or data['arrangement-type'] == "both" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Regular payment amount
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £{{ data['regularAmount'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                How often will it be paid
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% set dayLabels = {
+                  "1": "1st",
+                  "2": "2nd",
+                  "3": "3rd",
+                  "4": "4th",
+                  "5": "5th",
+                  "6": "6th",
+                  "7": "7th",
+                  "8": "8th",
+                  "9": "9th",
+                  "10": "10th",
+                  "11": "11th",
+                  "12": "12th",
+                  "13": "13th",
+                  "14": "14th",
+                  "15": "15th",
+                  "16": "16th",
+                  "17": "17th",
+                  "18": "18th",
+                  "19": "19th",
+                  "20": "20th",
+                  "21": "21st",
+                  "22": "22nd",
+                  "23": "23rd",
+                  "24": "24th",
+                  "25": "25th",
+                  "26": "26th",
+                  "27": "27th",
+                  "28": "28th",
+                  "29": "29th",
+                  "30": "30th",
+                  "31": "31st"
+                } %}
+                Paid {{ data['regularFrequency'] }} on the {{ dayLabels[data['monthly-date']] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                How will payments be made
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% set labels = {
+                  "payment-method": {
+                    "direct-debit": "Direct debit",
+                    "standing-order": "Standing order",
+                    "bank-transfer": "Bank transfer",
+                    "cash": "Cash payment"
+                  }
+                } %}
+                {{ labels['payment-method'][data['regularMethod']] }}
+              </dd>
+            </div>   
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Who will pay
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% set labels = {
+                  "who-will-pay": {
+                    "parent1": parentName + " will pay " + otherName,
+                    "parent2": otherName + " will pay " + parentName,
+                    "bank-transfer": "Bank transfer"
+                  }
+                } %}
+                {{ labels['who-will-pay'][data['whoWillPay']] }}
+              </dd>
+            </div>
+          {% endif %}
+
+          {% if data['arrangement-type'] == "shared" or data['arrangement-type'] == "both" %}
+
+            {% if data['shared-cost-payment'] != "varied" %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Shared costs
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% set sharedCostLabels = {
+                    "food": "Food",
+                    "clothing": "Clothing",
+                    "education": "Education",
+                    "baby": "Baby care",
+                    "childcare": "Childcare",
+                    "activities": "Activities",
+                    "entertainment": "Entertainment",
+                    "technology": "Technology",
+                    "travel": "Travel and transport",
+                    "health": "Health and personal care",
+                    "household": "Household bills",
+                    "savings": "Savings and allowances",
+                    "other": "Other"
+                  } %}
+
+                  {% set selectedCosts = data['shared-cost'] %}
+                  {% if selectedCosts %}
+                    {% for item in selectedCosts %}
+                      {{ sharedCostLabels[item] }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  How do you want to pay for these shared costs
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% if data['shared-cost-payment'] == 'equal' %}
+                    We will share these costs equally
+                  {% elif data['shared-cost-payment'] == 'uneven' %}
+                    {% if data['uneven-option'] == 'parent-1' %}
+                      {{ parentName }} will pay for most
+                    {% elif data['uneven-option'] == 'parent-2' %}
+                      {{ otherName }} will pay for most
+                    {% endif %}
+                  {% elif data['shared-cost-payment'] == 'one-parent' %}
+                    {% if data['one-parent-option'] == 'parent-1' %}
+                      {{ parentName }} will pay for all of these costs
+                    {% elif data['one-parent-option'] == 'parent-2' %}
+                      {{ otherName }} will pay for all of these costs
+                    {% endif %}
+                  {% endif %}
+                </dd>
+              </div>
+            
+            {% elif data['shared-cost-payment'] == "varied" %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Shared costs
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list">
+
+                  {% if 'food' in data['shared-cost'] and data['food-option'] != 'choose' %}
+                  <li>Food: {{ costLabels[data['food-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'clothing' in data['shared-cost'] and data['clothing-option'] != 'choose' %}
+                  <li>Clothing: {{ costLabels[data['clothing-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'education' in data['shared-cost'] and data['education-option'] != 'choose' %}
+                  <li>Education: {{ costLabels[data['education-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'baby' in data['shared-cost'] and data['baby-option'] != 'choose' %}
+                  <li>Baby care: {{ costLabels[data['baby-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'childcare' in data['shared-cost'] and data['childcare-option'] != 'choose' %}
+                  <li>Childcare: {{ costLabels[data['childcare-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'activities' in data['shared-cost'] and data['activities-option'] != 'choose' %}
+                  <li>Activities: {{ costLabels[data['activities-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'entertainment' in data['shared-cost'] and data['entertainment-option'] != 'choose' %}
+                  <li>Entertainment: {{ costLabels[data['entertainment-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'technology' in data['shared-cost'] and data['technology-option'] != 'choose' %}
+                  <li>Technology: {{ costLabels[data['technology-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'travel' in data['shared-cost'] and data['travel-option'] != 'choose' %}
+                  <li>Travel and transport: {{ costLabels[data['travel-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'health' in data['shared-cost'] and data['health-option'] != 'choose' %}
+                  <li>Health and personal care: {{ costLabels[data['health-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'household' in data['shared-cost'] and data['household-option'] != 'choose' %}
+                  <li>Household bills: {{ costLabels[data['household-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'savings' in data['shared-cost'] and data['savings-option'] != 'choose' %}
+                  <li>Savings and allowances: {{ costLabels[data['savings-option']] }}</li>
+                  {% endif %}
+
+                  {% if 'other' in data['shared-cost'] and data['other-option'] != 'choose' %}
+                  <li>{{ data['other-custom'] or 'Other' }}: {{ costLabels[data['other-option']] }}</li>
+                  {% endif %}
+                </ul>
+              </dd>           
+            </div>
+
+            {% endif %}
+          {% endif %}
+
+          {% if data['arrangement-type'] == "other" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is your financial arrangement
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['fa-description'] }}
+              </dd>
+            </div>
+          {% endif %}
+
+          {% if data['anythingElse'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Anything else
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['anythingElse'] }}
+              </dd>
+            </div>
+          {% endif %}          
+
+          </dl>
+          
+          {{ govukButton({
+            text: "Review arrangement",
+            href: "#"
+          }) }}   
+
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Download (saves as PDF)</a>
+            </li>   
+            <li>
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Delete arrangement</a>
+            </li>                         
+          </ul>
+
+          <hr class="govuk-section-break govuk-section-break--l">
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

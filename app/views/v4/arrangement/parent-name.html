@@ -1,0 +1,72 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %}
+{% set child2 = (data['child2Name'] or 'Child 2') %}
+{% set child3 = (data['child3Name'] or 'Child 3') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %}
+{% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle %}
+  What are the parents' names? (optional)
+{% endset %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="type-of-arrangement" method="post">
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--l" for="parent-name">
+                {{pageTitle}}
+              </label>
+            </h1>
+
+            <p class="govuk-body">
+              Names are only for your reference. They will not be saved unless you make an online account later.
+            </p>
+
+            {{ govukInput({
+              label: {
+                text: "Your name"
+              },
+              classes: "govuk-input--width-20",
+              id: "parent-name",
+              name: "parentName"
+            }) }}
+
+            {{ govukInput({
+              label: {
+                text: "Name of other parent"
+              },
+              classes: "govuk-input--width-20",
+              id: "other-name",
+              name: "otherName"
+            }) }}
+
+          </div>
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "layouts/main-v2.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set pageTitle = "Set a reminder" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            {{pageTitle}}
+          </h1>
+          <p class="govuk-body">
+            You can set a reminder for a date in the future to review your arrangement.
+          </p>
+
+          <form action="set-reminder-answer" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Do you want us to send you an email reminder?
+                </legend>
+
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="set-reminder" name="setReminder" type="radio" value="yes" data-aria-controls="conditional-set-reminder">
+                    <label class="govuk-label govuk-radios__label" for="set-reminder">
+                      Yes
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-set-reminder">
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" role="group" aria-describedby="reminder-date-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                          When should we remind you?
+                        </legend>
+                        <div id="reminder-date-hint" class="govuk-hint">
+                          For example, 27 3 2027
+                        </div>
+
+                        <div class="govuk-date-input" id="reminder-date">
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="reminder-day">
+                                Day
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="reminder-day" name="reminder-day" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="reminder-month">
+                                Month
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="reminder-month" name="reminder-month" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="reminder-year">
+                                Year
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="reminder-year" name="reminder-year" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                          Email address
+                        </legend>
+                        <div id="email-hint" class="govuk-hint">
+                          We'll only use this to send your reminder
+                        </div>
+                        <input class="govuk-input" id="email" name="email" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
+                      </fieldset>
+                    </div>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="set-reminder-2" name="setReminder" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="set-reminder-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}
