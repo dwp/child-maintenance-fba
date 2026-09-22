@@ -1,0 +1,157 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Single parent support hub" %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+<div class="hero-banner">
+  <div class="govuk-width-container">
+
+    <div class="hero-banner__inner">
+
+      <div class="hero-banner__content">
+        <h1 class="govuk-heading-xl hero-banner__heading">
+          Single parent support hub
+        </h1>
+
+        <p class="govuk-body-l hero-banner__text">
+          This site is for anyone who is making decisions about their child's financial support, care or well-being.
+        </p>
+      </div>
+
+      <div class="hero-banner__image">
+        <!-- SVG goes here -->
+        <img src="/public/images/parent-and-child.svg"
+             alt=""
+             aria-hidden="true">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row fba-card-v2-row">
+
+  <div class="govuk-grid-column-one-half fba-card-v2-wrapper">
+    <div class="fba-card-v2">
+      <div class="fba-card-v2__content">
+        <h2 class="govuk-heading-m fba-card-v2__heading">
+          <a href="#" class="govuk-link fba-card-v2__link">
+            I need to make a financial arrangement for my child
+          </a>
+        </h2>
+        <p class="govuk-body">
+          Use our tools to plan and manage financial support for your child, or explore the Child Maintenance Service if you cannot reach an agreement.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half fba-card-v2-wrapper">
+    <div class="fba-card-v2">
+      <div class="fba-card-v2__content">
+        <h2 class="govuk-heading-m fba-card-v2__heading">
+          <a href="#" class="govuk-link fba-card-v2__link">
+            I need to review my financial arrangement
+          </a>
+        </h2>
+        <p class="govuk-body">
+          It is important to review your financial arrangement regularly. Our tools can help you decide when to review it, then set reminders.
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half fba-card-v2-wrapper">
+    <div class="fba-card-v2">
+      <div class="fba-card-v2__content">
+        <h2 class="govuk-heading-m fba-card-v2__heading">
+          <a href="#" class="govuk-link fba-card-v2__link">
+            I need financial support and advice
+          </a>
+        </h2>
+        <p class="govuk-body">
+          Explore resources that can help you apply for benefits, set a budget and manage debt.
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half fba-card-v2-wrapper">
+    <div class="fba-card-v2">
+      <div class="fba-card-v2__content">
+        <h2 class="govuk-heading-m fba-card-v2__heading">
+          <a href="#" class="govuk-link fba-card-v2__link">
+            I need help separating or divorcing
+          </a>
+        </h2>
+        <p class="govuk-body">
+          Get guidance about separation and divorce, including making care arrangements for your children.
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half fba-card-v2-wrapper">
+    <div class="fba-card-v2">
+      <div class="fba-card-v2__content">
+        <h2 class="govuk-heading-m fba-card-v2__heading">
+          <a href="#" class="govuk-link fba-card-v2__link">
+            I need support in difficult conversations
+          </a>
+        </h2>
+        <p class="govuk-body">
+          Find guidance about talking with the other parent, supporting your children and using mediation.
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half fba-card-v2-wrapper">
+    <div class="fba-card-v2">
+      <div class="fba-card-v2__content">
+        <h2 class="govuk-heading-m fba-card-v2__heading">
+          <a href="#" class="govuk-link fba-card-v2__link">
+            I need support for mental health or safety
+          </a>
+        </h2>
+        <p class="govuk-body">
+          Charities and local organisations can help in difficult situations. You can also get counselling for yourself or your child.
+      </div>
+    </div>
+  </div>      
+
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m govuk-!-padding-top-4">Give your feedback</h2>
+
+    <p class="govuk-body">
+      Help us improve our service by filling in a quick survey.
+    </p>
+
+    {{ govukButton({
+      text: "Continue to survey"
+    }) }}
+
+  </div>
+</div>
+
+
+{% endblock %}

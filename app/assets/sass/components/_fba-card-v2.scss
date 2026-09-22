@@ -1,0 +1,109 @@
+/* Card row */
+.govuk-grid-row.fba-card-v2-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Equal height columns */
+.govuk-grid-row.fba-card-v2-row > .govuk-grid-column-one-half {
+  display: flex;
+}
+
+/* Card */
+.fba-card-v2 {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 32px;
+
+  background-color: #d2e2f1;
+
+  box-sizing: border-box;
+
+  transition: background-color 0.2s ease;
+}
+
+/* Content */
+.fba-card-v2__content {
+  flex-grow: 1;
+}
+
+/* Heading */
+.fba-card-v2__heading {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Card link */
+.fba-card-v2__link {
+  color: #0f385c;
+  text-decoration: none;
+}
+
+.fba-card-v2__link:visited {
+  color: #0f385c;
+}
+
+.fba-card-v2__link:hover {
+  color: #ffffff;
+}
+
+/* Make whole card clickable */
+.fba-card-v2__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Hover state */
+.fba-card-v2:hover {
+  background-color: #0f385c;
+  cursor: pointer;
+}
+
+.fba-card-v2:hover .fba-card-v2__heading,
+.fba-card-v2:hover .govuk-body,
+.fba-card-v2:hover .fba-card-v2__link,
+.fba-card-v2:hover .fba-card-v2__link:visited {
+  color: #ffffff;
+}
+
+.fba-card-v2:hover .fba-card-v2__link {
+  text-decoration: none;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+}
+
+/* Focus state */
+.fba-card-v2:focus-within {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+}
+
+.fba-card-v2__link:focus {
+  outline: none;
+}
+
+/* Spacing */
+.fba-card-v2-wrapper {
+  margin-bottom: 32px;
+}
+
+/* Mobile */
+@media (max-width: 40.0625em) {
+
+  .govuk-grid-row.fba-card-v2-row {
+    display: block;
+  }
+
+  .fba-card-v2-wrapper {
+    margin-bottom: 16px;
+  }
+
+}

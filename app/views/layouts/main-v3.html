@@ -1,0 +1,62 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "govuk/components/language-navigation/macro.njk" import govukLanguageNavigation %}
+
+{% block header %}
+
+    {{ govukHeader({
+        homepageUrl: "/"
+    }) }}
+
+{% set languageNavigationHtml %}
+  {{ govukLanguageNavigation({
+    items: [
+      {
+        text: "English",
+        lang: "en",
+        href: "#",
+        current: true
+      },
+      {
+        text: "Cymraeg",
+        lang: "cy",
+        href: "#"
+      }
+    ]
+  }) }}
+{% endset %}
+
+{{ govukServiceNavigation({
+  serviceName: serviceName,
+  serviceUrl: version + "/home",
+  slots: {
+    end: {
+      html: languageNavigationHtml,
+      align: 'inline'
+    }
+  }
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+    {{ govukPhaseBanner({
+        tag: {
+            text: "Beta"
+        },
+        html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="/assets/js/dfefrontend.min.js"></script>
+{% endblock %}

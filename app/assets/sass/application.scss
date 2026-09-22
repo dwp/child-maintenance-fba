@@ -8,6 +8,7 @@
 @import 'node_modules/dfe-frontend/packages/dfefrontend';
 @import 'components/fba-card';
 @import 'components/fba-panel';
+@import "components/fba-card-v2";
 
 // CHAT WITH US BUTTON
 
@@ -87,4 +88,108 @@
   height: 80px;
   margin-bottom: 10px;
   background: #ffffff;
+}
+
+// Hero Banner
+
+.hero-banner {
+  background-color: #1d70b8;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-banner .govuk-width-container {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Layout */
+.hero-banner__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Text */
+.hero-banner__content {
+  flex: 1;
+  max-width: 700px;
+  padding: 50px 0;
+}
+
+.hero-banner__heading {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.hero-banner__text {
+  color: #ffffff;
+  margin-bottom: 0;
+  max-width: 650px;
+}
+
+/* Illustration */
+.hero-banner__image {
+  flex-shrink: 0;
+  padding-top: 24px;
+}
+
+.hero-banner__image img {
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove space below phase banner */
+.govuk-phase-banner {
+  margin-bottom: 0;
+}
+
+/* Tablet */
+@media (max-width: 48.0525em) {
+
+  .hero-banner__image img {
+    width: 260px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width: 40.0625em) {
+
+  .hero-banner__inner {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .hero-banner__image {
+    width: 100%;
+    text-align: left;
+    padding-top: 20px;
+  }
+
+  .hero-banner__image img {
+    width: 180px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .hero-banner__content {
+    max-width: 100%;
+    padding: 0 0 32px;
+  }
+
+  .hero-banner__heading {
+    margin-bottom: 8px;
+  }
+
+  .hero-banner__text {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+
 }
