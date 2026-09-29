@@ -1,0 +1,150 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "I need to make financial arrangements for my child" %}
+
+
+{% block content %}
+<div class="govuk-width-container">
+  
+  <nav class="govuk-breadcrumbs govuk-!-margin-top-0" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="make-a-financial-arrangement">I need to make financial arrangements for my child</a>
+      </li>
+    </ol>
+  </nav>
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+        <p class="govuk-body">
+          A private financial arrangement is an agreement between parents about how to support their child, without involving the Child Maintenance Service.
+        </p>
+
+        <p class="govuk-body">
+          When making a financial arrangment parents usually consider how much they spend for their child and regular payments from one parent to the other.
+        </p>
+
+        <h2 class="govuk-heading-l">
+          Work out how much you spend for your child
+        </h2>
+
+        <p class="govuk-body">
+          <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="#">Use our worksheet</a> to help you organise and compare how much you spend for your child, we will ask how much you spend on everyday items and one-time costs for them.
+        </p>
+
+        <p class="govuk-body">
+          You will be able to download the finished worksheet and can use the costs to inform your financial arrangement.
+        </p>
+
+        <h2 class="govuk-heading-l">
+          Work out a payment amount
+        </h2>
+
+        <p class="govuk-body">
+          If you want to use regular payments, you can decide the amounts and schedule yourself or <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/calculate-child-maintenance">use the calculator from the Child Maintenance Service (opens in a new tab)</a>.
+        </p>
+
+        <p class="govuk-body">
+          When deciding payment amounts, parents often consider:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>one or both parents' income</li>
+          <li>spending for their children or household</li>
+          <li>other children they are responsible for</li>
+          <li>care arrangements</li>
+        </ul>
+
+        <p class="govuk-body">
+          The official calculator estimates child maintenance payments. It considers:
+        </p>
+        
+        <ul class="govuk-list govuk-list--bullet">
+          <li>the paying parent's income</li>
+          <li>other children the paying parent is responsible for</li>
+          <li>care arrangements</li>
+        </ul>
+
+        <h2 class="govuk-heading-l">
+          Create a financial arrangement
+        </h2>
+
+        <p class="govuk-body">
+          <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="#">Create a financial arrangement</a> to make a written record of what you propose to the other parent or agree with them.
+        </p>
+
+        <p class="govuk-body">
+          This form will ask you about:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>your names and your children's names (optional)</li>
+          <li>any regular payments or other financial support</li>
+          <li>any additional details you want to include</li>
+        </ul>
+
+        <p class="govuk-body">
+          You can download or print the finished form. We will not save your answers.
+        </p>
+
+        <h2 class="govuk-heading-l">
+          Use the Child Maintenance Service
+        </h2>
+
+        <p class="govuk-body">
+          Use the government's Child Maintenance Service if you and the other parent cannot agree on a financial arrangement or if you feel it would be a safer option.
+        </p>
+
+        <p class="govuk-body">
+          With the service, you can:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://child-maintenance.service.gov.uk/apply/get-help-arranging-child-maintenance/">Get help arranging child maintenance (opens in a new tab)</a>
+          </li>
+          <li>
+            <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/child-maintenance-service/sign-in-account">Manage your child maintenance case online (opens in a new tab)</a>
+          </li>
+          <li>
+            <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/child-maintenance-service/contact">Contact the Child Maintenance Service (opens in a new tab)</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+          <h2 class="govuk-heading-m" id="Related links-title">
+            Related content
+          </h2>
+          <nav role="navigation" aria-labelledby="Related links-title">
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+                <a href="review-financial-arrangement.html">Review your financial arrangement</a>
+              </li>
+              <li>
+                <a href="financial-support.html">Get financial support and advice</a>
+              </li>           
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      
+    </div>
+  </main>
+</div>
+
+{% endblock %}

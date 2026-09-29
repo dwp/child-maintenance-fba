@@ -22,6 +22,15 @@
     <div class="hero-banner__inner">
 
       <div class="hero-banner__content">
+
+        <nav class="govuk-breadcrumbs govuk-breadcrumbs--inverse govuk-!-margin-top-0" aria-label="Breadcrumb">
+          <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+              <a class="govuk-breadcrumbs__link" href="">Home</a>
+            </li>
+          </ol>
+        </nav>
+        
         <h1 class="govuk-heading-xl hero-banner__heading">
           Single parent support hub
         </h1>
@@ -46,13 +55,43 @@
 
 {% block content %}
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="app-signup-card">
+
+      <div class="app-signup-card__icon">
+        <svg
+          class="app-signup-card__bell"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 459.334 459.334">
+          <path d="M177.216 404.514c-.001.12-.009.239-.009.359 0 30.078 24.383 54.461 54.461 54.461s54.461-24.383 54.461-54.461c0-.12-.008-.239-.009-.359H175.216zM403.549 336.438l-49.015-72.002v-89.83c0-60.581-43.144-111.079-100.381-122.459V24.485C254.152 10.963 243.19 0 229.667 0s-24.485 10.963-24.485 24.485v27.663c-57.237 11.381-100.381 61.879-100.381 122.459v89.83l-49.015 72.002a24.76 24.76 0 0 0 20.468 38.693H383.08a24.761 24.761 0 0 0 20.469-38.694z"/>
+        </svg>
+      </div>
+
+      <div class="app-signup-card__content">
+        <h2 class="govuk-heading-s app-signup-card__title">
+          Sign up for reminders
+        </h2>
+
+        <p class="govuk-body app-signup-card__body">
+          <a class="govuk-link govuk-link--no-visited-state" href="reminders.html">Set reminders to review your arrangement</a>.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
 <div class="govuk-grid-row fba-card-v2-row">
 
   <div class="govuk-grid-column-one-half fba-card-v2-wrapper">
     <div class="fba-card-v2">
       <div class="fba-card-v2__content">
         <h2 class="govuk-heading-m fba-card-v2__heading">
-          <a href="#" class="govuk-link fba-card-v2__link">
+          <a href="support/make-financial-arrangement" class="govuk-link fba-card-v2__link">
             I need to make a financial arrangement for my child
           </a>
         </h2>
@@ -67,7 +106,7 @@
     <div class="fba-card-v2">
       <div class="fba-card-v2__content">
         <h2 class="govuk-heading-m fba-card-v2__heading">
-          <a href="#" class="govuk-link fba-card-v2__link">
+          <a href="support/review-financial-arrangement" class="govuk-link fba-card-v2__link">
             I need to review my financial arrangement
           </a>
         </h2>
@@ -81,7 +120,7 @@
     <div class="fba-card-v2">
       <div class="fba-card-v2__content">
         <h2 class="govuk-heading-m fba-card-v2__heading">
-          <a href="#" class="govuk-link fba-card-v2__link">
+          <a href="support/financial-support" class="govuk-link fba-card-v2__link">
             I need financial support and advice
           </a>
         </h2>
@@ -95,7 +134,7 @@
     <div class="fba-card-v2">
       <div class="fba-card-v2__content">
         <h2 class="govuk-heading-m fba-card-v2__heading">
-          <a href="#" class="govuk-link fba-card-v2__link">
+          <a href="support/separating-or-divorcing" class="govuk-link fba-card-v2__link">
             I need help separating or divorcing
           </a>
         </h2>
@@ -109,7 +148,7 @@
     <div class="fba-card-v2">
       <div class="fba-card-v2__content">
         <h2 class="govuk-heading-m fba-card-v2__heading">
-          <a href="#" class="govuk-link fba-card-v2__link">
+          <a href="support/difficult-conversations" class="govuk-link fba-card-v2__link">
             I need support in difficult conversations
           </a>
         </h2>
@@ -123,7 +162,7 @@
     <div class="fba-card-v2">
       <div class="fba-card-v2__content">
         <h2 class="govuk-heading-m fba-card-v2__heading">
-          <a href="#" class="govuk-link fba-card-v2__link">
+          <a href="support/mental-health" class="govuk-link fba-card-v2__link">
             I need support for mental health or safety
           </a>
         </h2>

@@ -1,0 +1,281 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "I need help separating or divorcing" %}
+
+
+{% block content %}
+<div class="govuk-width-container">
+  
+  <nav class="govuk-breadcrumbs govuk-!-margin-top-0" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="separating-or-divorcing">I need help separating or divorcing</a>
+      </li>
+    </ol>
+  </nav>
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+        <h2 class="govuk-heading-l">
+          Getting a divorce
+        </h2>
+
+        <p class="govuk-body">
+          The <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/get-a-divorce">Get a divorce: step by step guide (opens in a new tab)</a> can help you decide how to separate and what legal actions you should take.
+        </p>
+
+        <h2 class="govuk-heading-l">
+          Making a care arrangement
+        </h2>
+
+        <p class="govuk-body">
+          A care arrangement is an agreement between parents about how your child will split their time, including considerations like:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>where they spend the night</li>
+          <li>who takes them to school and picks them up</li>
+          <li>when and where the child can see the parent they do not live with</li>
+        </ul>
+
+        <p class="govuk-body">
+          Get help <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/looking-after-children-divorce">making child arrangements if you divorce or separate (opens in a new tab)</a>, including a written plan, mediation or a court order.
+        </p>
+
+        <h2 class="govuk-heading-l">
+          Get support as a single parent
+        </h2>
+
+        <p class="govuk-body">
+          These organisations offer a wide range of resources to help single parents with employment, finances, housing, legal rights, parenting, and more. Their contact methods include a mix of face-to-face and online.
+        </p>
+
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  Children and Family Court Advisory and Support Services (CAFCASS)
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                CAFCASS promotes the welfare of children, advises family courts, and helps represent children.<br></br>
+                Telephone: 0300 456 4000<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.cafcass.gov.uk">Cafcass - Children and Family Court Advisory and Support Service (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                  Both Parents Matter
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Both Parents Matter supports and informs parents and others who are excluded from the lives of their children, or who seek to share in parenting. It also provides a telephone helpline, a web forum, and regional meetings.<br></br>
+                Telephone: 0300 0300 363<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://bothparentsmatter.org.uk">Both Parents Matter (opens in a new tab)</a>
+                Email: <a href="mailto:fnf@fnf.org.uk" class="govuk-link" rel="noreferrer noopener" target="_blank">fnf@fnf.org.uk</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  Gingerbread's single parent helpline
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Gingerbread's Single Parent Helpline provides free information about benefits, child maintenance, contact, debt, education, employment, and housing.<br></br>
+                Telephone: 0845 658 5258<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gingerbread.org.uk/">Gingerbread (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  One Parent Families Scotland (OPFS)
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                OPFS provides a free telephone helpline, family support services, and childcare. It can give advice on benefits, child maintenance, housing, legal rights, returning to work or education, and tax.<br></br>
+                Telephone: 0808 801 0323<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://opfs.org.uk/">One Parent Families Scotland (opens in a new tab)</a>
+                Email: <a href="mailto:info@opfs.org.uk" class="govuk-link" rel="noreferrer noopener" target="_blank">info@opfs.org.uk</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  Family Lives (formally ParentlinePlus)
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Family Lives provides a free telephone helpline, live chat online support, parenting courses, and workshops.<br></br>
+                Telephone: 0808 800 2222<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.familylives.org.uk/">Family Lives (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  Parentline Scotland
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Parentline Scotland is provided by the charity Children First. It provides a free telephone helpline and email service.<br></br>
+                Telephone: 0800 028 2233<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.childrenfirst.org.uk/">Children First (opens in a new tab)</a>
+                Email: <a href="mailto:parentlinescotland@children1st.org.uk" class="govuk-link" rel="noreferrer noopener" target="_blank">parentlinescotland@children1st.org.uk</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  Parenting NI (formerly Parents Advice Centre)
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Parenting NI is for any family member worried about a behavioural, emotional or relationship difficulty. It provides a free telephone helpline and face-to-face support at its centres.<br></br>
+                Telephone: 0808 8010 722<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.parentingni.org/">Parenting NI (opens in a new tab)</a>
+                Email: <a href="mailto:belfast@pachelp.org" class="govuk-link" rel="noreferrer noopener" target="_blank">belfast@pachelp.org</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="govuk-heading-l">
+          Making Arrangements for Your Children
+        </h3>
+
+        <p class="govuk-body">
+          Get help <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/looking-after-children-divorce">making arrangements if you are divorced or separating (opens in a new tab)</a>.
+        </p>
+
+        <p class="govuk-body">
+          These organisations can help if you are unable to see or contact your child:
+        </p>
+
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  Both Parents Matter
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Both Parents Matter supports and informs parents and others who are excluded from the lives of their children, or who seek to share in parenting. It also provides a telephone helpline, a web forum, and regional meetings.<br></br>
+                Telephone: 0300 0300 363<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://bothparentsmatter.org.uk/">Both Parents Matter (opens in a new tab)</a>
+                Email: <a href="mailto:fnf@fnf.org.uk" class="govuk-link" rel="noreferrer noopener" target="_blank">fnf@fnf.org.uk</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                  MATCH - Mothers Apart From Their Children
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                MATCH offers non-judgemental emotional support to mothers who are separated from their children. However, you must have membership to access more personalised support.<br></br>
+                Telephone: 0800 689 4104<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="http://www.matchmothers.org/">Match Mothers (opens in a new tab)</a>
+                Email: <a href="mailto:enquiries@matchmothers.org" class="govuk-link" rel="noreferrer noopener" target="_blank">enquiries@matchmothers.org</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  The Centre for Separated Families
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                The Centre for Separated Families help parents, grandparents and other significant adults to find ways of building co-operative, post-separation parenting relationships that put the needs of children first. It provides an email advice service.<br></br>
+                Telephone: 0845 478 6360<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.separatedfamilies.info/">Separated Families (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="govuk-heading-l">
+          Legal and financial steps
+        </h3>
+
+        <p class="govuk-body">
+          <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.moneyhelper.org.uk/en/family-and-care/divorce-and-separation/how-to-sort-out-your-finances-on-separation?source=mas#">Read advice from MoneyHelper (opens in a new tab)</a> on sorting out your finances during separation or divorce.
+        </p>
+
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+          <h2 class="govuk-heading-m" id="Related links-title">
+            Related content
+          </h2>
+          <nav role="navigation" aria-labelledby="Related links-title">
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+                <a href="difficult-conversations.html">Get support for difficult conversations</a>
+              </li>
+              <li>
+                <a href="mental-health.html">Get support for mental health or safety</a>
+              </li>           
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      
+    </div>
+  </main>
+</div>
+
+{% endblock %}

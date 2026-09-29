@@ -1,0 +1,232 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "I need support for mental health or safety" %}
+
+
+{% block content %}
+<div class="govuk-width-container">
+  
+  <nav class="govuk-breadcrumbs govuk-!-margin-top-0" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="mental-health">I need support for mental health or safety</a>
+      </li>
+    </ol>
+  </nav>
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+        <h2 class="govuk-heading-l">
+          Get mental health support
+        </h2>
+
+        <p class="govuk-body">
+          For mental health support, we recommend:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="#">Calling a helpline (opens in a new tab)</a>
+          </li>
+          <li>
+            <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="http://localhost:3000/v6/support/mental-health#">Speaking with the NHS (opens in a new tab)</a>
+          </li>
+          <li>
+            <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="http://localhost:3000/v6/support/mental-health#">Getting counselling for you or your child from Relate (opens in a new tab)</a>
+          </li>          
+        </ul>
+
+        <h2 class="govuk-heading-l">
+          Tell someone about the behaviours you or your children have experienced
+        </h2>
+
+        <p class="govuk-body">
+          Domestic abuse or violence is a crime. It is important to remember that there is help and support available to you, including police response, online support, refuges and other services. 
+        </p>
+
+        <p class="govuk-body">
+          Call any of the following organisations to get help and advice about domestic abuse.
+        </p>
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-visually-hidden">Warning</span>
+            Call 999 if it's an emergency or you're in immediate danger.
+          </strong>
+        </div>
+
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  National Domestic Abuse Helpline
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Telephone: 0808 2000 247<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.nationaldahelpline.org.uk">National Domestic Abuse Helpline (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                  Galop (for lesbian, gay, bisexual and transgender people)
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Telephone: 0800 999 5428<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.galop.org.uk">Galop (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  Men's Advice Line
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Telephone: 0808 801 0327<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://mensadviceline.org.uk">Men's Advice Line (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Rape Crisis (England and Wales)
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Telephone: 0808 802 9999<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://rapecrisis.org.uk">Rape Crisis England and Wales (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Scotland's Domestic Abuse and Forced Marriage Helpline
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Telephone: 0800 027 1234<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.sdafmh.org.uk/en">Scotland's Domestic Abuse and Forced Marriage Helpline (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Scottish Women's Aid
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Telephone: 0131 226 6606<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://womensaid.scot">Scottish Women's Aid (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Live Fear Free helpline (Wales)
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Telephone: 0808 80 10 800<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.wales/live-fear-free">Live Fear Free Helpline (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Freephone National Domestic Abuse Helpline, run by Refuge
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Telephone: 0808 200 0247<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://refuge.org.uk/i-need-help-now/how-we-can-help-you/national-domestic-abuse-helpline">Refuge - National Domestic Abuse Helpline (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Respect phoneline
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Telephone: 0808 802 4040<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://respectphoneline.org.uk">Respect Phoneline (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+          <h2 class="govuk-heading-m" id="Related links-title">
+            Related content
+          </h2>
+          <nav role="navigation" aria-labelledby="Related links-title">
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+                <a href="https://www.gov.uk/government/publications/domestic-violence-and-abuse-help-from-dwp/help-available-from-the-department-for-work-and-pensions-for-people-who-are-victims-of-domestic-violence-and-abuse">Get help from DWP after domestic violence</a>
+              </li>
+              <li>
+                <a href="difficult-conversations.html">Get support for difficult conversations</a>
+              </li>            
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      
+    </div>
+  </main>
+</div>
+
+{% endblock %}

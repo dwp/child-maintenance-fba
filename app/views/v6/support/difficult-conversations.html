@@ -1,0 +1,213 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "I need support in difficult conversations" %}
+
+
+{% block content %}
+<div class="govuk-width-container">
+  
+  <nav class="govuk-breadcrumbs govuk-!-margin-top-0" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="difficult-conversations">I need support in difficult conversations</a>
+      </li>
+    </ol>
+  </nav>
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+        <h2 class="govuk-heading-l">
+          Plan your conversation
+        </h2>
+
+        <p class="govuk-body">
+          Use our guidance to help you <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gov.uk/government/publications/planning-your-child-maintenance-conversation">plan a conversation (opens in a new tab)</a> with your child's other parent. You can decide to share it with them or use it in mediation.
+        </p>
+
+        <h2 class="govuk-heading-l">
+          Learn how to tell your children about separation
+        </h2>
+
+        <p class="govuk-body">
+          The wellbeing of your child should be the highest priority during separation or divorce. There are many organisations that can help you talk to your child and support them.
+        </p>
+
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  Gingerbread
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                The Single Parent Helpline provides free information about benefits, child maintenance, contact, debt, education, employment, and housing.<br></br>
+                Telephone: 0808 802 0925<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.gingerbread.org.uk/">Gingerbread (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                  Family Lives (formally ParentlinePlus)
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Family Lives provides a free telephone helpline, live chat online support, parenting courses, and workshops.<br></br>
+                Telephone: 0808 800 2222<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.familylives.org.uk/">Family Lives (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  Parentline Scotland
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Parentline Scotland is provided by the charity Children First. It provides a free telephone helpline and email service.<br></br>
+                Telephone: 0800 028 2233<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.childrenfirst.org.uk/">Children First (opens in a new tab)</a><br>
+                Email: <a href="mailto:parentlinescotland@children1st.org.uk" class="govuk-link" rel="noreferrer noopener" target="_blank">parentlinescotland@children1st.org.uk</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Tavistock
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Tavistock provides face-to-face and online therapy, including counselling and psychotherapy for challenges in parenting, relationships, and sexual lives. Cost depends on choice of service.<br></br>
+                Telephone: 0207 380 1960<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://tavistockrelationships.org/">Tavistock relationships (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="govuk-heading-l">
+          Find mediation resources
+        </h2>
+
+        <p class="govuk-body">
+          These organisations can help resolve conflicts between you and your child's other parent.
+        </p>
+
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  Relationships Scotland
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                A network of affiliated local services providing relationship counselling, family mediation, child contact centres and other family support services.<br></br>
+                Telephone: 0345 119 2020<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.relationships-scotland.org.uk">Relationships Scotland (opens in a new tab)</a>
+                Email: <a href="mailto:enquiries@relationship-scotland.org.uk" class="govuk-link" rel="noreferrer noopener" target="_blank">enquiries@relationship-scotland.org.uk</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                  Family Lives (formally ParentlinePlus)
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                National Family Mediation is an umbrella organisation for local, family mediation providers. It can provide a pack of 60 affiliated services. There are fees on sliding scale, including some public funding for low earners.<br></br>
+                Telephone: 0300 100 1234<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://www.relate.org.uk">Relate (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  College of Mediators
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                The college is a membership body for mediators. It has a directory of mediators in England, Wales and Scotland. It includes privately run and not-for-profit mediation services.<br></br>
+                Telephone: 0845 658 5258<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://collegeofmediators.co.uk/">College of Mediators (opens in a new tab)</a><br>
+                Email: <a href="mailto:admin@collegeofmediators.co.uk" class="govuk-link" rel="noreferrer noopener" target="_blank">admin@collegeofmediators.co.uk</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Tavistock
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                Tavistock provides face-to-face and online therapy, including counselling and psychotherapy for challenges in parenting, relationships, and sexual lives. Cost depends on choice of service.<br></br>
+                Telephone: 0207 380 1960<br>
+                Website: <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="https://tavistockrelationships.org/">Tavistock relationships (opens in a new tab)</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+          <h2 class="govuk-heading-m" id="Related links-title">
+            Related content
+          </h2>
+          <nav role="navigation" aria-labelledby="Related links-title">
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+                <a href="mental-health.html">Get support for mental health or safety</a>
+              </li>            
+            </ul>
+          </nav>
+        </aside>
+      </div>
+      
+    </div>
+  </main>
+</div>
+
+{% endblock %}
