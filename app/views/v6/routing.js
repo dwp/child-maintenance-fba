@@ -31,7 +31,7 @@ module.exports = function (router) {
   router.post('/v6/arrangement/share-equally-answer', function (req, res) {
     var equallyAnswer = req.session.data['shareEqually'];
 
-    if (equallyAnswer == "Yes"){
+    if (equallyAnswer == "yes"){
       res.redirect("anything-else");
     } else {
       res.redirect("shared-most");
@@ -42,7 +42,7 @@ module.exports = function (router) {
   router.post('/v6/arrangement/share-most-answer', function (req, res) {
     var payMostAnswer = req.session.data['shareMost'];
 
-    if (payMostAnswer == "Yes"){
+    if (payMostAnswer == "yes"){
       res.redirect("anything-else");
     } else {
       res.redirect("shared-how");

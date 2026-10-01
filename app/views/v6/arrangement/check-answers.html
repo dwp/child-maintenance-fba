@@ -4,7 +4,7 @@
   {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% set serviceName = "Single parent support hub" %}
+{% set serviceName = "Create a financial arrangement" %}
 {% set pageTitle = "Check your answers" %}
 
 {% set child1 = (data['child1Name'] or 'Child 1') %} {% set child2 = (data['child2Name'] or 'Child 2') %} {% set child3 = (data['child3Name'] or 'Child 3') %} {% set child4 = (data['child4Name'] or 'Child 4') %} {% set child5 = (data['child5Name'] or 'Child 5') %}
@@ -56,7 +56,7 @@
                 Have both parents agreed?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['bothParents'] }}
+                {{ data['bothParents'] | capitalize }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="have-both-parents-agreed">Change<span class="govuk-visually-hidden"> if both parents agreed how to financially support their child</span></a>
@@ -67,7 +67,7 @@
                 Number of children
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['childAmount'] }}
+                {{ data['childAmount'] or 1 }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="child-amount">Change<span class="govuk-visually-hidden"> number of children</span></a>
@@ -171,7 +171,7 @@
                 How often will {{otherName}} make the payment?
                 {% endif %}              </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['regularFrequency'] }}
+                {{ data['regularFrequency'] | capitalize }}
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -240,7 +240,7 @@
                 Will you spend money for these things equally?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['shareEqually'] }}
+                {{ data['shareEqually'] | capitalize }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="shared-equally">Change<span class="govuk-visually-hidden"> if you will spend money for these things equally</span></a>
@@ -263,7 +263,7 @@
                 Will one parent spend money for most or all of these things?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['shareMost'] }}
+                {{ data['shareMost'] | capitalize }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="shared-most">Change<span class="govuk-visually-hidden"> if one parent will spend money for most or all of these things</span></a>

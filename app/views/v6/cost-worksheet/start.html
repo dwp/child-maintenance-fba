@@ -1,0 +1,78 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Work out how much you spend for your child" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+
+  <nav class="govuk-breadcrumbs govuk-!-margin-top-0" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../support/make-financial-arrangement">I need to make financial arrangements</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="start">Work out how much you spend for your child</a>
+      </li>      
+    </ol>
+  </nav>
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            To help you organise and compare the costs of raising your child, we will ask how much you spend on everyday items and one-time costs for them. It may be easiest to use the amount you have spent in the past year.
+          </p>
+
+          <p class="govuk-body">
+            The amount can be for one or both parents.
+          </p>
+
+          <p class="govuk-body">
+            You will be able to download the finished worksheet and use the costs to <a href="../arrangement/start" class="govuk-link govuk-link--no-visited-state">create a financial arrangement (opens in a new tab)</a>
+          </p>
+
+          <p class="govuk-body">
+            We will not save your answers. They are optional and you can use estimated amounts.
+          </p>
+
+          {{ govukButton({
+            text: "Start now",
+            href: "child-amount",
+            isStartButton: true
+          }) }}
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+            <h2 class="govuk-heading-m" id="Related links-title">
+              Related content
+            </h2>
+            <nav role="navigation" aria-labelledby="Related links-title">
+              <ul class="govuk-list govuk-!-font-size-16">
+                <li>
+                  <a href="../arrangement/start">Create a financial arrangement</a>
+                </li>
+                <li>
+                  <a href="../support/financial-support">Get financial support and advice</a>
+                </li>           
+              </ul>
+            </nav>
+          </aside>
+        </div>
+
+      </div>
+    </main>
+  </div>
+{% endblock %}
