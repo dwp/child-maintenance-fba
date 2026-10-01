@@ -1,0 +1,125 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Will you spend money for these things equally?" %}
+
+{% set sharedCostLabels = {
+  "food": "Food and toiletries",
+  "clothing": "Clothing",
+  "education": "Education",
+  "baby": "Baby care",
+  "childcare": "Childcare",
+  "activities": "Hobbies and activities",
+  "technology": "Technology and entertainment",
+  "travel": "Travel and transport",
+  "healthcare": "Healthcare",
+  "household": "Household costs and bills",
+  "savings": "Savings and allowances",
+  "one-off": "One-off costs",
+  "other": data['other-custom'] or "Other"
+} %}
+
+{% block content %}
+<div class="govuk-width-container">
+  {{ govukBackLink({
+    "text": "Back",
+    "href": "javascript:history.back()"
+    }) 
+  }}
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      <form action="share-equally-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">Section 2 of 2: Shared spending</span>
+              <h1 class="govuk-fieldset__heading">
+                {{pageTitle}}
+              </h1>
+            </legend>
+
+            <p class="govuk-body">
+              You selected: 
+                {% set selectedCosts = data['shared-cost'] %}
+                {% if selectedCosts %}
+                  {% for item in selectedCosts %}
+                    {{ sharedCostLabels[item] }}{% if not loop.last %}, {% endif %}
+                  {% endfor %}
+                {% endif %}
+            </p>
+
+            <div class="govuk-form-group">
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="shareEqually" name="shareEqually" type="radio" value="Yes">
+                  <label class="govuk-label govuk-radios__label" for="shareEqually">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="shareEqually-2" name="shareEqually" type="radio" value="No">
+                  <label class="govuk-label govuk-radios__label" for="shareEqually-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="govuk-form-group">
+              <h2 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="explain-shareEqually">
+                  Do you need to explain in more detail?
+                </label>
+              </h2>
+                <div id="explain-equally-hint" class="govuk-hint">
+                  For example, if one parent pays the costs upfront and is reimbursed later
+                </div>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="explain-shareEqually" name="explain-shareEqually" type="radio" value="yes" data-aria-controls="conditional-shareEqually">
+                    <label class="govuk-label govuk-radios__label" for="explain-shareEqually">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-shareEqually">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="detail-shareEqually">
+                        Enter details
+                      </label>
+                      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                        <textarea class="govuk-textarea govuk-js-character-count" id="detail-shareEqually" name="detail-shareEqually" rows="3" aria-describedby="hint-shareEqually"></textarea>
+                        <div id="hint-shareEqually" class="govuk-hint govuk-character-count__message">
+                          You can enter up to 200 characters
+                        </div>
+                      </div>                        
+                    </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="explain-shareEqually-2" name="explain-shareEqually" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="explain-shareEqually-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+          </fieldset>
+        </div>
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

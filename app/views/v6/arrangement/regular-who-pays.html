@@ -1,0 +1,63 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Who will make payments?" %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %} {% set child2 = (data['child2Name'] or 'Child 2') %} {% set child3 = (data['child3Name'] or 'Child 3') %} {% set child4 = (data['child4Name'] or 'Child 4') %} {% set child5 = (data['child5Name'] or 'Child 5') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %} {% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="regular-payment" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    {% if 'regular' in data['arrangement-type'] and 'shared' in data['arrangement-type'] %}          
+                      <span class="govuk-caption-l">Section 1 of 2: Regular payments</span>
+                    {% endif %}
+                  <h1 class="govuk-fieldset__heading">
+                    {{pageTitle}}
+                  </h1>
+                </legend>
+                
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="who-will-pay" name="whoWillPay" type="radio" value="parent1">
+                    <label class="govuk-label govuk-radios__label" for="who-will-pay">
+                      {{parentName}} will pay {{otherName}}
+                    </label>
+                  </div>               
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="who-will-pay-2" name="whoWillPay" type="radio" value="parent2">
+                    <label class="govuk-label govuk-radios__label" for="who-will-pay-2">
+                      {{otherName}} with pay {{parentName}}
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

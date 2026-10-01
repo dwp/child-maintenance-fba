@@ -17,7 +17,7 @@
         <a class="govuk-breadcrumbs__link" href="../home">Home</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="make-a-financial-arrangement">I need to make financial arrangements for my child</a>
+        <a class="govuk-breadcrumbs__link" href="make-a-financial-arrangement">I need to make financial arrangements</a>
       </li>
     </ol>
   </nav>
@@ -41,12 +41,18 @@
         </h2>
 
         <p class="govuk-body">
-          <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="#">Use our worksheet</a> to help you organise and compare how much you spend for your child, we will ask how much you spend on everyday items and one-time costs for them.
+          Use our worksheet to help you organise and compare how much you spend for your child, we will ask how much you spend on everyday items and one-time costs for them.
         </p>
 
         <p class="govuk-body">
           You will be able to download the finished worksheet and can use the costs to inform your financial arrangement.
         </p>
+
+        {{ govukButton({
+          text: "Start now",
+          href: "../cost-worksheet/start",
+          isStartButton: true
+        }) }}
 
         <h2 class="govuk-heading-l">
           Work out a payment amount
@@ -82,7 +88,7 @@
         </h2>
 
         <p class="govuk-body">
-          <a class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank" href="#">Create a financial arrangement</a> to make a written record of what you propose to the other parent or agree with them.
+          Create a financial arrangement to make a written record of what you propose to the other parent or agree with them.
         </p>
 
         <p class="govuk-body">
@@ -98,6 +104,12 @@
         <p class="govuk-body">
           You can download or print the finished form. We will not save your answers.
         </p>
+
+        {{ govukButton({
+          text: "Start now",
+          href: "../arrangement/start",
+          isStartButton: true
+        }) }}
 
         <h2 class="govuk-heading-l">
           Use the Child Maintenance Service

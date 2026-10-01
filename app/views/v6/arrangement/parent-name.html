@@ -1,0 +1,69 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "What are the names of the parents?" %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %} {% set child2 = (data['child2Name'] or 'Child 2') %} {% set child3 = (data['child3Name'] or 'Child 3') %} {% set child4 = (data['child4Name'] or 'Child 4') %} {% set child5 = (data['child5Name'] or 'Child 5') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %} {% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% block content %}
+<div class="govuk-width-container">
+  {{ govukBackLink({
+    "text": "Back",
+    "href": "javascript:history.back()"
+    }) 
+  }}
+
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="type-of-arrangement" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{pageTitle}} (optional)
+              </h1>
+            </legend>
+
+          <p class="govuk-body">
+            We will not save your answers.
+          </p>
+
+          {{ govukInput({
+            label: {
+              text: "Name of Parent 1"
+            },
+            classes: "govuk-!-width-full",
+            id: "parent-name",
+            name: "parentName"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Name of Parent 2"
+            },
+            classes: "govuk-!-width-full",
+            id: "other-name",
+            name: "otherName"
+          }) }}
+
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

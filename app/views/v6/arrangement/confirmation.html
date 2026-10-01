@@ -1,0 +1,59 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Your financial arrangement is ready to download" %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %} {% set child2 = (data['child2Name'] or 'Child 2') %} {% set child3 = (data['child3Name'] or 'Child 3') %} {% set child4 = (data['child4Name'] or 'Child 4') %} {% set child5 = (data['child5Name'] or 'Child 5') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %} {% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              {{pageTitle}}
+            </h1>
+          </div>
+
+          <h2 class="govuk-heading-m">What to do next</h2>
+
+          <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Download your financial arrangement (PDF, 15KB)</a>.</p>
+
+          {% if data['bothParents'] == "No" %}
+
+          <p class="govuk-body">You can use the financial agreement as a suggestion for the other parent. If you need advice about how to talk to them, you can learn about <a href="#" class="govuk-link govuk-link--no-visited-state">planning your child maintenance conversation (opens in a new tab)</a>.</p>
+
+          <p class="govuk-body">If you cannot talk to the other parent, you can use your financial arrangement in mediation or with other third-party support.</p>
+
+          {% else %}
+
+          <p class="govuk-body">Both parents can sign the financial agreement and save it for their records. It is not legally binding, but it may be useful as a reference and a starting point for any future agreements.</p>
+
+          {% endif %}
+
+          <p class="govuk-body">You should <a href="../support/review-financial-arrangement" class="govuk-link govuk-link--no-visited-state">review your arrangement as your situation changes (opens in a new tab)</a>.</p>
+          
+          <p class="govuk-body">Browse more resources and guidance on the <a href="../home" class="govuk-link govuk-link--no-visited-state">single parent support hub (opens in a new tab)</a>.</p>
+
+          <h2 class="govuk-heading-m">Give your feedback</h2>
+
+          <p class="govuk-body">
+            Help us improve our service by filling in a quick survey.
+          </p>
+
+          {{ govukButton({
+            text: "Continue to survey"
+          }) }}
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

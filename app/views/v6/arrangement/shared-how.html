@@ -1,0 +1,73 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "How will you both spend money for these things?" %}
+
+{% set sharedCostLabels = {
+  "food": "Food and toiletries",
+  "clothing": "Clothing",
+  "education": "Education",
+  "baby": "Baby care",
+  "childcare": "Childcare",
+  "activities": "Hobbies and activities",
+  "technology": "Technology and entertainment",
+  "travel": "Travel and transport",
+  "healthcare": "Healthcare",
+  "household": "Household costs and bills",
+  "savings": "Savings and allowances",
+  "one-off": "One-off costs",
+  "other": data['other-custom'] or "Other"
+} %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="anything-else" method="post">
+
+            <div class="govuk-form-group">
+              <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--l" for="shareHow">
+                  {{pageTitle}}
+                </label>
+              </h1>
+
+              <p class="govuk-body">
+                You selected: 
+                  {% set selectedCosts = data['shared-cost'] %}
+                  {% if selectedCosts %}
+                    {% for item in selectedCosts %}
+                      {{ sharedCostLabels[item] }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                  {% endif %}
+              </p>
+
+              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
+                <textarea class="govuk-textarea govuk-js-character-count" id="shareHow" name="shareHow" rows="5" aria-describedby="hint-shareHow"></textarea>
+                <div id="hint-shareHow" class="govuk-hint govuk-character-count__message">
+                  You can enter up to 500 characters
+                </div>
+              </div>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

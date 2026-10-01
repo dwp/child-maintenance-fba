@@ -1,0 +1,49 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "What is your financial arrangement?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="anything-else" method="post">
+
+            <div class="govuk-form-group">
+              <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--l" for="fa-description">
+                  {{pageTitle}}
+                </label>
+              </h1>
+
+              <p class="govuk-body">Describe how you will financially support your {% if data['childAmount'] > 1 %}children{% else %}child{% endif %}. Your response will appear in your financial arrangement document exactly as written.</p>
+
+              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
+                <textarea class="govuk-textarea govuk-js-character-count" id="fa-description" name="fa-description" rows="5" aria-describedby="fa-description-info"></textarea>
+                <div id="fa-description-info" class="govuk-hint govuk-character-count__message">
+                  You can enter up to 500 characters
+                </div>
+              </div>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

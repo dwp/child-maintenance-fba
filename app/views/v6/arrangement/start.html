@@ -1,0 +1,100 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Create a financial arrangement" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+
+  <nav class="govuk-breadcrumbs govuk-!-margin-top-0" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../support/make-financial-arrangement">I need to make financial arrangements</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="start">Create a financial arrangement</a>
+      </li>      
+    </ol>
+  </nav>
+
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+          <p class="govuk-body">
+            Most children benefit from having both parents positively involved in their lives. A financial agreement can help you both to focus on supporting your children. This form will ask you about:
+          </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>your names and your children's names (optional)</li>
+            <li>any regular payments or other financial support</li>
+            <li>any additional details you want to include</li>
+          </ul>
+
+          <p class="govuk-body">
+            You do not need to answer all the questions.
+          </p>
+
+          <p class="govuk-body">
+            You can download or print the finished form.
+          </p>
+
+          <h2 class="govuk-heading-l">
+            How to use the financial arrangement
+          </h2>
+
+          <p class="govuk-body">
+            If both parents have not agreed on a financial arrangement yet, you can fill out what you think it should be. Then, you can share it with the other parent as part of your conversations or mediation.
+          </p>
+
+          <p class="govuk-body">
+            If you have already agreed on a financial arrangement, use those details. You can use the finished form for your records.
+          </p>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              This financial arrangement is not legally binding and it should to be used only for your own reference. It will not be saved or used by the Child Maintenance Service.
+            </strong>
+          </div>
+
+          {{ govukButton({
+            text: "Start now",
+            href: "have-both-parents-agreed",
+            isStartButton: true
+          }) }}
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+            <h2 class="govuk-heading-m" id="Related links-title">
+              Related content
+            </h2>
+            <nav role="navigation" aria-labelledby="Related links-title">
+              <ul class="govuk-list govuk-!-font-size-16">
+                <li>
+                  <a href="review-financial-arrangement.html">Review your financial arrangement</a>
+                </li>
+                <li>
+                  <a href="#">Work out how much you spend for your child</a>
+                </li>           
+              </ul>
+            </nav>
+          </aside>
+        </div>
+
+      </div>
+    </main>
+  </div>
+{% endblock %}
