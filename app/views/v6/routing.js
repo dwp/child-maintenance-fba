@@ -48,6 +48,37 @@ module.exports = function (router) {
       res.redirect("shared-how");
     }
 
-  })  
+  })
+
+  router.post('/v6/cost-worksheet/choose-costs-answer', function (req, res) {
+
+    const costs = req.session.data['cw-shared-cost'] || []
+
+    req.session.data.selectedCosts = costs
+
+    if (costs.length === 0) {
+      return res.redirect('/v6/cost-worksheet/choose-costs')
+    }
+
+    return res.redirect(`/v6/cost-worksheet/child-1/${costs[0]}`)
+  })
+
+
+  router.post('/v6/cost-worksheet/next-cost', function (req, res) {
+
+    const costs = req.session.data.selectedCosts || []
+    const currentCost = req.body['current-cost']
+
+    const index = costs.indexOf(currentCost)
+
+    if (index === -1 || index >= costs.length - 1) {
+      return res.redirect('/v6/cost-worksheet/child-1/check-answers')
+    }
+
+    return res.redirect(
+      `/v6/cost-worksheet/child-1/${costs[index + 1]}`
+    )
+  })
+
   
 };

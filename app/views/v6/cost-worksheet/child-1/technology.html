@@ -1,0 +1,151 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['cw-child1Name'] or 'Child 1') %} {% set child2 = (data['cw-child2Name'] or 'Child 2') %} {% set child3 = (data['cw-child3Name'] or 'Child 3') %} {% set child4 = (data['cw-child4Name'] or 'Child 4') %} {% set child5 = (data['cw-child5Name'] or 'Child 5') %}
+
+{% set serviceName = "Work out how much you spend for your child" %}
+{% set pageTitle = "How much do you spend on technology and entertainment for " + child1 + "?" %}
+
+{% set selectedCosts = data['cw-shared-cost'] or [] %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="/v6/cost-worksheet/next-cost" method="post">
+            <input type="hidden" name="current-cost" value="technology">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    {% set categoryNumber = selectedCosts.indexOf('technology') + 1 %}
+                    <span class="govuk-caption-l">
+                    {{ child1 }}: Category {{ categoryNumber }} of {{ selectedCosts.length }}
+                    </span>
+                  <h1 class="govuk-fieldset__heading">
+                    {{pageTitle}}
+                  </h1>
+                </legend>
+
+                <p class="govuk-body govuk-!-padding-bottom-2">
+                  Amounts are optional. Empty amounts will not appear in the final cost worksheet.
+                </p>
+
+                <div class="govuk-form-group govuk-!-padding-bottom-2">
+                  <h2 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--m">Electronic devices</label>
+                  </h2>
+                  <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third">
+                      <label class="govuk-label govuk-label--s" for="child1-technology-amount1">Amount</label>
+                      <div class="govuk-input__wrapper">
+                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                        <input class="govuk-input govuk-input--width-full" id="child1-technology-amount1" name="child1-technology-amount1" type="text">
+                      </div>
+                    </div>
+                    <div class="govuk-grid-column-one-third">
+                      <label class="govuk-label govuk-label--s" for="child1-technology-frequency1">Frequency</label>
+                      <select class="govuk-select" id="child1-technology-frequency1" name="child1-technology-frequency1">
+                        <option value="weekly" selected>per week</option>
+                        <option value="fortnightly">per fortnight</option>
+                        <option value="monthly">per month</option>
+                        <option value="termly">per term</option>
+                        <option value="yearly">per year</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="govuk-form-group govuk-!-padding-bottom-2">
+                  <h2 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--m">Toys and games</label>
+                  </h2>
+                  <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third">
+                      <label class="govuk-label govuk-label--s" for="child1-technology-amount2">Amount</label>
+                      <div class="govuk-input__wrapper">
+                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                        <input class="govuk-input govuk-input--width-full" id="child1-technology-amount" name="child1-technology-amount2" type="text">
+                      </div>
+                    </div>
+                    <div class="govuk-grid-column-one-third">
+                      <label class="govuk-label govuk-label--s" for="child1-technology-frequency2">Frequency</label>
+                      <select class="govuk-select" id="child1-technology-frequency2" name="child1-technology-frequency2">
+                        <option value="weekly" selected>per week</option>
+                        <option value="fortnightly">per fortnight</option>
+                        <option value="monthly">per month</option>
+                        <option value="termly">per term</option>
+                        <option value="yearly">per year</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {% if data['custom-technology'] == 'true' %}
+
+                <div class="govuk-form-group govuk-!-padding-bottom-2">
+                  <h2 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--m">Cost 1</label>
+                  </h2>
+                  <div class="govuk-form-group govuk-!-margin-bottom-2">
+                    <label class="govuk-label govuk-label--s" for="child1-technology-custom1">
+                      Cost name
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="child1-technology-custom1" name="child1-technology-custom1" type="text">
+                  </div>
+                  <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third">
+                      <label class="govuk-label govuk-label--s" for="child1-technology-custom1-amount">Amount</label>
+                      <div class="govuk-input__wrapper">
+                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                        <input class="govuk-input govuk-input--width-full" id="child1-technology-custom1-amount" name="child1-technology-custom1-amount" type="text">
+                      </div>
+                    </div>
+                    <div class="govuk-grid-column-one-third">
+                      <label class="govuk-label govuk-label--s" for="child1-technology-custom1-frequency">Frequency</label>
+                      <select class="govuk-select" id="child1-technology-custom1-frequency" name="child1-technology-custom1-frequency">
+                        <option value="weekly" selected>per week</option>
+                        <option value="fortnightly">per fortnight</option>
+                        <option value="monthly">per month</option>
+                        <option value="termly">per term</option>
+                        <option value="yearly">per year</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="govuk-form-group govuk-!-padding-top-4">
+                    <p class="govuk-body">
+                      <a href="?custom-technology=false" class="govuk-link govuk-link--no-visited-state">Remove cost</a>
+                    </p>
+                  </div>                  
+                </div>
+
+                {% endif %}
+
+                <div class="govuk-form-group">
+                  <button type="submit" formaction="?custom-technology=true" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Add another cost
+                  </button>
+                </div>
+
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

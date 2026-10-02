@@ -193,4 +193,24 @@
     line-height: 1.4;
   }
 
+
+  @media (max-width: 40.0625em) {
+
+    .govuk-grid-column-one-third {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .govuk-input__wrapper,
+    .govuk-input--width-5,
+    .govuk-select {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .govuk-input--width-5 {
+      box-sizing: border-box;
+    }
+  }
+  
 }
