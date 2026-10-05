@@ -1,0 +1,153 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['cw-child1Name'] or 'Child 1') %} {% set child2 = (data['cw-child2Name'] or 'Child 2') %} {% set child3 = (data['cw-child3Name'] or 'Child 3') %} {% set child4 = (data['cw-child4Name'] or 'Child 4') %} {% set child5 = (data['cw-child5Name'] or 'Child 5') %}
+
+{% set serviceName = "Work out how much you spend for your child" %}
+{% set pageTitle = "Your spending worksheet is ready to download" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              {{pageTitle}}
+            </h1>
+          </div>
+
+          <p class="govuk-body">Based on the amounts you told us, the table shows how much you usually spend for your children every week, month and year.</p>
+          
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-third">Child's name</th>
+                <th scope="col" class="govuk-table__header">Weekly amount</th>
+                <th scope="col" class="govuk-table__header">Monthly amount</th>
+                <th scope="col" class="govuk-table__header">Yearly amount</th>
+
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">{{child1}}</th>
+                <td class="govuk-table__cell">£X</td>
+                <td class="govuk-table__cell">£XX</td>
+                <td class="govuk-table__cell">£XXX</td>
+              </tr>
+              {% if data['cw-child-amount'] > 1 %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">{{child2}}</th>
+                <td class="govuk-table__cell">£X</td>
+                <td class="govuk-table__cell">£XX</td>
+                <td class="govuk-table__cell">£XXX</td>
+              </tr>
+              {% endif %}
+              {% if data['cw-child-amount'] > 2 %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">{{child3}}</th>
+                <td class="govuk-table__cell">£X</td>
+                <td class="govuk-table__cell">£XX</td>
+                <td class="govuk-table__cell">£XXX</td>
+              </tr>
+              {% endif %}              
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Total</th>
+                <td class="govuk-table__cell">£X</td>
+                <td class="govuk-table__cell">£XX</td>
+                <td class="govuk-table__cell">£XXX</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h2 class="govuk-heading-m">What to do next</h2>
+
+          <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Download your spending worksheet (PDF, 15KB)</a> to share with the other parent. You can also <a href="#" class="govuk-link govuk-link--no-visited-state">download a spreadsheet (CSV, 15KB)</a> to use for your records.</p>
+
+          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    If you want to split costs equally
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+                <p class="govuk-body">
+                  If you both want to spend the same amount, you should each fill out the spending worksheet, or complete it using the combined amounts that you currently spend. Then, divide the total costs in half.
+                </p>
+                <p class="govuk-body">
+                  For example, if Parent 1 usually spends £50 each week and Parent 2 spends £70 for a total of £120, they would agree to spend £60 each week. They would send each other money as needed to make sure isn't spending too much.
+                </p>
+              </div>
+            </div>
+            
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    If you want to split costs based on care arrangements
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+                <p class="govuk-body">
+                  If you want to spends amounts based on how much day-to-day care you have, you should each fill out the spending worksheet, or complete it using the combined amounts that you currently spend. 
+                </p>
+                <p class="govuk-body">
+                  Then, divide the total costs by 7. This will be the amount, on average, that you would spend for each day your child is in your care.
+                </p>
+                <p class="govuk-body">
+                  For example, if both parents together spend about £105 each week, they spend about £15 for each day. If their child stays with Parent 1 on the weekends (for about £30), Parent 2 spends about £75 for the other 5 days. Parent 1 may agree to pay Parent 2 £25 each week to match their spending.
+                </p>
+                <p class="govuk-body">
+                  You can also <a href="#" class="govuk-link govuk-link--no-visited-state">use the Child Maintenance Calculator</a> to work out payments. It considers income, care arrangements and other children.
+                </p>                
+              </div>
+            </div>
+
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    If you want to split costs based on care arrangements
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+                <p class="govuk-body">
+                  You may want to change your financial arrangment so that the parent with a larger income spends more for their child. 
+                </p>
+                <p class="govuk-body">
+                  For example, if Parent 1 has most of the day-to-day care but their income is half of Parent 2's income, Parent 2 may agree to send payments for 75% of their child's needs. This means that for every £100 Parent 1 spends on their child, Parent 2 sends £75.
+                </p>
+                <p class="govuk-body">
+                  You can also <a href="#" class="govuk-link govuk-link--no-visited-state">use the Child Maintenance Calculator</a> to work out payments. It considers income, care arrangements and other children.
+                </p>                
+              </div>
+            </div>
+          </div>
+
+
+          <h2 class="govuk-heading-m">Give your feedback</h2>
+
+          <p class="govuk-body">
+            Help us improve our service by filling in a quick survey.
+          </p>
+
+          {{ govukButton({
+            text: "Continue to survey"
+          }) }}
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

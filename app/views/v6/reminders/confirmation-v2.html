@@ -1,0 +1,57 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Work out how much you spend for your child" %}
+{% set pageTitle = "Your calendar invite is ready to download" %}
+
+{% set monthNames = {
+  "1": "January",
+  "2": "February",
+  "3": "March",
+  "4": "April",
+  "5": "May",
+  "6": "June",
+  "7": "July",
+  "8": "August",
+  "9": "September",
+  "10": "October",
+  "11": "November",
+  "12": "December"
+} %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              {{pageTitle}}
+            </h1>
+          </div>
+
+          <p class="govuk-body">
+            Download the calendar invite and add it to your calendar.
+          </p>
+
+          <p class="govuk-body">
+            <strong>Review date:</strong> {{ data['reminder-day']}} {{ monthNames[data['reminder-month']] }} {{ data['reminder-year']}}
+          </p>
+
+          <p class="govuk-body">
+            <a href="#" class="govuk-link govuk-link--no-visited-state">Download calendar invite (.ics)</a>
+          </p>                  
+
+          <p class="govuk-body">
+            <a href="../home" class="govuk-link govuk-link--no-visited-state">Return home</a>
+          </p>         
+          
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

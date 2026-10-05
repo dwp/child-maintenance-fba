@@ -7,9 +7,9 @@
 {% set child1 = (data['cw-child1Name'] or 'Child 1') %} {% set child2 = (data['cw-child2Name'] or 'Child 2') %} {% set child3 = (data['cw-child3Name'] or 'Child 3') %} {% set child4 = (data['cw-child4Name'] or 'Child 4') %} {% set child5 = (data['cw-child5Name'] or 'Child 5') %}
 
 {% set serviceName = "Work out how much you spend for your child" %}
-{% set pageTitle = "How much do you spend on travel and transport for " + child1 + "?" %}
+{% set pageTitle = "How much do you spend on travel and transport for " + child3 + "?" %}
 
-{% set selectedCosts = data['child1-shared-cost'] or [] %}
+{% set selectedCosts = data.selectedCostsChild3 or [] %}
 
 {% block content %}
   <div class="govuk-width-container">
@@ -21,14 +21,14 @@
     <main class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <form action="/v6/cost-worksheet/next-cost" method="post">
+          <form action="/v6/cost-worksheet/child3-next-cost" method="post">
             <input type="hidden" name="current-cost" value="travel">
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     {% set categoryNumber = selectedCosts.indexOf('travel') + 1 %}
                     <span class="govuk-caption-l">
-                    {{ child1 }}: Category {{ categoryNumber }} of {{ selectedCosts.length }}
+                    {{ child3 }}: Category {{ categoryNumber }} of {{ selectedCosts.length }}
                     </span>
                   <h1 class="govuk-fieldset__heading">
                     {{pageTitle}}
@@ -45,15 +45,15 @@
                   </h2>
                   <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
-                      <label class="govuk-label govuk-label--s" for="child1-travel-amount1">Amount</label>
+                      <label class="govuk-label govuk-label--s" for="child3-travel-amount1">Amount</label>
                       <div class="govuk-input__wrapper">
                         <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                        <input class="govuk-input govuk-input--width-full" id="child1-travel-amount1" name="child1-travel-amount1" type="text">
+                        <input class="govuk-input govuk-input--width-full" id="child3-travel-amount1" name="child3-travel-amount1" type="text">
                       </div>
                     </div>
                     <div class="govuk-grid-column-one-third">
-                      <label class="govuk-label govuk-label--s" for="child1-travel-frequency1">Frequency</label>
-                      <select class="govuk-select" id="child1-travel-frequency1" name="child1-travel-frequency1">
+                      <label class="govuk-label govuk-label--s" for="child3-travel-frequency1">Frequency</label>
+                      <select class="govuk-select" id="child3-travel-frequency1" name="child3-travel-frequency1">
                         <option value="weekly" selected>per week</option>
                         <option value="fortnightly">per fortnight</option>
                         <option value="monthly">per month</option>
@@ -70,15 +70,15 @@
                   </h2>
                   <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
-                      <label class="govuk-label govuk-label--s" for="child1-travel-amount2">Amount</label>
+                      <label class="govuk-label govuk-label--s" for="child3-travel-amount2">Amount</label>
                       <div class="govuk-input__wrapper">
                         <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                        <input class="govuk-input govuk-input--width-full" id="child1-travel-amount" name="child1-travel-amount2" type="text">
+                        <input class="govuk-input govuk-input--width-full" id="child3-travel-amount" name="child3-travel-amount2" type="text">
                       </div>
                     </div>
                     <div class="govuk-grid-column-one-third">
-                      <label class="govuk-label govuk-label--s" for="child1-travel-frequency2">Frequency</label>
-                      <select class="govuk-select" id="child1-travel-frequency2" name="child1-travel-frequency2">
+                      <label class="govuk-label govuk-label--s" for="child3-travel-frequency2">Frequency</label>
+                      <select class="govuk-select" id="child3-travel-frequency2" name="child3-travel-frequency2">
                         <option value="weekly" selected>per week</option>
                         <option value="fortnightly">per fortnight</option>
                         <option value="monthly">per month</option>
@@ -96,22 +96,22 @@
                     <label class="govuk-label govuk-label--m">Cost 1</label>
                   </h2>
                   <div class="govuk-form-group govuk-!-margin-bottom-2">
-                    <label class="govuk-label govuk-label--s" for="child1-travel-custom1">
+                    <label class="govuk-label govuk-label--s" for="child3-travel-custom1">
                       Cost name
                     </label>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="child1-travel-custom1" name="child1-travel-custom1" type="text">
+                    <input class="govuk-input govuk-!-width-two-thirds" id="child3-travel-custom1" name="child3-travel-custom1" type="text">
                   </div>
                   <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
-                      <label class="govuk-label govuk-label--s" for="child1-travel-custom1-amount">Amount</label>
+                      <label class="govuk-label govuk-label--s" for="child3-travel-custom1-amount">Amount</label>
                       <div class="govuk-input__wrapper">
                         <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                        <input class="govuk-input govuk-input--width-full" id="child1-travel-custom1-amount" name="child1-travel-custom1-amount" type="text">
+                        <input class="govuk-input govuk-input--width-full" id="child3-travel-custom1-amount" name="child3-travel-custom1-amount" type="text">
                       </div>
                     </div>
                     <div class="govuk-grid-column-one-third">
-                      <label class="govuk-label govuk-label--s" for="child1-travel-custom1-frequency">Frequency</label>
-                      <select class="govuk-select" id="child1-travel-custom1-frequency" name="child1-travel-custom1-frequency">
+                      <label class="govuk-label govuk-label--s" for="child3-travel-custom1-frequency">Frequency</label>
+                      <select class="govuk-select" id="child3-travel-custom1-frequency" name="child3-travel-custom1-frequency">
                         <option value="weekly" selected>per week</option>
                         <option value="fortnightly">per fortnight</option>
                         <option value="monthly">per month</option>

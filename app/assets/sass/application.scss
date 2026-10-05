@@ -135,6 +135,8 @@
 .hero-banner__image {
   flex-shrink: 0;
   padding-top: 24px;
+display: flex;
+align-self: flex-end;  
 }
 
 .hero-banner__image img {

@@ -1,0 +1,137 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Set a review reminder" %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs govuk-!-margin-top-0" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="reminders">Set a review reminder</a>
+      </li>
+    </ol>
+  </nav>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="confirmation" method="post">
+
+          <h1 class="govuk-heading-l">Set a review reminder</h1>
+
+          <p>We will only send one reminder. You can set another later.</p>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="reminder-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <label class="govuk-label govuk-label--m" for="reminder-number">
+                  When would you like to review your arrangement?
+                </label>
+              </legend>
+              <div id="reminder-hint" class="govuk-hint">
+                For example, 27 3 2027
+              </div>
+              <div class="govuk-date-input" id="reminder">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="reminder-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="reminder-day" name="reminder-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="reminder-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="reminder-month" name="reminder-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="reminder-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="reminder-year" name="reminder-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          {#
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--m" for="passport-number">
+              When should we remind you?
+            </label>
+            <label class="govuk-label" for="sort">
+              Remind me in
+            </label>
+            <select class="govuk-select" id="sort" name="sort">
+              <option value="1" selected>1 year</option>
+              <option value="2">2 years</option>
+              <option value="3">3 years</option>
+              <option value="4">4 years</option>
+              <option value="5">5 years</option>
+
+            </select>
+          </div>
+          #}
+            
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="expiry-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                How should we send the reminder?
+              </legend>
+
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="reminder-method" name="reminder-method" type="radio" value="email" data-aria-controls="conditional-reminder">
+                  <label class="govuk-label govuk-radios__label" for="reminder-method">
+                    Email
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reminder">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="reminder-by-email">
+                      Email address
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="reminder-by-email" name="reminderByEmail" type="email" spellcheck="false" autocomplete="email">
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="reminder-method-2" name="reminder-method" type="radio" value="text" data-aria-controls="conditional-reminder-2">
+                  <label class="govuk-label govuk-radios__label" for="reminder-method-3">
+                    Text message
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reminder-2">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="reminder-by-text">
+                      Mobile phone number
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="reminder-by-text" name="reminderByText" type="tel" autocomplete="tel">
+                  </div>
+                </div>
+              </div>              
+            </fieldset>
+          </div>
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

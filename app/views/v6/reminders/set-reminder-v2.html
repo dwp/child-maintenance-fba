@@ -1,0 +1,79 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle = "Set a review reminder" %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <nav class="govuk-breadcrumbs govuk-!-margin-top-0" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="../home">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="reminders">Set a review reminder</a>
+      </li>
+    </ol>
+  </nav>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="confirmation-v2" method="post">
+
+          <h1 class="govuk-heading-l">Set a review reminder</h1>
+
+          <p>We will create a calendar invite that you can download and add to your calendar.</p>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="reminder-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <label class="govuk-label govuk-label--m" for="reminder-number">
+                  When would you like to review your arrangement?
+                </label>
+              </legend>
+              <div id="reminder-hint" class="govuk-hint">
+                For example, 27 3 2027
+              </div>
+              <div class="govuk-date-input" id="reminder">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="reminder-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="reminder-day" name="reminder-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="reminder-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="reminder-month" name="reminder-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="reminder-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="reminder-year" name="reminder-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

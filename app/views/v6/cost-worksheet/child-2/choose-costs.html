@@ -1,0 +1,160 @@
+{% extends "layouts/main-v3.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['cw-child1Name'] or 'Child 1') %} {% set child2 = (data['cw-child2Name'] or 'Child 2') %} {% set child3 = (data['cw-child3Name'] or 'Child 3') %} {% set child4 = (data['cw-child4Name'] or 'Child 4') %} {% set child5 = (data['cw-child5Name'] or 'Child 5') %}
+
+{% set serviceName = "Work out how much you spend for your child" %}
+{% set pageTitle = "What do you spend money on for " + child2 + "?" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript:history.back()"
+      }) 
+    }}
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="child2-choose-costs-answer" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    {{pageTitle}}
+                  </h1>
+                </legend>
+
+                <div id="waste-hint" class="govuk-hint">
+                  Select all that apply
+                </div>
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost" name="child2-shared-cost" type="checkbox" value="food">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost">
+                      Food and toiletries
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-2" name="child2-shared-cost" type="checkbox" value="clothing">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-2">
+                      Clothing
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-3" name="child2-shared-cost" type="checkbox" value="education">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-3">
+                      Education
+                    </label>
+                    <div id="education-hint" class="govuk-hint govuk-checkboxes__hint">
+                      for example, school uniforms, school supplies and trips
+                    </div>                    
+                  </div>                  
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-4" name="child2-shared-cost" type="checkbox" value="baby">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-4">
+                      Baby care
+                    </label>
+                    <div id="baby-care-hint" class="govuk-hint govuk-checkboxes__hint">
+                      for example, nappies and formula
+                    </div>                    
+                  </div>   
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-5" name="child2-shared-cost" type="checkbox" value="childcare">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-5">
+                      Childcare
+                    </label>
+                    <div id="childcare-hint" class="govuk-hint govuk-checkboxes__hint">
+                      for example, childminders and holiday clubs
+                    </div>                    
+                  </div>                                 
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-6" name="child2-shared-cost" type="checkbox" value="activities">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-6">
+                      Hobbies and activities
+                    </label>
+                    <div id="activities-hint" class="govuk-hint govuk-checkboxes__hint">
+                      for example, sports clubs
+                    </div>                    
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-7" name="child2-shared-cost" type="checkbox" value="technology">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-7">
+                      Technology and entertainment
+                    </label>
+                    <div id="technology-hint" class="govuk-hint govuk-checkboxes__hint">
+                      for example, toys, devices and media
+                    </div>                    
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-8" name="child2-shared-cost" type="checkbox" value="travel">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-8">
+                      Travel and transport
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-9" name="child2-shared-cost" type="checkbox" value="healthcare">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-9">
+                      Healthcare
+                    </label>
+                    <div id="healthcare-hint" class="govuk-hint govuk-checkboxes__hint">
+                      for example, prescriptions
+                    </div>                    
+                  </div>                  
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-10" name="child2-shared-cost" type="checkbox" value="household">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-10">
+                      Household costs and bills
+                    </label>
+                    <div id="household-hint" class="govuk-hint govuk-checkboxes__hint">
+                      for example, energy bills and phone plans
+                    </div>                    
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-11" name="child2-shared-cost" type="checkbox" value="savings">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-11">
+                      Savings and allowances
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-12" name="child2-shared-cost" type="checkbox" value="one-off">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-12">
+                      One-off costs
+                    </label>
+                    <div id="one-off-hint" class="govuk-hint govuk-checkboxes__hint">
+                      for example, furniture and emergency costs
+                    </div>                    
+                  </div>                  
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="child2-shared-cost-13" name="child2-shared-cost" type="checkbox" value="other" data-aria-controls="child2-conditional-other">
+                    <label class="govuk-label govuk-checkboxes__label" for="child2-shared-cost-13">
+                      Other
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="child2-conditional-other">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="child2-other-custom">
+                        Category name
+                      </label>
+                      <input class="govuk-input" id="child2-other-custom" name="child2-other-custom" type="text" aria-describedby="other-hint">
+                    </div>
+                  </div>                 
+                </div>
+              </fieldset>
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}
