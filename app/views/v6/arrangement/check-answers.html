@@ -112,26 +112,36 @@
                 <a class="govuk-link" href="parent-name">Change<span class="govuk-visually-hidden"> parents' names</span></a>
               </dd>
             </div>
-            {% if 'other' in data['arrangement-type'] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                What is your financial arrangement?
+                What type of financial arrangement do you have?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['fa-description'] }}
+              {% if 'regular' in data['arrangement-type'] %}
+                We make regular payments
+              {%elif 'shared' in data['arrangement-type'] %}
+                We both spend money as needed
+              {% elif 'regular' in data['arrangement-type'] and 'shared' in data['arrangement-type'] %}
+                We make regular payments and we both spend money as needed
+              {% else %}
+                Something else
+              {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="what-is-your-arrangement">Change<span class="govuk-visually-hidden"> parents' names</span></a>
+                <a class="govuk-link" href="type-of-arrangement">Change<span class="govuk-visually-hidden"> financial arrangement type</span></a>
               </dd>
             </div>
-            {% endif %}
           </dl>
 
           <!-- REGULAR PAYMENTS -->
 
           {% if 'regular' in data['arrangement-type'] %}
 
-          <h2 class="govuk-heading-m">Regular payments</h2>
+          {% if 'regular' in data['arrangement-type'] and 'shared' in data['arrangement-type'] %}          
+          <h2 class="govuk-heading-m">Section 1 of 3: Regular payments</h2>
+          {% else %}
+          <h2 class="govuk-heading-m">Section 1 of 2: Regular payments</h2>
+          {% endif %}
 
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
@@ -216,7 +226,11 @@
 
           {% if 'shared' in data['arrangement-type'] %}
 
-          <h2 class="govuk-heading-m">Shared spending</h2>
+          {% if 'regular' in data['arrangement-type'] and 'shared' in data['arrangement-type'] %}          
+          <h2 class="govuk-heading-m">Section 2 of 3: Shared spending</h2>
+          {% else %}
+          <h2 class="govuk-heading-m">Section 1 of 2: Shared spending</h2>
+          {% endif %}
 
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
@@ -235,7 +249,11 @@
                 <a class="govuk-link" href="shared-costs">Change<span class="govuk-visually-hidden"> which shared spending you want to include</span></a>
               </dd>
             </div>
+            {% if data['shareEqually'] == "yes" %}
             <div class="govuk-summary-list__row govuk-summary-list__row--no-border">
+            {% else %}
+            <div class="govuk-summary-list__row">
+            {% endif %}
               <dt class="govuk-summary-list__key">
                 Will you spend money for these things equally?
               </dt>
@@ -246,20 +264,28 @@
                 <a class="govuk-link" href="shared-equally">Change<span class="govuk-visually-hidden"> if you will spend money for these things equally</span></a>
               </dd>
             </div>
+            {% if data['shareEqually'] == "yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Additional details
               </dt>
               <dd class="govuk-summary-list__value">
-                {% if data['explain-shareEqually'] == "yes" %}
+                {% if data['detail-shareEqually'] %}
                 {{ data['detail-shareEqually'] }}
                 {% else %}
                 Not provided
                 {% endif %}
               </dd>
             </div>
+            {% endif %}
+
+            {% if data['shareEqually'] == "no" %}
+            {% if data['shareMost'] == "yes" %}
             <div class="govuk-summary-list__row govuk-summary-list__row--no-border">
-              <dt class="govuk-summary-list__key">
+            {% else %}
+            <div class="govuk-summary-list__row">
+            {% endif %}
+            <dt class="govuk-summary-list__key">
                 Will one parent spend money for most or all of these things?
               </dt>
               <dd class="govuk-summary-list__value">
@@ -269,18 +295,21 @@
                 <a class="govuk-link" href="shared-most">Change<span class="govuk-visually-hidden"> if one parent will spend money for most or all of these things</span></a>
               </dd>
             </div>
+            {% if data['shareMost'] == "yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Additional details
               </dt>
               <dd class="govuk-summary-list__value">
-                {% if data['explain-shareMost'] == "yes" %}
+                {% if data['detail-shareMost'] %}
                 {{ data['detail-shareMost'] }}
                 {% else %}
                 Not provided
                 {% endif %}
               </dd>
             </div>
+            {% endif %}
+            {% endif %}
 
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -298,9 +327,34 @@
 
           {% endif %}
 
+          {% if 'other' in data['arrangement-type'] %}   
+            
+          <h2 class="govuk-heading-m">Section 1 of 2: Financial arrangement</h2>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                What is your financial arrangement?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['fa-description'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="anything-else">Change<span class="govuk-visually-hidden"> anything else you want to include in this arrangement</span></a>
+              </dd>
+            </div>
+
+          </dl>
+
+          {% endif %}
+
           <!-- ANYTHING ELSE -->
 
-          <h2 class="govuk-heading-m">Anything else</h2>
+          {% if 'regular' in data['arrangement-type'] and 'shared' in data['arrangement-type'] %}          
+          <h2 class="govuk-heading-m">Section 3 of 3: Anything else</h2>
+          {% else %}
+          <h2 class="govuk-heading-m">Section 2 of 2: Anything else</h2>
+          {% endif %}
 
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
@@ -308,7 +362,7 @@
                 Is there anything else you want to include in this arrangement?
               </dt>
               <dd class="govuk-summary-list__value">
-                {% if data['anythingElse'] == "yes" %}
+                {% if data['anythingElse'] %}
                 {{ data['anythingElse'] }}
                 {% else %}
                 Not provided

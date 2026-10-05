@@ -25,8 +25,10 @@
             <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 {% if 'regular' in data['arrangement-type'] and 'shared' in data['arrangement-type'] %}          
+                  <span class="govuk-caption-l">Section 1 of 3: Regular payments</span>
+                {% else %}
                   <span class="govuk-caption-l">Section 1 of 2: Regular payments</span>
-                {% endif %}                
+                {% endif %}
                 <h1 class="govuk-fieldset__heading">
                   {{pageTitle}}
                 </h1>

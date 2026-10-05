@@ -39,7 +39,11 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-l">Section 2 of 2: Shared spending</span>
+              {% if 'regular' in data['arrangement-type'] and 'shared' in data['arrangement-type'] %}          
+              <span class="govuk-caption-l">Section 2 of 3: Shared spending</span>
+              {% else %}
+                <span class="govuk-caption-l">Section 1 of 2: Shared spending</span>
+              {% endif %}              
               <h1 class="govuk-fieldset__heading">
                 {{pageTitle}}
               </h1>
@@ -58,40 +62,15 @@
             <div class="govuk-form-group">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="shareEqually" name="shareEqually" type="radio" value="yes">
+                  <input class="govuk-radios__input" id="shareEqually" name="shareEqually" type="radio" value="yes" data-aria-controls="conditional-shareEqually">
                   <label class="govuk-label govuk-radios__label" for="shareEqually">
                     Yes
                   </label>
                 </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="shareEqually-2" name="shareEqually" type="radio" value="no">
-                  <label class="govuk-label govuk-radios__label" for="shareEqually-2">
-                    No
-                  </label>
-                </div>
-              </div>
-            </div>
-            
-            <div class="govuk-form-group">
-              <h2 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--m" for="explain-shareEqually">
-                  Do you need to explain in more detail?
-                </label>
-              </h2>
-                <div id="explain-equally-hint" class="govuk-hint">
-                  For example, if one parent pays the costs upfront and is reimbursed later
-                </div>
-                <div class="govuk-radios" data-module="govuk-radios">
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="explain-shareEqually" name="explain-shareEqually" type="radio" value="yes" data-aria-controls="conditional-shareEqually">
-                    <label class="govuk-label govuk-radios__label" for="explain-shareEqually">
-                      Yes
-                    </label>
-                  </div>
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-shareEqually">
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="detail-shareEqually">
-                        Enter details
+                        Explain in more detail (optional)
                       </label>
                       <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                         <textarea class="govuk-textarea govuk-js-character-count" id="detail-shareEqually" name="detail-shareEqually" rows="3" aria-describedby="hint-shareEqually"></textarea>
@@ -100,15 +79,15 @@
                         </div>
                       </div>                        
                     </div>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="explain-shareEqually-2" name="explain-shareEqually" type="radio" value="no">
-                    <label class="govuk-label govuk-radios__label" for="explain-shareEqually-2">
-                      No
-                    </label>
-                  </div>
+                  </div>                
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="shareEqually-2" name="shareEqually" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="shareEqually-2">
+                    No
+                  </label>
                 </div>
               </div>
+            </div>
 
           </fieldset>
         </div>

@@ -20,6 +20,11 @@
           <form action="check-answers" method="post">
 
             <div class="govuk-form-group">
+                {% if 'regular' in data['arrangement-type'] and 'shared' in data['arrangement-type'] %}          
+                  <span class="govuk-caption-l">Section 3 of 3: Anything else</span>
+                {% else %}
+                  <span class="govuk-caption-l">Section 2 of 2: Anything else</span>
+                {% endif %}
               <h1 class="govuk-label-wrapper">
                 <label class="govuk-label govuk-label--l" for="anything-else">
                   {{pageTitle}} (optional)

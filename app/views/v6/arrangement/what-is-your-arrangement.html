@@ -20,11 +20,13 @@
           <form action="anything-else" method="post">
 
             <div class="govuk-form-group">
-              <h1 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--l" for="fa-description">
-                  {{pageTitle}}
-                </label>
-              </h1>
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <span class="govuk-caption-l">Section 1 of 2: Financial arrangement</span>
+                  <h1 class="govuk-fieldset__heading">
+                    {{pageTitle}}
+                  </h1>
+                </legend>
 
               <p class="govuk-body">Describe how you will financially support your {% if data['childAmount'] > 1 %}children{% else %}child{% endif %}. Your response will appear in your financial arrangement document exactly as written.</p>
 
