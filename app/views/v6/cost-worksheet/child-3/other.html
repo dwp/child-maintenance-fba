@@ -6,7 +6,7 @@
 
 {% set child1 = (data['cw-child1Name'] or 'Child 1') %} {% set child2 = (data['cw-child2Name'] or 'Child 2') %} {% set child3 = (data['cw-child3Name'] or 'Child 3') %} {% set child4 = (data['cw-child4Name'] or 'Child 4') %} {% set child5 = (data['cw-child5Name'] or 'Child 5') %}
 
-{% set otherCost = data['cw-other-custom'] or [] %}
+{% set otherCost = data['child3-other-custom'] or [] %}
 
 {% set serviceName = "Work out how much you spend for your child" %}
 {% set pageTitle = "How much do you spend on " + otherCost + " for " + child3 + "?" %}
