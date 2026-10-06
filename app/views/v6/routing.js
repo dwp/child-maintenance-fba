@@ -135,7 +135,7 @@ module.exports = function (router) {
 
     // Otherwise, treat it as a single-child case and continue to confirmation.
     } else {
-      res.redirect('confirmation');
+      res.redirect('../confirmation');
     }
   });
 
@@ -150,7 +150,7 @@ module.exports = function (router) {
 
     // Otherwise, treat it as a single-child case and continue to confirmation.
     } else {
-      res.redirect('confirmation');
+      res.redirect('../confirmation');
     }
   });
 
