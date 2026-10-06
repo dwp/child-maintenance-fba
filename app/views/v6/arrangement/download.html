@@ -1,0 +1,278 @@
+{% extends "layouts/pdf-layout.html" %}
+
+{% block pageTitle %}
+  {{pageTitle}}
+{% endblock %}
+
+{% set serviceName = "Single parent support hub" %}
+{% set pageTitle %}
+  Your financial agreement is ready to download
+{% endset %}
+
+{% set child1 = (data['child1Name'] or 'Child 1') %} {% set child2 = (data['child2Name'] or 'Child 2') %} {% set child3 = (data['child3Name'] or 'Child 3') %} {% set child4 = (data['child4Name'] or 'Child 4') %} {% set child5 = (data['child5Name'] or 'Child 5') %}
+{% set parentName = (data['parentName'] or 'Parent 1') %} {% set otherName = (data['otherName'] or 'Parent 2') %}
+
+{% set selectedCosts = data['shared-cost'] %}
+
+{% set sharedCostLabels = {
+  "food": "Food and toiletries",
+  "clothing": "Clothing",
+  "education": "Education",
+  "baby": "Baby care",
+  "childcare": "Childcare",
+  "activities": "Hobbies and activities",
+  "technology": "Technology and entertainment",
+  "travel": "Travel and transport",
+  "healthcare": "Healthcare",
+  "household": "Household costs and bills",
+  "savings": "Savings and allowances",
+  "one-off": "One-off costs",
+  "other": data['other-custom'] or "Other"
+} %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Your financial arrangement</h1>
+
+    <h2 class="govuk-heading-l">About this document</h2>
+
+    {% if data['bothParents'] == "no" %}
+      <p class="govuk-body">
+        This document outlines a financial arrangement that {{parentName}} has suggested for your 
+        {% if data['childAmount'] > 1 %}children.{% else %}child.{% endif %}
+        It describes how they want both of you to pay for your 
+        {% if data['childAmount'] > 1 %}children's{% else %}child's{% endif %} needs.
+      </p>
+    {% endif %}
+
+    {% if data['bothParents'] == "yes" %}
+      <p class="govuk-body">
+        This document outlines a financial arrangment that you both have agreed for your 
+        {% if data['childAmount'] > 1 %}children.{% else %}child.{% endif %}
+        It describes how each of you will pay for your
+        {% if data['childAmount'] > 1 %}children's{% else %}child's{% endif %} needs. By creating it you agree to work together for your 
+        {% if data['childAmount'] > 1 %}children's{% else %}child's{% endif %} benefit.
+      </p>
+    {% endif %}
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Parents
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{parentName}}, {{otherName}}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {% if data['childAmount'] > 1 %}Children{% else %}Child{% endif %}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ child1 }}{% if data['childAmount'] > 1 %}, {{ child2 }}{% endif %}{% if data['childAmount'] > 2 %}, {{ child3 }}{% endif %}{% if data['childAmount'] > 3 %}, {{ child4 }}{% endif %}{% if data['childAmount'] > 4 %}, {{ child5 }}{% endif %}
+        </dd>
+      </div>
+    </dl>
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-visually-hidden">Warning</span>
+          This arrangement was made from the information you gave us in the Create a financial arrangement service. We have not saved any information and cannot enforce the arrangement. It is not legally binding.
+      </strong>
+    </div>
+    
+    {% if 'regular' in data['arrangement-type'] %}
+      <h2 class="govuk-heading-l">Regular payments</h2>
+
+      <p class="govuk-body">
+        Regular payments are scheduled and reliable. One parent usually pays another to support their child.
+      </p>
+
+      {% if data['bothParents'] == "yes" %}
+      <h3 class="govuk-heading-m">Agreed arrangement</h3>
+      {% elif data['bothParents'] == "no" %}
+      <h3 class="govuk-heading-m">Suggested arrangement</h3>
+      {% endif %}
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Paying parent
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['whoWillPay'] == "parent1" %}
+              {{ parentName }}
+            {% else %}
+              {{ otherName }}
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Receiving parent
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['whoWillPay'] == "parent1" %}
+              {{ otherName }}
+            {% else %}
+              {{ parentName }}
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Amount
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £{{ regularAmount or data['regularAmount'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Frequency
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ regularFrequency or data['regularFrequency'] | capitalize }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payment method
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% set labels = {
+              "payment-method": {
+                "standing-order": "Standing order",
+                "bank-transfer": "Bank transfer",
+                "cash": "Cash payment"
+              }
+            } %}
+            {{ labels['payment-method'][data['regularMethod']] }}
+          </dd>
+        </div>
+        {% if data['explain-regular'] == "yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Additional details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data['detail-explain-regular'] | capitalize }}
+          </dd>
+        </div>
+        {% endif %}
+      </dl>
+    {% endif %}
+
+    {% if 'shared' in data['arrangement-type'] %}
+      <h2 class="govuk-heading-l">Shared spending</h2>
+
+      <p class="govuk-body">
+        Parents can agree to be more flexible, paying for items or services as needed. Costs can be shared in halves or another amount. You can also agree to pay for different things.
+      </p>
+
+      {% if data['bothParents'] == "yes" %}
+      <h3 class="govuk-heading-m">Agreed arrangement</h3>
+      {% elif data['bothParents'] == "no" %}
+      <h3 class="govuk-heading-m">Suggested arrangement</h3>
+      {% endif %}
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+          {% if data['shareEqually'] == "yes" %}
+            We will each pay half for
+          {% elif data['shareMost'] == "yes" %}
+            One parent will pay for most or all of
+          {% else %}
+            We will both spend money for
+          {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value">
+          {% if selectedCosts %}
+            <ul class="govuk-list govuk-list--bullet">
+              {% for item in selectedCosts %}
+              <li>{{ sharedCostLabels[item] }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          </dd>
+        </div>
+
+        {% if data['shareEqually'] == "yes" and data['detail-shareEqually'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+          Details about shared spending
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['detail-shareEqually'] | capitalize }}
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['shareMost'] == "yes" and data['detail-shareMost'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+          Details about shared spending
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['detail-shareMost'] | capitalize }}
+          </dd>
+        </div>
+        {% endif %}
+        
+        {% if data['shareMost'] == "no" and data['shareHow'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+          Details about shared spending
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['shareHow'] | capitalize }}
+          </dd>
+        </div>
+        {% endif %}        
+      </dl>
+    {% endif %}
+
+    {% if 'other' in data['arrangement-type'] %}
+      {% if data['bothParents'] == "yes" %}
+      <h2 class="govuk-heading-l">Agreed arrangement</h2>
+      {% elif data['bothParents'] == "no" %}
+      <h2 class="govuk-heading-l">Suggested arrangement</h2>
+      {% endif %}
+      <p class="govuk-body">
+        {{ data['fa-description'] | capitalize }}
+      </p>    
+    {% endif %}
+
+
+    {% if data['anythingElse'] %}
+      <h2 class="govuk-heading-l">Other details</h2>
+
+      <p class="govuk-body">
+        {{ data['anythingElse'] | capitalize }}
+      </p>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {% endif %}
+
+    <h2 class="govuk-heading-l">What you need to do next</h2>
+
+    <p class="govuk-body">
+      Keep this financial arrangement for your records. We recommend reviewing it when your circumstances change, for example, your:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>incomes</li>
+      <li>care arrangement</li>
+      <li>child's age bracket</li>
+    </ul>    
+
+  </div>
+</div>
+
+{% endblock %}

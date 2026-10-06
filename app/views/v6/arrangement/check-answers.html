@@ -82,19 +82,7 @@
                 {% endif %}
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ child1 }}<br>
-                {% if data['childAmount'] > 1 %}
-                {{ child2 }}<br>
-                {% endif %}
-                {% if data['childAmount'] > 2 %}
-                {{ child3 }}<br>
-                {% endif %}
-                {% if data['childAmount'] > 3 %}
-                {{ child4 }}<br>
-                {% endif %}
-                {% if data['childAmount'] > 4 %}
-                {{ child5 }}
-                {% endif %}
+                {{ child1 }}{% if data['childAmount'] > 1 %}, {{ child2 }}{% endif %}{% if data['childAmount'] > 2 %}, {{ child3 }}{% endif %}{% if data['childAmount'] > 3 %}, {{ child4 }}{% endif %}{% if data['childAmount'] > 4 %}, {{ child5 }}{% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="child-name">Change<span class="govuk-visually-hidden"> {% if data['childAmount'] > 1 %}childrens' names{% else %}child's name{% endif %}</span></a>
@@ -105,8 +93,7 @@
                 Parents' names
               </dt>
               <dd class="govuk-summary-list__value">
-                {{parentName}}<br>
-                {{otherName}}
+                {{parentName}}, {{otherName}}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="parent-name">Change<span class="govuk-visually-hidden"> parents' names</span></a>
@@ -190,7 +177,7 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data['explain-regular'] == "yes" %}
-                {{ data['detail-explain-regular'] }}
+                {{ data['detail-explain-regular'] | capitalize }}
                 {% else %}
                 None
                 {% endif %}
@@ -239,11 +226,11 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 {% set selectedCosts = data['shared-cost'] %}
-                  {% if selectedCosts %}
-                    {% for item in selectedCosts %}
-                      {{ sharedCostLabels[item] }}{% if not loop.last %}, {% endif %}
-                    {% endfor %}
-                {% endif %}
+                <ul class="govuk-list govuk-list--bullet">
+                  {% for item in selectedCosts %}
+                  <li>{{ sharedCostLabels[item] }}</li>
+                  {% endfor %}
+                </ul>
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="shared-costs">Change<span class="govuk-visually-hidden"> which shared spending you want to include</span></a>
@@ -271,7 +258,7 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data['detail-shareEqually'] %}
-                {{ data['detail-shareEqually'] }}
+                {{ data['detail-shareEqually'] | capitalize }}
                 {% else %}
                 None
                 {% endif %}
@@ -302,7 +289,7 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data['detail-shareMost'] %}
-                {{ data['detail-shareMost'] }}
+                {{ data['detail-shareMost'] | capitalize }}
                 {% else %}
                 None
                 {% endif %}
@@ -311,17 +298,23 @@
             {% endif %}
             {% endif %}
 
+            {% if data['shareMost'] == "no" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 How will you both spend money for these things?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['shareHow'] }}
+                {% if data['shareHow'] %}
+                {{ data['shareHow'] | capitalize }}
+                {% else %}
+                None
+                {% endif %}                
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="shared-how">Change<span class="govuk-visually-hidden"> how will you both spend money for these things</span></a>
               </dd>
             </div>
+            {% endif %}
 
           </dl>
 
@@ -337,7 +330,7 @@
                 What is your financial arrangement?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['fa-description'] }}
+                {{ data['fa-description'] | capitalize }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="anything-else">Change<span class="govuk-visually-hidden"> anything else you want to include in this arrangement</span></a>
@@ -363,7 +356,7 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data['anythingElse'] %}
-                {{ data['anythingElse'] }}
+                {{ data['anythingElse'] | capitalize }}
                 {% else %}
                 None
                 {% endif %}

@@ -50,12 +50,7 @@
 
               <p class="govuk-body">
                 You selected: 
-                  {% set selectedCosts = data['shared-cost'] %}
-                  {% if selectedCosts %}
-                    {% for item in selectedCosts %}
-                      {{ sharedCostLabels[item] }}{% if not loop.last %}, {% endif %}
-                    {% endfor %}
-                  {% endif %}
+                  {% set selectedCosts = data['shared-cost'] %}{% if selectedCosts %}{% for item in selectedCosts %}{{ sharedCostLabels[item] }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}
               </p>
 
               <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
