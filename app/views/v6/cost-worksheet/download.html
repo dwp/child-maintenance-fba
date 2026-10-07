@@ -1,0 +1,911 @@
+{% extends "layouts/pdf-layout.html" %}
+
+{% block pageTitle %}
+  {{ pageTitle }} – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set child1 = (data['cw-child1Name'] or 'Child 1') %} {% set child2 = (data['cw-child2Name'] or 'Child 2') %} {% set child3 = (data['cw-child3Name'] or 'Child 3') %} {% set child4 = (data['cw-child4Name'] or 'Child 4') %} {% set child5 = (data['cw-child5Name'] or 'Child 5') %}
+
+{% set serviceName = "Work out how much you spend for your child" %}
+{% set pageTitle = "Your spending worksheet is ready to download" %}
+
+{% set selectedCosts = data['child1-shared-cost'] or [] %}
+{% set selectedCosts2 = data.selectedCostsChild2 or [] %}
+{% set selectedCosts3 = data.selectedCostsChild3 or [] %}
+
+{% set allSelectedCosts = (selectedCosts or [])
++ (selectedCosts2 or [])
++ (selectedCosts3 or []) %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Spending worksheet</h1>
+
+    <p class="govuk-body">
+      This worksheet describes how much you spend for your child. We have not saved any of your information.
+    </p>
+
+    
+    <!---------------------------------------- TOTAL SPENDING ---------------------------------------->
+
+
+    <h2 class="govuk-heading-l">Total spending</h2>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Child's name</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Weekly amount</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Monthly amount</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Yearly amount</th>
+
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{child1}}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£85.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£368.33</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£4,420.00</td>
+        </tr>
+        {% if data['cw-child-amount'] > 1 %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{child2}}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£65.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£281.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£3,380.00</td>
+        </tr>
+        {% endif %}
+        {% if data['cw-child-amount'] > 2 %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{child3}}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£50.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£216.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£2,600.00</td>
+        </tr>
+        {% endif %}
+        {% if data['cw-child-amount'] > 3 %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{child4}}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£40.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£173.33</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£2,080.00</td>
+        </tr>
+        {% endif %}
+        {% if data['cw-child-amount'] > 4 %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{child5}}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£25.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£108.33</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,300.00</td>
+        </tr>
+        {% endif %}        
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Total</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£265.00</strong></td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£1,148.33</strong></td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£13,780.00</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    
+    <!---------------------------------------- TOTAL SPENDING BY CATEGORY ---------------------------------------->
+
+
+    <h2 class="govuk-heading-l">Total spending by category</h2>
+
+<table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Cost category</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Weekly amount</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Monthly amount</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Yearly amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% if 'food' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Food and toiletries</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£45.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£195.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£2,340.00</td>
+        </tr>
+        {% endif %}
+        {% if 'clothing' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Clothing</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£18.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£78.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£936.00</td>
+        </tr>
+        {% endif %}
+        {% if 'education' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Education</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.50</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£97.50</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,170.00</td>
+        </tr>
+        {% endif %}
+        {% if 'baby' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Baby care</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£35.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£151.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,820.00</td>
+        </tr>
+        {% endif %}
+        {% if 'childcare' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Childcare</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£85.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£368.33</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£4,420.00</td>
+        </tr>
+        {% endif %}
+        {% if 'activities' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Hobbies and activities</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£15.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£65.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£780.00</td>
+        </tr>
+        {% endif %}
+        {% if 'technology' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Technology and entertainment</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£12.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£52.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£624.00</td>
+        </tr>
+        {% endif %}
+        {% if 'travel' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Travel and transport</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£20.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£86.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,040.00</td>
+        </tr>
+        {% endif %}
+        {% if 'healthcare' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Healthcare</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£8.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£34.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£416.00</td>
+        </tr>
+        {% endif %}
+        {% if 'household' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Household costs and bills</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£28.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£121.33</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,456.00</td>
+        </tr>
+        {% endif %}
+        {% if 'savings' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Savings and allowances</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£10.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£43.33</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£520.00</td>
+        </tr>
+        {% endif %}
+        {% if 'one-off' in allSelectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">One-off costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£6.50</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£28.17</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£338.00</td>
+        </tr>
+        {% endif %}
+        {% if 'other' in allSelectedCosts %}
+          {% if data['child1-other-custom'] %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{ data['child1-other-custom'] | capitalize or 'Other' }}</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£5.00</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£21.67</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£260.00</td>
+          </tr>
+          {% endif %}
+          {% if data['child2-other-custom'] %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{ data['child2-other-custom'] | capitalize or 'Other' }}</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£7.50</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£32.50</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£390.00</td>
+          </tr>
+          {% endif %}
+          {% if data['child3-other-custom'] %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{ data['child3-other-custom'] | capitalize or 'Other' }}</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£9.00</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£39.00</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£468.00</td>
+          </tr>
+          {% endif %}
+        {% endif %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Total</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£265.00</strong></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£1,148.33</strong></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£13,780.00</strong></td>
+          </tr>
+      </tbody>
+    </table>
+
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    
+
+    <!---------------------------------------- SPENDING FOR CHILD 1 ---------------------------------------->
+
+
+
+    <h2 class="govuk-heading-l">Spending for {{child1}}</h2>
+
+    {#
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Spending by category</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Cost category</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Weekly amount</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Monthly amount</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Yearly amount</th>
+
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% if 'food' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Food and toiletries</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£45.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£195.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£2,340.00</td>
+        </tr>
+        {% endif %}
+        {% if 'clothing' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Clothing</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£18.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£78.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£936.00</td>
+        </tr>
+        {% endif %}
+        {% if 'education' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Education</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.50</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£97.50</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,170.00</td>
+        </tr>
+        {% endif %}
+        {% if 'baby' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Baby care</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£35.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£151.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,820.00</td>
+        </tr>
+        {% endif %}
+        {% if 'childcare' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Childcare</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£85.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£368.33</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£4,420.00</td>
+        </tr>
+        {% endif %}
+        {% if 'activities' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Hobbies and activities</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£15.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£65.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£780.00</td>
+        </tr>
+        {% endif %}
+        {% if 'technology' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Technology and entertainment</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£12.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£52.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£624.00</td>
+        </tr>
+        {% endif %}
+        {% if 'travel' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Travel and transport</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£20.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£86.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,040.00</td>
+        </tr>
+        {% endif %}
+        {% if 'healthcare' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Healthcare</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£8.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£34.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£416.00</td>
+        </tr>
+        {% endif %}
+        {% if 'household' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Household costs and bills</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£28.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£121.33</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,456.00</td>
+        </tr>
+        {% endif %}
+        {% if 'savings' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Savings and allowances</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£10.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£43.33</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£520.00</td>
+        </tr>
+        {% endif %}
+        {% if 'one-off' in selectedCosts %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">One-off costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£6.50</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£28.17</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£338.00</td>
+        </tr>
+        {% endif %}
+        {% if 'other' in selectedCosts %}
+          {% if data['child1-other-custom'] %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{ data['child1-other-custom'] | capitalize or 'Other' }}</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£5.00</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£21.67</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£260.00</td>
+          </tr>
+          {% endif %}
+          {% if data['child2-other-custom'] %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{ data['child2-other-custom'] | capitalize or 'Other' }}</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£7.50</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£32.50</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£390.00</td>
+          </tr>
+          {% endif %}
+          {% if data['child3-other-custom'] %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{ data['child3-other-custom'] | capitalize or 'Other' }}</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£9.00</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£39.00</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£468.00</td>
+          </tr>
+          {% endif %}
+        {% endif %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Total</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£305.00</strong></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£1,321.67</strong></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£15,860.00</strong></td>
+          </tr>
+      </tbody>
+    </table>
+
+    <hr class="govuk-section-break govuk-section-break--m">
+    #}
+    
+
+    <!---------------------------------------- INDIVIDUAL CATEGORY BREAKDOWNS FOR CHILD 1 ---------------------------------------->
+
+
+    {% if 'food' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Food and toiletries</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Food and groceries</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-food-amount1'] %}
+            £{{data['child1-food-amount1']}} {{data['child1-food-frequency1']}}
+            {% else %}
+            None
+            {% endif %}
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Toiletries and personal care</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-food-amount2'] %}                      
+            £{{data['child1-food-amount2']}} {{data['child1-food-frequency2']}}
+            {% else %}
+            None
+            {% endif %}
+          </td>
+        </tr>
+        {% if data['child1-food-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-food-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-food-custom1-amount']}} {{data['child1-food-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'clothing' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Clothing</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Clothes</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-clothing-amount1'] %}          
+            £{{data['child1-clothing-amount1']}} {{data['child1-clothing-frequency1']}}
+            {% else %}
+            None
+            {% endif %}            
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Footwear</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-clothing-amount2'] %}          
+            £{{data['child1-clothing-amount2']}} {{data['child1-clothing-frequency2']}}
+            {% else %}
+            None
+            {% endif %}                
+          </td>
+        </tr>
+        {% if data['child1-clothing-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-clothing-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-clothing-custom1-amount']}} {{data['child1-clothing-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'education' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Clothing</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">School uniform</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-education-amount1'] %}          
+            £{{data['child1-education-amount1']}} {{data['child1-education-frequency1']}}
+            {% else %}
+            None
+            {% endif %}                      
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">School meals</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-education-amount2'] %}          
+            £{{data['child1-education-amount2']}} {{data['child1-education-frequency2']}}
+            {% else %}
+            None
+            {% endif %}                 
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Supplies</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-education-amount3'] %}          
+            £{{data['child1-education-amount3']}} {{data['child1-education-frequency3']}}
+            {% else %}
+            None
+            {% endif %}                 
+          </td>
+        </tr>        
+        {% if data['child1-education-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-education-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-education-custom1-amount']}} {{data['child1-education-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'baby' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Baby care</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Nappies and changing</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-baby-amount1'] %}          
+            £{{data['child1-baby-amount1']}} {{data['child1-baby-frequency1']}}
+            {% else %}
+            None
+            {% endif %}             
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Baby formula</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-baby-amount2'] %}          
+            £{{data['child1-baby-amount2']}} {{data['child1-baby-frequency2']}}
+            {% else %}
+            None
+            {% endif %}            
+          </td>
+        </tr>
+        {% if data['child1-baby-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-baby-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-baby-custom1-amount']}} {{data['child1-baby-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'childcare' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Childcare</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Childminder or nursery fees</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-childcare-amount1'] %}          
+            £{{data['child1-childcare-amount1']}} {{data['child1-childcare-frequency1']}}
+            {% else %}
+            None
+            {% endif %}            
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Holiday clubs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-childcare-amount1'] %}          
+            £{{data['child1-childcare-amount2']}} {{data['child1-childcare-frequency2']}}
+            {% else %}
+            None
+            {% endif %}             
+          </td>
+        </tr>
+        {% if data['child1-childcare-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-childcare-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-childcare-custom1-amount']}} {{data['child1-childcare-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'activities' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Hobbies and activities</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Sports clubs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-activities-amount1'] %}          
+            £{{data['child1-activities-amount1']}} {{data['child1-activities-frequency1']}}
+            {% else %}
+            None
+            {% endif %}             
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">After school activities</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-activities-amount2'] %}          
+            £{{data['child1-activities-amount2']}} {{data['child1-activities-frequency2']}}
+            {% else %}
+            None
+            {% endif %}           
+          </td>
+        </tr>
+        {% if data['child1-activities-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-activities-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-activities-custom1-amount']}} {{data['child1-activities-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'technology' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Technology and entertainment</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Electronic devices</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-technology-amount1'] %}          
+            £{{data['child1-technology-amount1']}} {{data['child1-technology-frequency1']}}
+            {% else %}
+            None
+            {% endif %}              
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Toys and games</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-technology-amount2'] %}          
+            £{{data['child1-technology-amount2']}} {{data['child1-technology-frequency2']}}
+            {% else %}
+            None
+            {% endif %}                  
+          </td>
+        </tr>
+        {% if data['child1-technology-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-technology-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-technology-custom1-amount']}} {{data['child1-technology-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'travel' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Travel and transport</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Fuel for travel</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-travel-amount1'] %}          
+            £{{data['child1-travel-amount1']}} {{data['child1-travel-frequency1']}}
+            {% else %}
+            None
+            {% endif %}             
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Public transport</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-travel-amount2'] %}          
+            £{{data['child1-travel-amount2']}} {{data['child1-travel-frequency2']}}
+            {% else %}
+            None
+            {% endif %}               
+          </td>
+        </tr>
+        {% if data['child1-travel-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-travel-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-travel-custom1-amount']}} {{data['child1-travel-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'healthcare' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Healthcare</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Medical prescriptions</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-healthcare-amount1'] %}          
+            £{{data['child1-healthcare-amount1']}} {{data['child1-healthcare-frequency1']}}
+            {% else %}
+            None
+            {% endif %}                
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Over-the-counter medicines</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-healthcare-amount2'] %}          
+            £{{data['child1-healthcare-amount2']}} {{data['child1-healthcare-frequency2']}}
+            {% else %}
+            None
+            {% endif %}                
+          </td>
+        </tr>
+        {% if data['child1-healthcare-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-healthcare-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-healthcare-custom1-amount']}} {{data['child1-healthcare-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'household' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Household costs and bills</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Extra housing costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-household-amount1'] %}          
+            £{{data['child1-household-amount1']}} {{data['child1-household-frequency1']}}
+            {% else %}
+            None
+            {% endif %}              
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Utility bills</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-household-amount2'] %}          
+            £{{data['child1-household-amount2']}} {{data['child1-household-frequency2']}}
+            {% else %}
+            None
+            {% endif %}              
+          </td>
+        </tr>
+        {% if data['child1-household-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-household-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-household-custom1-amount']}} {{data['child1-household-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'savings' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Savings and allowance</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Savings contributions</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-savings-amount1'] %}          
+            £{{data['child1-savings-amount1']}} {{data['child1-savings-frequency1']}}
+            {% else %}
+            None
+            {% endif %}           
+          </td>
+        </tr>
+        {% if data['child1-savings-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-savings-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-savings-custom1-amount']}} {{data['child1-savings-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if 'one-off' in selectedCosts %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">One-off costs</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Furniture</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-one-off-amount1'] %}          
+            £{{data['child1-one-off-amount1']}} {{data['child1-one-off-frequency1']}}
+            {% else %}
+            None
+            {% endif %}              
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Emergency costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            {% if data['child1-one-off-amount2'] %}          
+            £{{data['child1-one-off-amount2']}} {{data['child1-one-off-frequency2']}}
+            {% else %}
+            None
+            {% endif %}             
+          </td>
+        </tr>        
+        {% if data['child1-one-off-custom1-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{data['child1-one-off-custom1'] | capitalize }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-one-off-custom1-amount']}} {{data['child1-one-off-custom1-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %} 
+
+    {% if data['child1-other-custom1-amount'] %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">{{ data['child1-other-custom'] | capitalize or 'Other' }}</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Cost</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{ data['child1-other-custom1'] | capitalize or 'Cost 1' }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-other-custom1-amount']}} {{data['child1-other-custom1-frequency']}}</td>
+        </tr> 
+        {% if data['child1-other-custom2-amount'] %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{ data['child1-other-custom2'] | capitalize or 'Cost 2' }}</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£{{data['child1-other-custom2-amount']}} {{data['child1-other-custom2-frequency']}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

@@ -27,40 +27,56 @@
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header govuk-!-width-one-third">Child's name</th>
-                <th scope="col" class="govuk-table__header">Weekly amount</th>
-                <th scope="col" class="govuk-table__header">Monthly amount</th>
-                <th scope="col" class="govuk-table__header">Yearly amount</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Weekly amount</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Monthly amount</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Yearly amount</th>
 
               </tr>
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">{{child1}}</th>
-                <td class="govuk-table__cell">£X</td>
-                <td class="govuk-table__cell">£XX</td>
-                <td class="govuk-table__cell">£XXX</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£85.00</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£368.33</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£4,420.00</td>
               </tr>
               {% if data['cw-child-amount'] > 1 %}
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">{{child2}}</th>
-                <td class="govuk-table__cell">£X</td>
-                <td class="govuk-table__cell">£XX</td>
-                <td class="govuk-table__cell">£XXX</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£65.00</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£281.67</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£3,380.00</td>
               </tr>
               {% endif %}
               {% if data['cw-child-amount'] > 2 %}
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">{{child3}}</th>
-                <td class="govuk-table__cell">£X</td>
-                <td class="govuk-table__cell">£XX</td>
-                <td class="govuk-table__cell">£XXX</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£50.00</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£216.67</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£2,600.00</td>
               </tr>
-              {% endif %}              
+              {% endif %}
+              {% if data['cw-child-amount'] > 3 %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">{{child4}}</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£40.00</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£173.33</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£2,080.00</td>
+              </tr>
+              {% endif %}
+              {% if data['cw-child-amount'] > 4 %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">{{child5}}</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£25.00</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£108.33</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£1,300.00</td>
+              </tr>
+              {% endif %}        
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Total</th>
-                <td class="govuk-table__cell">£X</td>
-                <td class="govuk-table__cell">£XX</td>
-                <td class="govuk-table__cell">£XXX</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£265.00</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£1,148.33</strong></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£13,780.00</strong></td>
               </tr>
             </tbody>
           </table>
@@ -68,7 +84,7 @@
 
           <h2 class="govuk-heading-m">What to do next</h2>
 
-          <p class="govuk-body">Download your spending worksheet <a href="#" class="govuk-link govuk-link--no-visited-state">as a document (PDF, 15KB)</a> or <a href="#" class="govuk-link govuk-link--no-visited-state">as a spreadsheet (CSV, 15KB)</a>. You can also <a href="#" class="govuk-link govuk-link--no-visited-state">view it online (HTML, 5KB)</a>. Use it for your records or to share with the other parent.</p>
+          <p class="govuk-body">Download your spending worksheet <a href="download" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">as a document (PDF, 15KB)</a> or <a href="#" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">as a spreadsheet (CSV, 15KB)</a>. You can also <a href="download" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">view it online (HTML, 5KB)</a>. Use it for your records or to share with the other parent.</p>
 
           <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
             <div class="govuk-accordion__section">
